@@ -1,0 +1,3 @@
+keytool -genkey -v -keystore com.twentysixapps.puzzlepak.keystore -alias puzzlepak -keyalg RSA -keysize 2048 -validity 50000
+
+Password = Android4

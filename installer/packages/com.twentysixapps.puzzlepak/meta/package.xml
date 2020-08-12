@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package>
+    <DisplayName>Puzzle Pak Application</DisplayName>
+    <Description>Install Puzzle Pak Application</Description>
+    <Version>1.02</Version>
+    <ReleaseDate>2018-07-01</ReleaseDate>
+    <Licenses>
+        <License name="AS IS License" file="license.txt" />
+    </Licenses>
+    <Default>true</Default>
+    <UserInterfaces>
+        <UserInterface>page.ui</UserInterface>
+    </UserInterfaces>
+</Package>
