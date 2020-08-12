@@ -7,51 +7,61 @@
 #include <QObject>
 
 
-class PuzzlesFactory : public QObject {
- public:
-  PuzzlesFactory(std::unique_ptr<GameIterator> gameIterator, QObject* parent):
+class PuzzlesFactory : public QObject
+{
+public:
+  PuzzlesFactory( std::shared_ptr<GameIterator> gameIterator, QObject* parent ):
     QObject{parent},
-    mGameIterator{std::move(gameIterator)}
+    mGameIterator{gameIterator}
   {}
 
-  void nextPuzzle() {
+  void nextPuzzle()
+  {
     mGameIterator->nextPuzzle();
   }
 
-  const std::shared_ptr<Puzzle> currentPuzzle() const {
+  const std::shared_ptr<Puzzle> currentPuzzle() const
+  {
     return mGameIterator->currentPuzzle();
   }
 
-  const Colors* currentPuzzleColors() {
+  const Colors* currentPuzzleColors()
+  {
     return mGameIterator->currentPuzzleColors();
   }
 
-  const Pieces* currentPuzzlePieces() {
+  const Pieces* currentPuzzlePieces()
+  {
     return mGameIterator->currentPuzzlePieces();
   }
 
-  void generatePuzzles() {
-    mGameIterator->generateGamePuzzles(this);
+  void generatePuzzles()
+  {
+    mGameIterator->generateGamePuzzles( this );
   }
 
-  int puzzlesCount() {
+  int puzzlesCount()
+  {
     return mGameIterator->puzzlesCount();
   }
 
-  void selectPuzzle(int previousPuzzleIndex) {
-    mGameIterator->selectPuzzle(previousPuzzleIndex);
+  void selectPuzzle( int previousPuzzleIndex )
+  {
+    mGameIterator->selectPuzzle( previousPuzzleIndex );
   }
 
-  int currentPuzzleIndex() const {
+  int currentPuzzleIndex() const
+  {
     return  mGameIterator->currentPuzzleIndex();
   }
 
-  int lastPuzzleIndex() {
+  int lastPuzzleIndex()
+  {
     return  mGameIterator->currentPuzzleIndex();
   }
 
- private:
-  std::unique_ptr<GameIterator> mGameIterator;
+private:
+  std::shared_ptr<GameIterator> mGameIterator;
 
 };
 

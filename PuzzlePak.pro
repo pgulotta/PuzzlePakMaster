@@ -10,8 +10,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG +=  c++1z
 
-CONFIG += qtquickcompiler
-
 HEADERS += \
     model/gamemetadata.hpp \
     model/shape.hpp \

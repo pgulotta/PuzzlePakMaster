@@ -169,7 +169,7 @@ ApplicationWindow {
 
                 Connections {
                     target: GameController
-                    onGamePuzzleChanged: {
+                    function onGamePuzzleChanged() {
                         var puzzleIndex = GameController.currentPuzzleIndex()
                         if (Math.round(toolbarSliderId.value) !== puzzleIndex) {
                             toolbarSliderId.value = puzzleIndex
