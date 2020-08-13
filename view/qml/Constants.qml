@@ -27,6 +27,7 @@ QtObject {
     readonly property string colorGainsboro: "#DCDCDC"
     readonly property string colorLightGray: "#D3D3D3"
 
+    readonly property int shortAnimationDuration: 500
     readonly property int animationDuration: 1100
     readonly property int invalidItem: -1
 

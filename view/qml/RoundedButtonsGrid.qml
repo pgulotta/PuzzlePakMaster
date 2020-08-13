@@ -41,9 +41,6 @@ ScrollView {
         for (var i = 0; i < solutionColors.length; i++) {
             proposedColorsList[i] = "transparent"
         }
-        if (rowsVisible > 1 && visible)
-            flickableItemId.contentY = drawUnit + flickableItemId.contentHeight
-                    - flickableItemId.height
     }
 
     PropertyAnimation {
@@ -51,7 +48,7 @@ ScrollView {
         property: "opacity"
         from: 0.0
         to: 1.0
-        duration: Constants.animationDuration
+        duration: Constants.shortAnimationDuration
         running: true
         loops: 1
     }
@@ -60,30 +57,32 @@ ScrollView {
         property: "scale"
         from: 0.0
         to: 1.0
-        duration: Constants.animationDuration
+        duration: Constants.shortAnimationDuration
         running: true
         loops: 1
     }
     Behavior on opacity {
         NumberAnimation {
-            duration: Constants.animationDuration
+            duration: Constants.shortAnimationDuration
         }
     }
     Behavior on scale {
         NumberAnimation {
-            duration: Constants.animationDuration
+            duration: Constants.shortAnimationDuration
         }
     }
 
     contentItem: Flickable {
         id: flickableItemId
+        //        height: windowHeight * 0.5
+        //        contentHeight: windowHeight * 0.5
         Column {
             id: columnId
             Repeater {
                 id: columnRepeaterId
                 model: rowCount
                 delegate: Row {
-                    id: gridRowId
+                    id: userInputRowId
                     bottomPadding: mediumPadding
                     visible: index < rowsVisible
                     enabled: !(index < rowsVisible - 1
@@ -95,16 +94,10 @@ ScrollView {
                         color: "transparent"
                         opacity: index < rowsVisible - 1
                                  || roundedButtonsGridId.state === Constants.stateSolved ? 1.0 : 0.0
-
-                        Label {
-                            id: colorsMatchedId
-                            color: Material.accent
-                            font.pointSize: mediumLargeFontPointSize
-                            anchors.centerIn: parent
-                        }
                     }
                     RowLayout {
-                        id: rowId
+                        id: userSelectionRowId
+                        //   nove this
                         Repeater {
                             id: rowRepeaterId
                             model: columnCount
@@ -125,9 +118,6 @@ ScrollView {
                                         }
                                         colorsAndPositionsMatchedId.text
                                                 = calculateColorPositionsMatched(
-                                                    proposedColorsList,
-                                                    solutionColorsList)
-                                        colorsMatchedId.text = calculateColorsMatched(
                                                     proposedColorsList,
                                                     solutionColorsList)
                                     }

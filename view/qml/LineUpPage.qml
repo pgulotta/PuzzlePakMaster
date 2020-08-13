@@ -112,13 +112,14 @@ Page {
         }
         RoundedButtonsGrid {
             id: puzzleColorsGridId
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: mediumLargePadding
+            anchors.left: parent.left
+            anchors.top: topRowRectId.bottom
+            anchors.topMargin: mediumPadding
             height: isPortraitMode ? drawUnit * 9 : drawUnit * 4.0
-            columnCount: this.solutionColors.length //2
+            columnCount: this.solutionColors.length
             rowCount: 25
             rowsVisible: 1
-            solutionColors: GameController.puzzleColors() //1
+            solutionColors: GameController.puzzleColors()
             onColorSelected: currentScoreId.score = rowsVisible
             onInvalidSelection: timedMessageId.showMessage(
                                     insufficientCircleMessage)
@@ -137,7 +138,9 @@ Page {
             id: solutionColorsId
             height: drawUnit
             width: drawUnit - largePadding
-
+            anchors.left: parent.left
+            anchors.top: puzzleColorsGridId.bottom
+            anchors.topMargin: largePadding
             Item {
                 height: parent.height
                 width: drawUnit
@@ -174,8 +177,7 @@ Page {
         onTriggered: {
             GameController.nextPuzzle()
             puzzleColorsGridId.state = lineupPageId.state
-            puzzleColorsGridId.solutionColors = GameController.puzzleColors(
-                        ) //3
+            puzzleColorsGridId.solutionColors = GameController.puzzleColors()
             topRoundedButtonsRowId.buttonColors = getAvailableColors()
             puzzleColorsGridId.columnCount = 0
             puzzleColorsGridId.columnCount = puzzleColorsGridId.solutionColors.length
