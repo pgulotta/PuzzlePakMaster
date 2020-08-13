@@ -75,12 +75,12 @@ Page {
         }
     }
 
-    Column {
+    ColumnLayout {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: scoresRowId.top
         anchors.topMargin: exlargePadding
         spacing: mediumPadding
-        leftPadding: drawUnit
+        //leftPadding: drawUnit
         Rectangle {
             id: topRowRectId
             implicitHeight: topColorsRowId.height
