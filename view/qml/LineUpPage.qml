@@ -78,7 +78,7 @@ Page {
     ColumnLayout {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: scoresRowId.top
-        anchors.topMargin: mediumPadding //exlargePadding
+        anchors.topMargin: mediumPadding
         spacing: mediumPadding
         Rectangle {
             id: topRowRectId

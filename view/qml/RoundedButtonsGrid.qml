@@ -25,7 +25,7 @@ ScrollView {
     property var proposedColorsList
 
     clip: false
-    height: windowHeight * 0.55
+    height: windowHeight * 0.58
 
     onSolutionColorsChanged: {
         solutionColorsList = new Array
