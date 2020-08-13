@@ -24,7 +24,7 @@ ScrollView {
     property var solutionColorsList
     property var proposedColorsList
 
-    clip: true
+    clip: false
 
     onSolutionColorsChanged: {
         solutionColorsList = new Array
