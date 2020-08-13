@@ -25,6 +25,7 @@ ScrollView {
     property var proposedColorsList
 
     clip: false
+    height: windowHeight * 0.55
 
     onSolutionColorsChanged: {
         solutionColorsList = new Array
@@ -74,8 +75,8 @@ ScrollView {
 
     contentItem: Flickable {
         id: flickableItemId
-        //        height: windowHeight * 0.5
-        //        contentHeight: windowHeight * 0.5
+        height: roundedButtonsGridId.height
+        contentHeight: roundedButtonsGridId.height
         Column {
             id: columnId
             Repeater {

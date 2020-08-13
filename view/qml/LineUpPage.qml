@@ -78,7 +78,7 @@ Page {
     ColumnLayout {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: scoresRowId.top
-        anchors.topMargin: exlargePadding
+        anchors.topMargin: mediumPadding //exlargePadding
         spacing: mediumPadding
         Rectangle {
             id: topRowRectId
@@ -110,7 +110,6 @@ Page {
         }
         RoundedButtonsGrid {
             id: puzzleColorsGridId
-            height: isPortraitMode ? drawUnit * 9 : drawUnit * 4.0
             columnCount: this.solutionColors.length
             rowCount: 25
             rowsVisible: 1
