@@ -80,15 +80,13 @@ Page {
         anchors.top: scoresRowId.top
         anchors.topMargin: exlargePadding
         spacing: mediumPadding
-        //leftPadding: drawUnit
         Rectangle {
             id: topRowRectId
             implicitHeight: topColorsRowId.height
             implicitWidth: topColorsRowId.width
             radius: largeRectRadius
             color: Material.primary
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: mediumPadding * -1
+            Layout.alignment: Qt.AlignCenter
             RowLayout {
                 id: topColorsRowId
                 enabled: lineupPageId.state !== Constants.stateSolved
@@ -112,9 +110,6 @@ Page {
         }
         RoundedButtonsGrid {
             id: puzzleColorsGridId
-            anchors.left: parent.left
-            anchors.top: topRowRectId.bottom
-            anchors.topMargin: mediumPadding
             height: isPortraitMode ? drawUnit * 9 : drawUnit * 4.0
             columnCount: this.solutionColors.length
             rowCount: 25
@@ -138,9 +133,6 @@ Page {
             id: solutionColorsId
             height: drawUnit
             width: drawUnit - largePadding
-            anchors.left: parent.left
-            anchors.top: puzzleColorsGridId.bottom
-            anchors.topMargin: largePadding
             Item {
                 height: parent.height
                 width: drawUnit
