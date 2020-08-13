@@ -110,9 +110,7 @@ QStringList GameController::players() const
 
 const QStringList GameController::puzzleColors()
 {
-  auto result = *mGameFactory.currentPuzzleColors();
-  qDebug() << Q_FUNC_INFO  << "  result.count()= " << result.count();
-  return result;
+  return *mGameFactory.currentPuzzleColors();
 }
 
 bool GameController::shouldPlayMusic()  const
