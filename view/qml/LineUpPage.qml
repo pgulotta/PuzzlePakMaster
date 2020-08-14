@@ -53,6 +53,7 @@ Page {
     RowLayout {
         id: scoresRowId
         z: 10
+        spacing: 0
         anchors {
             top: parent.top
             left: parent.left
@@ -78,8 +79,8 @@ Page {
     ColumnLayout {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: scoresRowId.top
-        anchors.topMargin: mediumPadding
-        spacing: mediumPadding
+        anchors.topMargin: smallPadding
+        spacing: 0
         Rectangle {
             id: topRowRectId
             implicitHeight: topColorsRowId.height
@@ -132,7 +133,7 @@ Page {
         RowLayout {
             id: solutionColorsId
             Layout.alignment: Qt.AlignHCenter
-
+            spacing: 0
             Rectangle {
                 implicitHeight: solutionColorsRowId.height + mediumPadding
                 implicitWidth: solutionColorsRowId.width + largePadding

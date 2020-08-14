@@ -12,10 +12,10 @@ ApplicationWindow {
     readonly property bool isMobileDevice: Qt.platform.os === "android"
                                            || Qt.platform.os === "ios"
 
-    property int windowHeight: isMobileDevice ? Screen.desktopAvailableHeight : Screen.desktopAvailableHeight * .65
-    property int windowWidth: isMobileDevice ? Screen.width : Screen.width * .65
+    property int windowHeight: isMobileDevice ? Screen.desktopAvailableHeight : Screen.desktopAvailableHeight * .5
+    property int windowWidth: isMobileDevice ? Screen.width : Screen.width * .5
     property bool isPortraitMode: windowHeight > windowWidth
-    property real drawUnit: isPortraitMode ? windowWidth * .1 : windowHeight * .1
+    property real drawUnit: isPortraitMode ? windowWidth * .09 : windowHeight * .09
     property bool isWindowActive: Qt.application.state === Qt.ApplicationActive
     property int smallPadding: dp(2)
     property int mediumPadding: dp(8)
