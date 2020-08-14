@@ -113,6 +113,7 @@ Page {
             columnCount: this.solutionColors.length
             rowCount: 25
             rowsVisible: 1
+
             solutionColors: GameController.puzzleColors()
             onColorSelected: currentScoreId.score = rowsVisible
             onInvalidSelection: timedMessageId.showMessage(
@@ -131,6 +132,7 @@ Page {
         RowLayout {
             id: solutionColorsId
             Layout.alignment: Qt.AlignHCenter
+
             Rectangle {
                 implicitHeight: solutionColorsRowId.height + mediumPadding
                 implicitWidth: solutionColorsRowId.width + largePadding

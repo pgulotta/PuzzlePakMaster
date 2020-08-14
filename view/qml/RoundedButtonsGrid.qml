@@ -8,7 +8,7 @@ import QtQuick.Controls.Styles 1.4
 import com.twentysixapps.puzzlepak.constants 1.0
 import "Functions.js" as Functions
 
-ScrollView {
+Pane {
     id: roundedButtonsGridId
 
     signal colorSelected
@@ -24,8 +24,9 @@ ScrollView {
     property var solutionColorsList
     property var proposedColorsList
 
-    clip: false
-    height: windowHeight * 0.58
+    clip: true
+    Material.background: "transparent"
+    contentHeight: windowHeight * 0.56
 
     onSolutionColorsChanged: {
         solutionColorsList = new Array
@@ -73,105 +74,95 @@ ScrollView {
         }
     }
 
-    contentItem: Flickable {
-        id: flickableItemId
-        height: roundedButtonsGridId.height
-        contentHeight: roundedButtonsGridId.height
-        Column {
-            id: columnId
-            Repeater {
-                id: columnRepeaterId
-                model: rowCount
-                delegate: Row {
-                    id: userInputRowId
-                    bottomPadding: mediumPadding
-                    visible: index < rowsVisible
-                    enabled: !(index < rowsVisible - 1
-                               || state === Constants.stateSolved)
-                    Rectangle {
-                        id: colorMatchCountRectId
-                        width: drawUnit
-                        height: drawUnit
-                        color: "transparent"
-                        opacity: index < rowsVisible - 1
-                                 || roundedButtonsGridId.state === Constants.stateSolved ? 1.0 : 0.0
-                    }
-                    RowLayout {
-                        id: userSelectionRowId
-                        //   nove this
-                        Repeater {
-                            id: rowRepeaterId
-                            model: columnCount
-                            delegate: RoundedButton {
-                                id: roundedButtonId
-                                MouseArea {
-                                    anchors.fill: parent
-                                    onClicked: {
-                                        if (roundedButtonsGridId.state === Constants.stateSolved)
-                                            return
-                                        colorSelected()
-                                        rowRepeaterId.itemAt(
-                                                    index).setButtonColor(
-                                                    roundedButtonColor)
-                                        for (var i = 0; i < solutionColors.length; i++) {
-                                            proposedColorsList[i] = rowRepeaterId.itemAt(
-                                                        i).buttonColor
-                                        }
-                                        colorsAndPositionsMatchedId.text
-                                                = calculateColorPositionsMatched(
-                                                    proposedColorsList,
-                                                    solutionColorsList)
+    contentItem: Column {
+        Repeater {
+            id: columnRepeaterId
+            model: rowCount
+            delegate: Row {
+                id: userInputRowId
+                bottomPadding: smallPadding
+                visible: index < rowsVisible
+                enabled: !(index < rowsVisible - 1
+                           || state === Constants.stateSolved)
+                Rectangle {
+                    width: drawUnit
+                    height: drawUnit
+                    color: "transparent"
+                }
+                RowLayout {
+                    id: userSelectionRowId
+                    Repeater {
+                        id: rowRepeaterId
+                        model: columnCount
+
+                        delegate: RoundedButton {
+                            id: roundedButtonId
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    if (roundedButtonsGridId.state === Constants.stateSolved)
+                                        return
+                                    colorSelected()
+                                    rowRepeaterId.itemAt(index).setButtonColor(
+                                                roundedButtonColor)
+                                    for (var i = 0; i < solutionColors.length; i++) {
+                                        proposedColorsList[i] = rowRepeaterId.itemAt(
+                                                    i).buttonColor
                                     }
+                                    colorsAndPositionsMatchedId.text
+                                            = calculateColorPositionsMatched(
+                                                proposedColorsList,
+                                                solutionColorsList)
                                 }
                             }
                         }
+                    }
 
-                        ButtonControl.Button {
-                            id: validateSolutionId
-                            visible: index === rowsVisible - 1
-                            Layout.preferredWidth: drawUnit + mediumPadding
-                            Layout.preferredHeight: drawUnit + mediumPadding
+                    ButtonControl.Button {
+                        id: validateId
+                        visible: index === rowsVisible - 1
+                        Layout.preferredWidth: drawUnit + smallPadding
+                        Layout.preferredHeight: drawUnit + smallPadding
 
-                            style: ButtonStyle {
-                                label: Image {
-                                    source: "qrc:/view/images/validate.png"
-                                    fillMode: Image.PreserveAspectFit
-                                }
-                                background: Rectangle {
-                                    radius: validateSolutionId.width / 2
-                                    border.width: rectRadius
-                                    border.color: Material.accent
-                                    color: validateSolutionId.hovered ? (validateSolutionId.pressed ? Material.foreground : Material.background) : Material.primary
-                                }
+                        style: ButtonStyle {
+                            label: Image {
+                                source: "qrc:/view/images/validate.png"
+                                fillMode: Image.PreserveAspectFit
                             }
-                            onClicked: {
-                                if (isSelectionValid()) {
-                                    currentScoreChanged(
-                                                puzzleColorsGridId.rowsVisible)
-                                    if (isPuzzleSolved()) {
-                                        puzzleSolved()
-                                    } else {
-                                        rowsVisible++
-                                    }
+                            background: Rectangle {
+                                radius: validateId.width / 2
+                                border.width: rectRadius
+                                border.color: Material.accent
+                                color: validateId.hovered ? (validateId.pressed ? Material.foreground : Material.background) : Material.primary
+                            }
+                        }
+                        onClicked: {
+                            if (isSelectionValid()) {
+                                currentScoreChanged(
+                                            puzzleColorsGridId.rowsVisible)
+                                if (isPuzzleSolved()) {
+                                    puzzleSolved()
                                 } else {
-                                    invalidSelection()
+                                    rowsVisible++
                                 }
+                            } else {
+                                invalidSelection()
                             }
                         }
                     }
-                    Rectangle {
-                        id: colorsAndPositionsMatchedRectId
-                        width: drawUnit
-                        height: drawUnit
-                        color: "transparent"
-                        opacity: index < rowsVisible - 1
-                                 || roundedButtonsGridId.state === Constants.stateSolved ? 1.0 : 0.0
-                        Label {
-                            id: colorsAndPositionsMatchedId
-                            color: Material.accent
-                            font.pointSize: mediumLargeFontPointSize
-                            anchors.centerIn: parent
-                        }
+                }
+                Rectangle {
+                    id: colorsAndPositionsMatchedRectId
+                    width: drawUnit
+                    height: drawUnit
+                    color: "transparent"
+                    opacity: index < rowsVisible - 1
+                             || roundedButtonsGridId.state === Constants.stateSolved ? 1.0 : 0.0
+                    Label {
+                        id: colorsAndPositionsMatchedId
+                        color: Material.accent
+                        font.pointSize: mediumLargeFontPointSize
+                        anchors.centerIn: parent
                     }
                 }
             }
