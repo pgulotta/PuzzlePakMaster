@@ -130,16 +130,9 @@ Page {
 
         RowLayout {
             id: solutionColorsId
-            height: drawUnit
-            width: drawUnit - largePadding
-            Item {
-                height: parent.height
-                width: drawUnit
-                visible: true
-            }
-
+            Layout.alignment: Qt.AlignHCenter
             Rectangle {
-                implicitHeight: solutionColorsRowId.height + largePadding
+                implicitHeight: solutionColorsRowId.height + mediumPadding
                 implicitWidth: solutionColorsRowId.width + largePadding
                 radius: largeRectRadius
                 color: Material.background
