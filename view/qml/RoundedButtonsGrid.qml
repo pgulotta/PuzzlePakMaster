@@ -45,36 +45,7 @@ Pane {
         }
     }
 
-    PropertyAnimation {
-        target: roundedButtonsGridId
-        property: "opacity"
-        from: 0.0
-        to: 1.0
-        duration: Constants.shortAnimationDuration
-        running: true
-        loops: 1
-    }
-    PropertyAnimation {
-        target: roundedButtonsGridId
-        property: "scale"
-        from: 0.0
-        to: 1.0
-        duration: Constants.shortAnimationDuration
-        running: true
-        loops: 1
-    }
-    Behavior on opacity {
-        NumberAnimation {
-            duration: Constants.shortAnimationDuration
-        }
-    }
-    Behavior on scale {
-        NumberAnimation {
-            duration: Constants.shortAnimationDuration
-        }
-    }
-
-    contentItem: Column {
+    contentData: Column {
         Repeater {
             id: columnRepeaterId
             model: rowCount
@@ -169,6 +140,34 @@ Pane {
         }
     }
 
+    PropertyAnimation {
+        target: roundedButtonsGridId
+        property: "opacity"
+        from: 0.0
+        to: 1.0
+        duration: Constants.shortAnimationDuration
+        running: true
+        loops: 1
+    }
+    PropertyAnimation {
+        target: roundedButtonsGridId
+        property: "scale"
+        from: 0.0
+        to: 1.0
+        duration: Constants.shortAnimationDuration
+        running: true
+        loops: 1
+    }
+    Behavior on opacity {
+        NumberAnimation {
+            duration: Constants.shortAnimationDuration
+        }
+    }
+    Behavior on scale {
+        NumberAnimation {
+            duration: Constants.shortAnimationDuration
+        }
+    }
     function calculateColorPositionsMatched() {
         if (proposedColorsList.length !== solutionColorsList.length)
             return 0
