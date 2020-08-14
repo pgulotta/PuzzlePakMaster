@@ -25,11 +25,8 @@ ApplicationWindow {
     readonly property int rectRadius: dp(2)
     readonly property int largeRectRadius: dp(16)
     readonly property int borderWidth: dp(3)
-    readonly property int smallFontPointSize: dp(12)
-    readonly property int mediumFontPointSize: dp(16)
     readonly property int mediumLargeFontPointSize: dp(20)
     readonly property int largeFontPointSize: dp(26)
-    readonly property int exlargeFontPointSize: dp(30)
 
     objectName: "MainPage"
 
