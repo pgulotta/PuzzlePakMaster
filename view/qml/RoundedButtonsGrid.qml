@@ -28,6 +28,7 @@ Pane {
     Material.background: "transparent"
     contentHeight: windowHeight * 0.56
     contentWidth: parent.width
+    //width: parent.width
     onSolutionColorsChanged: {
         solutionColorsList = new Array
         proposedColorsList = new Array
