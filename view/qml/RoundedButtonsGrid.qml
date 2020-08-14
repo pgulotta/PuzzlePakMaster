@@ -16,6 +16,7 @@ Pane {
     signal currentScoreChanged(int currentScore)
     signal puzzleSolved
 
+    readonly property real flickVelocity: -1 * windowHeight
     property int columnCount
     property int rowCount
     property int rowsVisible
@@ -26,9 +27,8 @@ Pane {
 
     clip: true
     Material.background: "transparent"
-    contentHeight: windowHeight * 0.56
+    contentHeight: windowHeight * 0.55
     contentWidth: parent.width
-    //width: parent.width
     onSolutionColorsChanged: {
         solutionColorsList = new Array
         proposedColorsList = new Array
@@ -51,14 +51,13 @@ Pane {
         width: roundedButtonsGridId.width
         height: roundedButtonsGridId.height
         color: "transparent"
-
         Flickable {
             id: flickableId
             anchors.fill: parent
-            contentWidth: columnId.width
             contentHeight: columnId.height
-            clip: false
+            flickableDirection: Flickable.AutoFlickIfNeeded
 
+            clip: false
             Column {
                 id: columnId
                 Repeater {
@@ -132,6 +131,7 @@ Pane {
                                             puzzleSolved()
                                         } else {
                                             rowsVisible++
+                                            flickableId.flick(0, flickVelocity)
                                         }
                                     } else {
                                         invalidSelection()
