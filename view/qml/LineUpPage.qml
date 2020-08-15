@@ -109,6 +109,7 @@ Page {
                 }
             }
         }
+
         RoundedButtonsGrid {
             id: puzzleColorsGridId
             columnCount: this.solutionColors.length

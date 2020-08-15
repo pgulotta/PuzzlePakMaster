@@ -39,7 +39,7 @@ Row {
         property: "opacity"
         from: 0.0
         to: 1.0
-        duration: Constants.animationDuration
+        duration: Constants.shortAnimationDuration
         running: true
         loops: 1
     }
@@ -48,7 +48,7 @@ Row {
         property: "scale"
         from: 0.0
         to: 1.0
-        duration: Constants.animationDuration
+        duration: Constants.shortAnimationDuration
         running: true
         loops: 1
     }

@@ -132,6 +132,8 @@ Pane {
                                     }
                                 }
                                 onClicked: {
+                                    if (state === Constants.stateSolved)
+                                        return
                                     if (isSelectionValid()) {
                                         currentScoreChanged(
                                                     puzzleColorsGridId.rowsVisible)
