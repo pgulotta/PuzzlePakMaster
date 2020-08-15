@@ -27,7 +27,7 @@ Pane {
 
     clip: true
     Material.background: "transparent"
-    contentHeight: windowHeight * 0.55
+    contentHeight: windowHeight * 0.5
     contentWidth: parent.width
     onSolutionColorsChanged: {
         solutionColorsList = new Array
@@ -56,8 +56,16 @@ Pane {
             anchors.fill: parent
             contentHeight: columnId.height
             flickableDirection: Flickable.AutoFlickIfNeeded
-
             clip: false
+            ScrollBar.vertical: ScrollBar {
+                active: true
+
+                onActiveChanged: {
+                    if (!active)
+                        active = true
+                }
+            }
+
             Column {
                 id: columnId
                 Repeater {
