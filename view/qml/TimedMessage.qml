@@ -9,7 +9,7 @@ Item {
     Drawer {
         id: drawerId
         width: windowWidth
-        height: windowHeight * 0.75
+        height: windowHeight * 0.65
         position: 0.25
         edge: Qt.BottomEdge
 
@@ -21,13 +21,14 @@ Item {
             }
         }
 
+        PullDown {}
+
         Label {
             text: message
             anchors.centerIn: parent
             wrapMode: Label.WordWrap
             width: parent.width * .9
             horizontalAlignment: Text.AlignHCenter
-            // font.pointSize: mediumLargeFontPointSize
             color: Material.foreground
         }
     }

@@ -42,8 +42,7 @@ ApplicationWindow {
 
     Component.onCompleted: {
 
-        console.log("drawUnit=" + drawUnit + "  pixelDensity="
-                    + Screen.pixelDensity + "  rectRadius=" + rectRadius)
+        //console.log("drawUnit=" + drawUnit + "  pixelDensity="+ Screen.pixelDensity + "  rectRadius=" + rectRadius)
         GameController.setDrawUnit(drawUnit)
         title = GameController.applicationTitle()
     }

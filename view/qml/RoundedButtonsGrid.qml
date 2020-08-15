@@ -27,7 +27,7 @@ Pane {
 
     clip: true
     Material.background: "transparent"
-    contentHeight: windowHeight * 0.5
+    contentHeight: isPortraitMode ? windowHeight * 0.5 : windowHeight * 0.4
     contentWidth: parent.width
     onSolutionColorsChanged: {
         solutionColorsList = new Array

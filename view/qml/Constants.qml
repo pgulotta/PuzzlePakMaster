@@ -15,6 +15,8 @@ QtObject {
     readonly property string previousPuzzleChar: "\u00AB"
     readonly property string nextPuzzleChar: "\u00BB"
 
+
+    readonly property string vChar: "V"
     readonly property string downChar: "\u21e3"
     readonly property string upChar: "\u21e1"
     readonly property string leftChar: "\u21e0"
