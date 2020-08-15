@@ -23,7 +23,7 @@ ApplicationWindow {
     property int largePadding: dp(20)
     property int exlargePadding: dp(40)
     readonly property int rectRadius: dp(2)
-    readonly property int largeRectRadius: dp(16)
+    readonly property int largeRectRadius: dp(8)
     readonly property int borderWidth: dp(3)
     readonly property int mediumLargeFontPointSize: dp(20)
     readonly property int largeFontPointSize: dp(26)

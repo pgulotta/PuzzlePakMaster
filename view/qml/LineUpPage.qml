@@ -135,7 +135,7 @@ Page {
             Layout.alignment: Qt.AlignHCenter
             spacing: 0
             Rectangle {
-                implicitHeight: solutionColorsRowId.height + mediumPadding
+                implicitHeight: solutionColorsRowId.height + largePadding
                 implicitWidth: solutionColorsRowId.width + largePadding
                 radius: largeRectRadius
                 color: Material.background
