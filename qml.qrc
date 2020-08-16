@@ -47,6 +47,5 @@
         <file>view/qml/PuzzleScore.qml</file>
         <file>view/qml/ColorFallPage.qml</file>
         <file>view/qml/ToolBarButton.qml</file>
-        <file>view/qml/PullDown.qml</file>
     </qresource>
 </RCC>

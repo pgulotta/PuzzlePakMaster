@@ -21,8 +21,6 @@ Item {
             }
         }
 
-        PullDown {}
-
         Label {
             text: message
             anchors.centerIn: parent
