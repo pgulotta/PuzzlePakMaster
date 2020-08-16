@@ -18,17 +18,25 @@ ApplicationWindow {
     property real drawUnit: isPortraitMode ? windowWidth * .09 : windowHeight * .09
     property real imageDimension: isPortraitMode ? windowHeight * 0.2 : windowWidth * 0.16
     property bool isWindowActive: Qt.application.state === Qt.ApplicationActive
+
+    property real startXPath: windowWidth * 0.5
+    property real startYPath: windowHeight * 0.8
+    property real controlXFirst: windowWidth * 0.9
+    property real controlYFirst: windowHeight * 0.4
+    property real controlXLast: windowWidth * -0.1
+    property real controlYLast: windowHeight * 0.4
+
     property int smallPadding: dp(2)
     property int mediumPadding: dp(8)
     property int mediumLargePadding: dp(16)
     property int largePadding: dp(20)
     property int exlargePadding: dp(40)
     readonly property int rectRadius: dp(2)
-    readonly property int largeRectRadius: dp(8)
+    readonly property int largeRectRadius: dp(4)
     readonly property int borderWidth: dp(3)
     readonly property int mediumLargeFontPointSize: dp(20)
     readonly property int largeFontPointSize: dp(26)
-    readonly property int dialogSize: dp(240)
+    readonly property int dialogSize: dp(220)
 
     objectName: "MainPage"
 
@@ -69,6 +77,12 @@ ApplicationWindow {
         isPortraitMode = windowHeight > windowWidth
         drawUnit = isPortraitMode ? windowWidth * .09 : windowHeight * .09
         imageDimension = isPortraitMode ? windowHeight * 0.2 : windowWidth * 0.16
+        startXPath = windowWidth * 0.5
+        startYPath = windowHeight * 0.8
+        controlXFirst = windowWidth * 0.9
+        controlYFirst = windowHeight * 0.4
+        controlXLast = windowWidth * -0.1
+        controlYLast = windowHeight * 0.4
     }
 
     header: ToolBar {

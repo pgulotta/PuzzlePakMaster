@@ -8,18 +8,11 @@ Page {
     id: switchboardPageId
     objectName: "SwitchboardPage"
 
-    property int imageSideLength: imageDimension
     readonly property int imageAnimationDuration: 50
-    readonly property int imageWidth: imageSideLength
-    readonly property int imageHeight: imageSideLength
-    readonly property int imageFrameWidth: imageWidth
-    readonly property int imageFrameHeight: imageHeight
     property bool isInitialized: false
 
     width: parent.width
     height: parent.height
-
-    onHeightChanged: imageSideLength = isPortraitMode ? windowHeight * 0.2 : windowWidth * 0.16
 
     Rectangle {
         anchors.fill: parent
@@ -33,8 +26,8 @@ Page {
         snapMode: PathView.SnapToItem
         path: Path {
             id: gamesMetaDataPathId
-            startX: windowWidth * 0.5
-            startY: windowHeight * 0.8
+            startX: startXPath
+            startY: startYPath
             PathAttribute {
                 name: "iconScale"
                 value: 1.1
@@ -42,8 +35,8 @@ Page {
             PathQuad {
                 x: gamesMetaDataPathId.startX
                 y: windowHeight * 0.2
-                controlX: windowWidth * 0.9
-                controlY: windowHeight * 0.4
+                controlX: controlXFirst
+                controlY: controlYFirst
             }
             PathAttribute {
                 name: "iconScale"
@@ -52,15 +45,15 @@ Page {
             PathQuad {
                 x: gamesMetaDataPathId.startX
                 y: gamesMetaDataPathId.startY
-                controlX: windowWidth * -0.1
-                controlY: windowHeight * 0.4
+                controlX: controlXLast
+                controlY: controlYLast
             }
         }
         delegate: Component {
             Rectangle {
                 id: switchboardDelegateId
-                width: imageFrameWidth
-                height: imageFrameHeight
+                width: imageDimension
+                height: imageDimension
                 visible: true
                 radius: rectRadius
                 color: "transparent"
@@ -92,9 +85,10 @@ Page {
                 }
                 Rectangle {
                     id: columnRectId
-                    width: isPortraitMode ? imageFrameWidth : imageFrameHeight * 1.3
-                    height: isPortraitMode ? imageFrameHeight : imageFrameHeight * .7
+                    width: imageDimension
+                    height: imageDimension
                     color: "transparent"
+                    radius: largeRectRadius
                     Column {
                         id: columnDelegateId
                         width: parent.width
@@ -104,8 +98,8 @@ Page {
                         Image {
                             id: selectableImageId
                             source: model.imageSource
-                            width: isPortraitMode ? imageWidth * .6 : imageWidth * .55
-                            height: isPortraitMode ? imageHeight * .6 : imageHeight * .5
+                            width: imageDimension * .5
+                            height: imageDimension * .5
                             anchors.horizontalCenter: columnDelegateId.horizontalCenter
                         }
                         Label {
@@ -124,7 +118,7 @@ Page {
                                 hoverAnimationId.running = true
                             columnRectId.color = containsMouse ? Qt.darker(
                                                                      Material.background,
-                                                                     1.1) : "transparent"
+                                                                     1.05) : "transparent"
                         }
                         onClicked: {
                             if (model.moniker === GameController.aboutMoniker(
