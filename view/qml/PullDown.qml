@@ -17,16 +17,7 @@ GridLayout {
         leftMargin: mediumPadding
         rightMargin: mediumPadding
     }
-    Label {
-        text: " :"
-        color: Material.accent
-        Layout.alignment: Qt.AlignLeft
-    }
-    Label {
-        text: ": "
-        color: Material.accent
-        Layout.alignment: Qt.AlignRight
-    }
+
     Label {
         text: " :"
         color: Material.accent

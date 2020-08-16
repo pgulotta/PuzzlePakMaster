@@ -118,7 +118,7 @@ Pane {
                                 visible: index === rowsVisible - 1
                                 Layout.preferredWidth: drawUnit + smallPadding
                                 Layout.preferredHeight: drawUnit + smallPadding
-
+                                Layout.bottomMargin: mediumPadding
                                 style: ButtonStyle {
                                     label: Image {
                                         source: "qrc:/view/images/validate.png"
