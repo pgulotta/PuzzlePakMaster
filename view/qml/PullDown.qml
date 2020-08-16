@@ -18,15 +18,33 @@ GridLayout {
         rightMargin: mediumPadding
     }
     Label {
+        text: " :"
+        color: Material.accent
+        Layout.alignment: Qt.AlignLeft
+    }
+    Label {
+        text: ": "
+        color: Material.accent
+        Layout.alignment: Qt.AlignRight
+    }
+    Label {
+        text: " :"
+        color: Material.accent
+        Layout.alignment: Qt.AlignLeft
+    }
+    Label {
+        text: ": "
+        color: Material.accent
+        Layout.alignment: Qt.AlignRight
+    }
+    Label {
         text: Constants.vChar
         color: Material.accent
-        //  font.pointSize: largeFontPointSize
         Layout.alignment: Qt.AlignLeft
     }
     Label {
         text: Constants.vChar
         color: Material.accent
-        // font.pointSize: largeFontPointSize
         Layout.alignment: Qt.AlignRight
     }
 }
