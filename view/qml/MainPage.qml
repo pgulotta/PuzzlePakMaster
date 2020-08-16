@@ -32,19 +32,20 @@ ApplicationWindow {
 
     visible: true
     width: windowWidth
-    maximumWidth: width
-    minimumWidth: width
-    maximumHeight: height
-    minimumHeight: height
     height: windowHeight
     x: 0
     y: 0
 
     Component.onCompleted: {
-
-        //console.log("drawUnit=" + drawUnit + "  pixelDensity="+ Screen.pixelDensity + "  rectRadius=" + rectRadius)
         GameController.setDrawUnit(drawUnit)
         title = GameController.applicationTitle()
+    }
+
+    onClosing: {
+        var item = stackViewId.pop()
+        while (item !== null) {
+            item = stackViewId.pop()
+        }
     }
 
     onIsWindowActiveChanged: {
@@ -55,6 +56,15 @@ ApplicationWindow {
         } else if (Qt.application.state === 4) {
             stackViewId.currentItem.shouldPlayMusic = GameController.shouldPlayMusic()
         }
+    }
+
+    onWidthChanged: calculateDependents()
+    onHeightChanged: calculateDependents()
+
+    function calculateDependents() {
+        windowHeight = height
+        isPortraitMode = windowHeight > windowWidth
+        drawUnit = isPortraitMode ? windowWidth * .09 : windowHeight * .09
     }
 
     header: ToolBar {

@@ -19,10 +19,11 @@ Page {
     width: parent.width
     height: parent.height
 
+    onHeightChanged: imageSideLength = isPortraitMode ? windowHeight * 0.2 : windowWidth * 0.16
+
     Rectangle {
         anchors.fill: parent
-        gradient: BackgroundGradient {
-        }
+        gradient: BackgroundGradient {}
     }
 
     PathView {
