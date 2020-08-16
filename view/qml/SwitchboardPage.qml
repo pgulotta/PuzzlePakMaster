@@ -8,7 +8,7 @@ Page {
     id: switchboardPageId
     objectName: "SwitchboardPage"
 
-    property int imageSideLength: isPortraitMode ? windowHeight * 0.2 : windowWidth * 0.16
+    property int imageSideLength: imageDimension
     readonly property int imageAnimationDuration: 50
     readonly property int imageWidth: imageSideLength
     readonly property int imageHeight: imageSideLength
@@ -143,10 +143,10 @@ Page {
 
     SelectPlayerDialog {
         id: selectPlayerDialogId
-        x: 0.5 * (windowWidth - width)
-        y: 0.2 * (windowHeight - height)
+
         property var gameMetaData: null
 
+        anchors.centerIn: parent
         onAccepted: {
             var selectedPlayer = selectPlayerDialogId.getValidPlayerName()
             if (selectedPlayer === null)

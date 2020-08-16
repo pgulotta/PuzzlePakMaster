@@ -8,8 +8,9 @@ Dialog {
     readonly property string defaultPlayerName: qsTr("Player 1")
     modal: true
     focus: true
-    width: drawUnit * 7
-    height: drawUnit * 5
+
+    width: dialogSize
+    height: dialogSize
 
     header: Label {
         x: mediumPadding

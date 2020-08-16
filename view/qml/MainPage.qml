@@ -16,6 +16,7 @@ ApplicationWindow {
     property int windowWidth: isMobileDevice ? Screen.width : Screen.width * .6
     property bool isPortraitMode: windowHeight > windowWidth
     property real drawUnit: isPortraitMode ? windowWidth * .09 : windowHeight * .09
+    property real imageDimension: isPortraitMode ? windowHeight * 0.2 : windowWidth * 0.16
     property bool isWindowActive: Qt.application.state === Qt.ApplicationActive
     property int smallPadding: dp(2)
     property int mediumPadding: dp(8)
@@ -27,6 +28,7 @@ ApplicationWindow {
     readonly property int borderWidth: dp(3)
     readonly property int mediumLargeFontPointSize: dp(20)
     readonly property int largeFontPointSize: dp(26)
+    readonly property int dialogSize: dp(240)
 
     objectName: "MainPage"
 
@@ -63,8 +65,10 @@ ApplicationWindow {
 
     function calculateDependents() {
         windowHeight = height
+        windowWidth = isMobileDevice ? Screen.width : Screen.width * .6
         isPortraitMode = windowHeight > windowWidth
         drawUnit = isPortraitMode ? windowWidth * .09 : windowHeight * .09
+        imageDimension = isPortraitMode ? windowHeight * 0.2 : windowWidth * 0.16
     }
 
     header: ToolBar {
