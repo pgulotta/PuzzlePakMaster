@@ -11,6 +11,8 @@
 //  windows:  C:/Users/WindowsUserName/AppData/Roaming/26Apps/Puzzle Pak/com.twentysixapps.puzzlepak.db
 // linux:  .local/share/26Apps/Puzzle Pak/com.twentysixapps.puzzlepak.db
 
+const static QString defaultPlayerName{"Player 1"};
+
 DataAccessAdapter::DataAccessAdapter( const QString& applicationVersion ): mApplicationVersion{applicationVersion}
 {
   auto appDataFolder = QStandardPaths::writableLocation( QStandardPaths::AppDataLocation );
@@ -249,7 +251,7 @@ QString DataAccessAdapter::getLastPlayer()  const
     qWarning() << Q_FUNC_INFO << "  Error:  " <<  e.what ();
   }
 
-  return result;
+  return result == "" ? defaultPlayerName : result;
 }
 
 void DataAccessAdapter::populatePlayers( QStringList& players ) const
@@ -262,6 +264,10 @@ void DataAccessAdapter::populatePlayers( QStringList& players ) const
 
     for ( Row row : statement ) {
       players.append( row.GetString( 0 ) );
+    }
+
+    if ( players.length() == 0 ) {
+      players.append( defaultPlayerName );
     }
   } catch ( const std::exception& e ) {
     qWarning() << Q_FUNC_INFO << "  Error:  " <<  e.what ();

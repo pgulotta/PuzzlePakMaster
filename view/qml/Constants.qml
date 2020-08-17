@@ -20,7 +20,7 @@ QtObject {
     readonly property string refreshChar: "\u21bb"
     readonly property string starChar: "\u2605"
 
-    readonly property int shortAnimationDuration: 500
+    readonly property int shortAnimationDuration: 300
     readonly property int animationDuration: 1100
     readonly property int invalidItem: -1
 
