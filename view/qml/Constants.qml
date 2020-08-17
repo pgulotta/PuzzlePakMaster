@@ -17,7 +17,8 @@ QtObject {
 
     readonly property string checkChar: "\u2713"
     readonly property string circleChar: "\u26aa"
-    readonly property string refreshChar: "\u21bb"
+    //readonly property string refreshChar: "\u25c1"
+    readonly property string refreshChar: "<<"
     readonly property string starChar: "\u2605"
 
     readonly property int shortAnimationDuration: 300

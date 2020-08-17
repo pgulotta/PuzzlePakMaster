@@ -216,9 +216,7 @@ ApplicationWindow {
                 font.bold: true
                 font.pointSize: mediumLargeFontPointSize
                 anchors.verticalCenter: parent.verticalCenter
-                onClicked: {
-                    stackViewId.currentItem.shouldSolvePuzzle = true
-                }
+                onClicked: stackViewId.currentItem.shouldSolvePuzzle = true
             }
 
             ToolButton {
