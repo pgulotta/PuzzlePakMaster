@@ -6,7 +6,6 @@ import QtQuick.Controls.Material 2.2
 import QtQuick.Controls 1.4 as ButtonControl
 import QtQuick.Controls.Styles 1.4
 import com.twentysixapps.puzzlepak.constants 1.0
-import "Functions.js" as Functions
 
 Pane {
     id: roundedButtonsGridId
@@ -212,9 +211,17 @@ Pane {
         return counter
     }
 
+    function removeDuplicates(array) {
+        var unique = array.filter(function (elem, index, self) {
+            return index === self.indexOf(elem)
+        })
+
+        return unique
+    }
+
     function calculateColorsMatched() {
         var colorsMatched = 0
-        var uniqueSolutions = Functions.removeDuplicates(solutionColorsList)
+        var uniqueSolutions = removeDuplicates(solutionColorsList)
         var proposedColorsMatchedCount = 0
         var solutionColorsMatchedCount = 0
         var length = solutionColorsList.length

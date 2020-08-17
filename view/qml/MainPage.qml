@@ -4,7 +4,6 @@ import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Material 2.2
 import com.twentysixapps.puzzlepak.constants 1.0
-import "Functions.js" as Functions
 
 ApplicationWindow {
     id: rootId
@@ -75,10 +74,11 @@ ApplicationWindow {
         id: headerToolBarId
         implicitHeight: backButtonId.height
 
-        ToolBarButton {
+        ToolButton {
             id: backButtonId
             text: Constants.backChar
             font.bold: true
+            font.pointSize: mediumLargeFontPointSize
             anchors.left: parent.left
             anchors.leftMargin: smallPadding
             anchors.verticalCenter: parent.verticalCenter
@@ -157,8 +157,11 @@ ApplicationWindow {
             onVisibleChanged: {
                 toolbarSliderId.to = GameController.puzzlesCount() - 1
             }
-            ToolBarButton {
+            ToolButton {
                 text: Constants.previousPuzzleChar
+                font.bold: true
+                font.pointSize: mediumLargeFontPointSize
+                anchors.verticalCenter: parent.verticalCenter
                 onClicked: {
                     GameController.setSelectedPuzzle(toolbarSliderId.value - 2)
                     stackViewId.currentItem.state = Constants.stateNewPuzzle
@@ -187,32 +190,43 @@ ApplicationWindow {
                     }
                 }
             }
-            ToolBarButton {
+            ToolButton {
                 text: Constants.nextPuzzleChar
+                font.bold: true
+                font.pointSize: mediumLargeFontPointSize
+                anchors.verticalCenter: parent.verticalCenter
                 onClicked: {
                     stackViewId.currentItem.state = Constants.stateNewPuzzle
                     stackViewId.currentItem.state = Constants.stateUnsolved
                 }
             }
-            ToolBarButton {
+            ToolButton {
                 text: Constants.toggleMusicChar
+                font.bold: true
+                font.pointSize: mediumLargeFontPointSize
+                anchors.verticalCenter: parent.verticalCenter
                 onClicked: {
                     GameController.toggleShouldPlayMusic()
                     stackViewId.currentItem.shouldPlayMusic = GameController.shouldPlayMusic()
                 }
             }
-            ToolBarButton {
+            ToolButton {
                 text: Constants.checkChar
                 visible: stackViewId.currentItem.objectName !== "ColorFallPage"
+                font.bold: true
+                font.pointSize: mediumLargeFontPointSize
+                anchors.verticalCenter: parent.verticalCenter
                 onClicked: {
                     stackViewId.currentItem.shouldSolvePuzzle = true
                 }
             }
 
-            ToolBarButton {
+            ToolButton {
                 id: reloadPuzzleCharId
                 text: Constants.refreshChar
                 font.bold: true
+                font.pointSize: mediumLargeFontPointSize
+                anchors.verticalCenter: parent.verticalCenter
                 visible: stackViewId.currentItem.objectName === "ColorFallPage"
                 onClicked: {
                     GameController.setSelectedPuzzle(toolbarSliderId.value - 1)
@@ -221,10 +235,12 @@ ApplicationWindow {
                 }
             }
 
-            ToolBarButton {
+            ToolButton {
                 id: questionCharId
                 text: Constants.questionChar
                 font.bold: true
+                font.pointSize: mediumLargeFontPointSize
+                anchors.verticalCenter: parent.verticalCenter
                 onClicked: timedMessageId.showMessage(
                                stackViewId.currentItem.helpText)
             }

@@ -1,7 +1,6 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQuick.Controls.Material 2.2
-import "Functions.js" as Functions
 import com.twentysixapps.puzzlepak.constants 1.0
 
 Label {
@@ -49,4 +48,22 @@ Label {
     xAnimationId.running = true
     timerTextId.resetClockSeconds = seconds
   }
+
+  function leftZeroPad(number) {
+      var s = "00" + number
+      return s.substr(s.length - 2)
+  }
+
+  function secondsToHms(seconds) {
+      if (seconds === undefined || seconds === 0) {
+          return ""
+      } else {
+          var h = Math.floor(seconds / 3600)
+          var m = Math.floor(seconds % 3600 / 60)
+          var s = Math.floor(seconds % 3600 % 60)
+
+          return leftZeroPad(h) + ":" + leftZeroPad(m) + ":" + leftZeroPad(s)
+      }
+  }
+
 }

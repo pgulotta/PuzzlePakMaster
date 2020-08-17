@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>qtquickcontrols2.conf</file>
-        <file>view/images/icon.svg</file>
         <file>view/images/about.png</file>
         <file>view/images/border.jpg</file>
         <file>view/images/tangram.png</file>
@@ -11,14 +10,8 @@
         <file>view/images/palette.png</file>
         <file>view/images/circles.png</file>
         <file>view/images/validate.png</file>
-        <file>view/music/bensound-badass.mp3</file>
-        <file>view/music/bensound-clearday.mp3</file>
-        <file>view/music/bensound-jazzyfrenchy.mp3</file>
-        <file>view/music/bensound-moose.mp3</file>
         <file>view/music/bensound-theduel.mp3</file>
-        <file>view/music/line-up.mp3</file>
         <file>view/music/cheering.wav</file>
-        <file>view/qml/Functions.js</file>
         <file>view/qml/Constants.qml</file>
         <file>view/qml/MainPage.qml</file>
         <file>view/qml/SwitchboardPage.qml</file>
@@ -42,6 +35,5 @@
         <file>view/qml/ParticleEmitter.qml</file>
         <file>view/qml/PuzzleScore.qml</file>
         <file>view/qml/ColorFallPage.qml</file>
-        <file>view/qml/ToolBarButton.qml</file>
     </qresource>
 </RCC>
