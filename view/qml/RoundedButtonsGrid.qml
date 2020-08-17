@@ -58,7 +58,7 @@ Pane {
             id: flickableId
             anchors.fill: parent
             contentHeight: columnId.height
-            flickableDirection: Flickable.AutoFlickDirection
+            flickableDirection: Flickable.AutoFlickIfNeeded
             clip: false
             ScrollBar.vertical: ScrollBar {
                 active: true

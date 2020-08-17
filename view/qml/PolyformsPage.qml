@@ -90,10 +90,6 @@ Page {
                 focus: false
                 gradient: backColorProblemId
 
-                ArrowsUp {}
-
-                ArrowsLeft {}
-
                 SecondsClock {
                     id: problemSecondsClockId
                     z: 2
@@ -159,10 +155,6 @@ Page {
                 focus: true
 
                 gradient: backColorSolutionId
-
-                ArrowsDown {}
-
-                ArrowsRight {}
 
                 SecondsClock {
                     id: solutionSecondsClockId

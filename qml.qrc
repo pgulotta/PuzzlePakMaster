@@ -25,10 +25,6 @@
         <file>view/qml/PolyformsPage.qml</file>
         <file>view/qml/AboutPage.qml</file>
         <file>view/qml/HtmlText.qml</file>
-        <file>view/qml/ArrowsDown.qml</file>
-        <file>view/qml/ArrowsUp.qml</file>
-        <file>view/qml/ArrowsLeft.qml</file>
-        <file>view/qml/ArrowsRight.qml</file>
         <file>view/qml/Polyform.qml</file>
         <file>view/qml/Wall.qml</file>
         <file>view/qml/PolygonItem.qml</file>

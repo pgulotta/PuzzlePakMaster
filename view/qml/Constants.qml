@@ -15,27 +15,14 @@ QtObject {
     readonly property string previousPuzzleChar: "\u00AB"
     readonly property string nextPuzzleChar: "\u00BB"
 
-
-    readonly property string vChar: "V"
-    readonly property string downChar: "\u21e3"
-    readonly property string upChar: "\u21e1"
-    readonly property string leftChar: "\u21e0"
-    readonly property string rightChar: "\u21e2"
     readonly property string checkChar: "\u2713"
     readonly property string circleChar: "\u26aa"
     readonly property string refreshChar: "\u21bb"
     readonly property string starChar: "\u2605"
 
-    readonly property string colorGainsboro: "#DCDCDC"
-    readonly property string colorLightGray: "#D3D3D3"
-
     readonly property int shortAnimationDuration: 500
     readonly property int animationDuration: 1100
     readonly property int invalidItem: -1
-
-    //  readonly property string upChar: "\u2195"
-    //  readonly property string questionChar: "\uFF1F"
-    //  readonly property string nextPuzzleChar: "\u2192"
 
     //    The fixture density is used to compute the mass properties of the parentbody.
     //    The density can be zero or positive. You should generally use similar densities
