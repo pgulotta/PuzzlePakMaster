@@ -71,20 +71,6 @@ ApplicationWindow {
     onWidthChanged: calculateDependents()
     onHeightChanged: calculateDependents()
 
-    function calculateDependents() {
-        windowHeight = height
-        windowWidth = isMobileDevice ? Screen.width : Screen.width * .6
-        isPortraitMode = windowHeight > windowWidth
-        drawUnit = isPortraitMode ? windowWidth * .09 : windowHeight * .09
-        imageDimension = isPortraitMode ? windowHeight * 0.2 : windowWidth * 0.16
-        startXPath = windowWidth * 0.5
-        startYPath = windowHeight * 0.8
-        controlXFirst = windowWidth * 0.9
-        controlYFirst = windowHeight * 0.4
-        controlXLast = windowWidth * -0.1
-        controlYLast = windowHeight * 0.4
-    }
-
     header: ToolBar {
         id: headerToolBarId
         implicitHeight: backButtonId.height
@@ -272,5 +258,19 @@ ApplicationWindow {
 
     function dp(x) {
         return (Screen.pixelDensity * 25.4 < 120) ? x : x * (Screen.pixelDensity * 25.4 / 160)
+    }
+
+    function calculateDependents() {
+        windowHeight = height
+        windowWidth = isMobileDevice ? Screen.width : Screen.width * .6
+        isPortraitMode = windowHeight > windowWidth
+        drawUnit = isPortraitMode ? windowWidth * .09 : windowHeight * .09
+        imageDimension = isPortraitMode ? windowHeight * 0.2 : windowWidth * 0.16
+        startXPath = windowWidth * 0.5
+        startYPath = windowHeight * 0.8
+        controlXFirst = windowWidth * 0.9
+        controlYFirst = windowHeight * 0.4
+        controlXLast = windowWidth * -0.1
+        controlYLast = windowHeight * 0.4
     }
 }

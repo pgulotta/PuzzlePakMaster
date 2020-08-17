@@ -25,10 +25,13 @@ Pane {
     property var solutionColorsList
     property var proposedColorsList
 
+    property alias columnWidth: columnId.implicitWidth
+
     clip: true
     Material.background: "transparent"
     contentHeight: isPortraitMode ? windowHeight * 0.5 : windowHeight * 0.4
-    contentWidth: parent.width
+    contentWidth: columnWidth
+
     onSolutionColorsChanged: {
         solutionColorsList = new Array
         proposedColorsList = new Array
@@ -55,11 +58,10 @@ Pane {
             id: flickableId
             anchors.fill: parent
             contentHeight: columnId.height
-            flickableDirection: Flickable.AutoFlickIfNeeded
+            flickableDirection: Flickable.AutoFlickDirection
             clip: false
             ScrollBar.vertical: ScrollBar {
                 active: true
-
                 onActiveChanged: {
                     if (!active)
                         active = true

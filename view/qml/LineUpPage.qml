@@ -112,7 +112,7 @@ Page {
 
         RoundedButtonsGrid {
             id: puzzleColorsGridId
-            columnCount: this.solutionColors.length
+            columnCount: solutionColors.length
             rowCount: 25
             rowsVisible: 1
 

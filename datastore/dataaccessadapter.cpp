@@ -77,8 +77,6 @@ bool DataAccessAdapter::openDB()
   bool success = false;
 
   try {
-    qInfo() << Q_FUNC_INFO <<  ": Attempting to open database " << qPrintable( mAppDbName );
-
     if ( !QFile::exists( mAppDbName ) ) {
       createDB();
     }
