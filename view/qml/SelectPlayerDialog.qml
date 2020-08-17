@@ -21,14 +21,12 @@ Dialog {
     contentItem: ComboBox {
         id: playerSelectionId
         editable: true
-        editText: GameController.getLastPlayer()
     }
 
     onVisibleChanged: {
         if (visible) {
-            var savedName = playerSelectionId.editText
             playerSelectionId.model = GameController.players()
-            playerSelectionId.editText = savedName
+            playerSelectionId.editText = GameController.getLastPlayer()
         }
     }
 
