@@ -12,8 +12,8 @@ ApplicationWindow {
     readonly property bool isMobileDevice: Qt.platform.os === "android"
                                            || Qt.platform.os === "ios"
 
-    property int windowHeight: isMobileDevice ? Screen.desktopAvailableHeight : Screen.desktopAvailableHeight * .44
-    property int windowWidth: isMobileDevice ? Screen.width : Screen.width * .6
+    property int windowHeight: isMobileDevice ? Screen.desktopAvailableHeight : Screen.desktopAvailableHeight * .9
+    property int windowWidth: isMobileDevice ? Screen.width : Screen.width * .3
     property bool isPortraitMode: windowHeight > windowWidth
     property real drawUnit: isPortraitMode ? windowWidth * .09 : windowHeight * .09
     property real imageDimension: isPortraitMode ? windowHeight * 0.2 : windowWidth * 0.16
@@ -261,8 +261,9 @@ ApplicationWindow {
     }
 
     function calculateDependents() {
+
         windowHeight = height
-        windowWidth = isMobileDevice ? Screen.width : Screen.width * .6
+        windowWidth = width
         isPortraitMode = windowHeight > windowWidth
         drawUnit = isPortraitMode ? windowWidth * .09 : windowHeight * .09
         imageDimension = isPortraitMode ? windowHeight * 0.2 : windowWidth * 0.16

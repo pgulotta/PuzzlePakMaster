@@ -54,10 +54,10 @@ Page {
         id: scoresRowId
         z: 10
         spacing: 0
+
         anchors {
             top: parent.top
             left: parent.left
-            right: parent.right
             topMargin: mediumPadding
             leftMargin: largePadding
             rightMargin: largePadding
@@ -79,7 +79,7 @@ Page {
     ColumnLayout {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: scoresRowId.top
-        anchors.topMargin: smallPadding
+        anchors.topMargin: isPortraitMode ? largePadding : smallPadding
         spacing: 0
         Rectangle {
             id: topRowRectId
