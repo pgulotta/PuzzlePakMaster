@@ -1,8 +1,8 @@
-import QtQuick 2.9
-import QtQuick.Layouts 1.3
-import QtQuick.Window 2.2
-import QtQuick.Controls 2.3
-import QtQuick.Controls.Material 2.2
+import QtQuick 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Controls.Material 2.12
 import QtQuick.Controls 1.4 as ButtonControl
 import QtQuick.Controls.Styles 1.4
 import com.twentysixapps.puzzlepak.constants 1.0

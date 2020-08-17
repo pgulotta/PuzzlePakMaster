@@ -1,4 +1,4 @@
-import QtQuick 2.9
+import QtQuick 2.15
 import Box2DStatic 2.0
 
 Image {
