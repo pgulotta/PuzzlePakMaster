@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
-<manifest package="com.twentysixapps.puzzlepak" xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.20" android:versionCode="120" android:installLocation="auto">
+<manifest package="com.twentysixapps.puzzlepak" xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.25" android:versionCode="125" android:installLocation="auto">
     <!-- The following comment will be replaced upon deployment with default permissions based on the dependencies of the application.
          Remove the comment if you do not require these default permissions. -->
-    <!-- %%INSERT_PERMISSIONS -->
+
 
     <!-- The following comment will be replaced upon deployment with default features based on the dependencies of the application.
          Remove the comment if you do not require these default features. -->
-    <!-- %%INSERT_FEATURES -->
+
     <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="29"/>
     <supports-screens android:largeScreens="true" android:normalScreens="true" android:anyDensity="true" android:smallScreens="true"/>
 
