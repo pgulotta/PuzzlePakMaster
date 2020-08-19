@@ -2,86 +2,88 @@
 #include "model/constants.hpp"
 
 
-ColorFallIterator::ColorFallIterator(const ShapesFactory& shapesFactory, const QString& moniker):
-  GameIterator{shapesFactory, moniker} {
+ColorFallIterator::ColorFallIterator( const ShapesFactory& shapesFactory, const QString& moniker ):
+  GameIterator{shapesFactory, moniker}
+{
   //qDebug() << Q_FUNC_INFO;
 }
 
-void ColorFallIterator::generatePuzzles(QObject* parent) {
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+void ColorFallIterator::generatePuzzles( QObject* parent )
+{
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "LIMEGREEN", "FIREBRICK", "BLUE", "FIREBRICK", "BLUE", "LIMEGREEN", "LIMEGREEN", "BLUE", "FIREBRICK", "BLUE",
     "LIMEGREEN", "BLUE", "FIREBRICK", "BLUE", "FIREBRICK", "BLUE",  "FIREBRICK", "FIREBRICK", "BLUE", "BLUE",
     "FIREBRICK", "FIREBRICK", "FIREBRICK", "BLUE", "BLUE", "FIREBRICK", "FIREBRICK", "FIREBRICK", "FIREBRICK", "FIREBRICK",
     "LIMEGREEN", "LIMEGREEN", "BLUE", "BLUE", "LIMEGREEN", "LIMEGREEN", "LIMEGREEN", "LIMEGREEN", "LIMEGREEN", "LIMEGREEN",
     "FIREBRICK",  "FIREBRICK", "BLUE", "FIREBRICK", "LIMEGREEN", "BLUE", "BLUE", "FIREBRICK",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "DODGERBLUE", "DODGERBLUE", "DODGERBLUE", "SKYBLUE", "DODGERBLUE", "DODGERBLUE", "SKYBLUE", "SKYBLUE", "DODGERBLUE", "DODGERBLUE",
     "NAVY", "NAVY", "NAVY", "NAVY", "NAVY", "NAVY", "SKYBLUE", "SKYBLUE", "NAVY", "NAVY",
     "DODGERBLUE", "NAVY", "NAVY", "DODGERBLUE", "NAVY", "DODGERBLUE", "SKYBLUE", "SKYBLUE", "SKYBLUE", "DODGERBLUE",
     "SKYBLUE", "NAVY", "DODGERBLUE", "NAVY", "DODGERBLUE", "NAVY", "NAVY", "NAVY",
     "SKYBLUE", "SKYBLUE", "SKYBLUE", "SKYBLUE", "NAVY", "NAVY", "NAVY", "SKYBLUE", "SKYBLUE", "SKYBLUE",
-  }, parent)));
+  }, parent ) ) );
 
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "GOLD", "GOLD", "DEEPSKYBLUE", "GOLD", "SPRINGGREEN", "DEEPSKYBLUE", "DEEPSKYBLUE", "DEEPSKYBLUE", "SPRINGGREEN", "GOLD",
     "DEEPSKYBLUE", "SPRINGGREEN", "DEEPSKYBLUE", "GOLD", "DEEPSKYBLUE", "SPRINGGREEN", "SPRINGGREEN", "GOLD", "SPRINGGREEN", "DEEPSKYBLUE",
     "DEEPSKYBLUE", "SPRINGGREEN", "DEEPSKYBLUE", "GOLD", "SPRINGGREEN", "GOLD", "SPRINGGREEN", "DEEPSKYBLUE", "DEEPSKYBLUE", "DEEPSKYBLUE",
     "DEEPSKYBLUE", "SPRINGGREEN", "GOLD", "SPRINGGREEN", "DEEPSKYBLUE", "SPRINGGREEN", "SPRINGGREEN", "GOLD", "DEEPSKYBLUE", "GOLD",
     "SPRINGGREEN", "DEEPSKYBLUE", "GOLD", "SPRINGGREEN", "DEEPSKYBLUE", "GOLD", "GOLD", "GOLD",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "RED", "LIGHTSALMON", "RED", "LIGHTSALMON", "LIGHTSALMON", "LIGHTSALMON", "LIGHTSALMON", "LIGHTSALMON", "LIGHTSALMON", "LIGHTSALMON",
     "MAROON", "RED", "MAROON", "MAROON", "LIGHTSALMON", "MAROON", "MAROON", "MAROON", "MAROON", "LIGHTSALMON",
     "LIGHTSALMON", "MAROON", "RED", "MAROON", "RED", "MAROON", "MAROON", "MAROON",
     "RED", "MAROON", "RED", "RED", "MAROON", "RED", "RED", "RED", "MAROON", "RED",
     "RED", "MAROON", "MAROON", "RED", "MAROON", "RED", "LIGHTSALMON", "MAROON", "MAROON", "RED",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "TURQUOISE", "GOLD", "TOMATO", "GOLD", "DEEPSKYBLUE", "DEEPSKYBLUE", "TOMATO", "TOMATO", "TURQUOISE", "GOLD",
     "TOMATO", "TURQUOISE", "DEEPSKYBLUE", "GOLD", "TOMATO", "TOMATO", "TURQUOISE", "GOLD", "TOMATO", "DEEPSKYBLUE",
     "DEEPSKYBLUE", "TOMATO", "TOMATO", "GOLD", "TURQUOISE", "GOLD", "TOMATO", "DEEPSKYBLUE", "DEEPSKYBLUE", "DEEPSKYBLUE",
     "TOMATO", "TURQUOISE", "GOLD", "TURQUOISE", "TOMATO", "DEEPSKYBLUE", "TURQUOISE", "GOLD", "TOMATO", "DEEPSKYBLUE",
     "TURQUOISE", "DEEPSKYBLUE", "GOLD", "TOMATO", "TOMATO", "GOLD", "GOLD", "GOLD",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
-    "GREY", "MIDNIGHTBLUE", "MIDNIGHTBLUE", "MIDNIGHTBLUE", "WHITESMOKE", "WHITESMOKE", "MIDNIGHTBLUE", "WHITESMOKE", "WHITESMOKE", "WHITESMOKE",
-    "GREY", "MIDNIGHTBLUE", "WHITESMOKE", "MIDNIGHTBLUE", "WHITESMOKE", "MIDNIGHTBLUE", "MIDNIGHTBLUE", "MIDNIGHTBLUE",
-    "WHITESMOKE", "GREY", "GREY", "WHITESMOKE", "GREY", "MIDNIGHTBLUE", "GREY", "WHITESMOKE", "MIDNIGHTBLUE", "GREY",
-    "MIDNIGHTBLUE", "MIDNIGHTBLUE", "MIDNIGHTBLUE", "WHITESMOKE", "WHITESMOKE", "MIDNIGHTBLUE", "WHITESMOKE", "MIDNIGHTBLUE", "WHITESMOKE", "MIDNIGHTBLUE",
-    "WHITESMOKE", "MIDNIGHTBLUE", "MIDNIGHTBLUE", "WHITESMOKE", "MIDNIGHTBLUE", "WHITESMOKE", "GREY", "MIDNIGHTBLUE", "MIDNIGHTBLUE", "WHITESMOKE",
-  }, parent)));
+    "GREY", "MIDNIGHTBLUE", "MIDNIGHTBLUE", "MIDNIGHTBLUE", "STEELBLUE", "STEELBLUE", "MIDNIGHTBLUE", "STEELBLUE", "STEELBLUE", "STEELBLUE",
+    "GREY", "MIDNIGHTBLUE", "STEELBLUE", "MIDNIGHTBLUE", "STEELBLUE", "MIDNIGHTBLUE", "MIDNIGHTBLUE", "MIDNIGHTBLUE",
+    "STEELBLUE", "GREY", "GREY", "STEELBLUE", "GREY", "MIDNIGHTBLUE", "GREY", "STEELBLUE", "MIDNIGHTBLUE", "GREY",
+    "MIDNIGHTBLUE", "MIDNIGHTBLUE", "MIDNIGHTBLUE", "STEELBLUE", "STEELBLUE", "MIDNIGHTBLUE", "STEELBLUE", "MIDNIGHTBLUE", "STEELBLUE", "MIDNIGHTBLUE",
+    "STEELBLUE", "MIDNIGHTBLUE", "MIDNIGHTBLUE", "STEELBLUE", "MIDNIGHTBLUE", "STEELBLUE", "GREY", "MIDNIGHTBLUE", "MIDNIGHTBLUE", "STEELBLUE",
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "ROYALBLUE", "ROYALBLUE", "GOLD", "ROYALBLUE", "ROYALBLUE", "ROYALBLUE", "GOLD", "ROYALBLUE", "ROYALBLUE", "GOLD",
     "SPRINGGREEN", "ROYALBLUE", "GOLD", "ROYALBLUE", "FIREBRICK", "GOLD", "ROYALBLUE", "ROYALBLUE",
     "FIREBRICK", "FIREBRICK", "GOLD", "FIREBRICK", "FIREBRICK", "GOLD", "FIREBRICK", "FIREBRICK", "GOLD", "FIREBRICK",
     "SPRINGGREEN", "SPRINGGREEN", "GOLD", "SPRINGGREEN", "SPRINGGREEN", "GOLD", "SPRINGGREEN", "SPRINGGREEN", "GOLD", "SPRINGGREEN",
     "FIREBRICK", "ROYALBLUE", "GOLD", "FIREBRICK", "ROYALBLUE", "GOLD", "SPRINGGREEN", "ROYALBLUE", "GOLD", "FIREBRICK",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "DARKVIOLET", "CYAN", "DARKVIOLET", "CYAN", "DARKVIOLET", "CYAN", "CYAN", "FIREBRICK", "CYAN", "DARKVIOLET",
     "DARKVIOLET", "FIREBRICK", "CYAN", "CYAN", "FIREBRICK", "FIREBRICK", "DARKVIOLET", "DARKVIOLET", "CYAN", "FIREBRICK",
     "FIREBRICK", "CYAN", "DARKVIOLET", "DARKVIOLET", "DARKVIOLET", "DARKVIOLET", "CYAN", "FIREBRICK", "FIREBRICK", "CYAN",
     "FIREBRICK", "DARKVIOLET", "DARKVIOLET", "FIREBRICK", "DARKVIOLET", "FIREBRICK", "CYAN", "DARKVIOLET", "DARKVIOLET", "FIREBRICK",
     "CYAN", "CYAN", "FIREBRICK", "DARKVIOLET", "FIREBRICK", "DARKVIOLET", "CYAN", "DARKVIOLET",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "FORESTGREEN", "FORESTGREEN", "KHAKI", "FORESTGREEN", "FORESTGREEN", "KHAKI", "KHAKI", "FORESTGREEN", "KHAKI", "KHAKI",
     "FORESTGREEN", "SPRINGGREEN", "KHAKI", "SPRINGGREEN", "SPRINGGREEN", "SPRINGGREEN", "KHAKI", "SPRINGGREEN", "FORESTGREEN", "KHAKI",
@@ -89,9 +91,9 @@ void ColorFallIterator::generatePuzzles(QObject* parent) {
     "SPRINGGREEN", "SPRINGGREEN", "KHAKI", "SPRINGGREEN", "SPRINGGREEN", "FORESTGREEN", "SPRINGGREEN", "SPRINGGREEN", "KHAKI", "SPRINGGREEN",
     "FORESTGREEN", "SPRINGGREEN", "KHAKI", "KHAKI", "SPRINGGREEN", "KHAKI", "FORESTGREEN", "SPRINGGREEN",
     "FORESTGREEN", "SPRINGGREEN", "KHAKI", "SPRINGGREEN", "SPRINGGREEN", "FORESTGREEN", "SPRINGGREEN", "FORESTGREEN",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "DEEPPINK", "DEEPPINK", "PALEGOLDENROD", "PALEGOLDENROD", "PALEGOLDENROD", "PALEGOLDENROD", "DARKORANGE", "DARKORANGE", "PALEGOLDENROD", "PALEGOLDENROD",
     "PALEGOLDENROD", "DARKORANGE", "PALEGOLDENROD", "DEEPPINK", "DARKORANGE", "DARKORANGE", "PALEGOLDENROD", "DEEPPINK", "PALEGOLDENROD", "PALEGOLDENROD",
@@ -99,9 +101,9 @@ void ColorFallIterator::generatePuzzles(QObject* parent) {
     "DEEPPINK", "DEEPPINK", "PALEGOLDENROD", "DEEPPINK", "DEEPPINK", "PALEGOLDENROD", "DEEPPINK", "DEEPPINK", "PALEGOLDENROD", "DEEPPINK",
     "DEEPPINK", "DARKORANGE", "PALEGOLDENROD", "DEEPPINK", "PALEGOLDENROD", "PALEGOLDENROD", "PALEGOLDENROD", "DARKORANGE", "PALEGOLDENROD", "DEEPPINK",
     "DEEPPINK", "DARKORANGE", "PALEGOLDENROD", "DARKORANGE", "DEEPPINK", "PALEGOLDENROD", "DARKORANGE", "DEEPPINK",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "SKYBLUE", "PURPLE", "PEACHPUFF",  "SKYBLUE", "PURPLE", "SKYBLUE", "PEACHPUFF", "PURPLE", "SKYBLUE",
     "SKYBLUE", "PURPLE", "SKYBLUE", "PURPLE", "PEACHPUFF", "SKYBLUE", "SKYBLUE", "PURPLE", "SKYBLUE", "SKYBLUE",
@@ -109,9 +111,9 @@ void ColorFallIterator::generatePuzzles(QObject* parent) {
     "PEACHPUFF", "PURPLE", "SKYBLUE", "SKYBLUE", "PURPLE", "PURPLE", "SKYBLUE", "SKYBLUE", "PEACHPUFF",
     "PEACHPUFF", "PEACHPUFF", "SKYBLUE", "PEACHPUFF", "PEACHPUFF", "SKYBLUE", "SKYBLUE", "PEACHPUFF",
     "SKYBLUE", "PURPLE", "SKYBLUE", "SKYBLUE", "PURPLE", "PEACHPUFF", "SKYBLUE", "PURPLE", "SKYBLUE", "PURPLE",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "ORANGE", "GREEN", "LIMEGREEN", "GREEN", "GREEN", "LIMEGREEN", "LIMEGREEN", "GREEN", "LIMEGREEN", "LIMEGREEN",
     "GREEN", "ORANGE", "LIMEGREEN", "PALEGOLDENROD", "ORANGE", "ORANGE", "LIMEGREEN", "PALEGOLDENROD", "GREEN", "LIMEGREEN",
@@ -119,9 +121,9 @@ void ColorFallIterator::generatePuzzles(QObject* parent) {
     "PALEGOLDENROD", "PALEGOLDENROD", "LIMEGREEN", "PALEGOLDENROD", "PALEGOLDENROD", "GREEN", "PALEGOLDENROD", "PALEGOLDENROD", "LIMEGREEN", "PALEGOLDENROD",
     "GREEN", "ORANGE", "LIMEGREEN", "LIMEGREEN", "PALEGOLDENROD", "LIMEGREEN", "ORANGE", "ORANGE",
     "GREEN", "ORANGE", "LIMEGREEN", "ORANGE", "PALEGOLDENROD", "GREEN", "ORANGE", "PALEGOLDENROD",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "CYAN", "CYAN", "PEACHPUFF", "PLUM", "CYAN", "CYAN", "DEEPSKYBLUE", "CYAN", "PLUM", "PLUM",
     "PEACHPUFF", "PLUM", "CYAN", "DEEPSKYBLUE", "PLUM", "PLUM", "CYAN", "DEEPSKYBLUE", "PEACHPUFF", "CYAN",
@@ -129,9 +131,9 @@ void ColorFallIterator::generatePuzzles(QObject* parent) {
     "DEEPSKYBLUE", "DEEPSKYBLUE", "CYAN", "DEEPSKYBLUE", "DEEPSKYBLUE", "PEACHPUFF", "DEEPSKYBLUE", "DEEPSKYBLUE", "CYAN", "DEEPSKYBLUE",
     "PEACHPUFF", "PEACHPUFF", "CYAN", "PEACHPUFF", "PEACHPUFF", "CYAN", "CYAN", "PEACHPUFF",
     "PEACHPUFF", "PLUM", "CYAN", "PLUM", "DEEPSKYBLUE", "PEACHPUFF", "PLUM", "DEEPSKYBLUE",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "YELLOW", "ORANGE", "YELLOW", "ORANGE", "ORANGE", "MEDIUMVIOLETRED", "ORANGE", "MEDIUMVIOLETRED", "YELLOW", "ORANGE",
     "MEDIUMVIOLETRED", "ORANGE", "YELLOW", "YELLOW", "ORANGE", "YELLOW", "ORANGE", "ORANGE",
@@ -139,9 +141,9 @@ void ColorFallIterator::generatePuzzles(QObject* parent) {
     "MEDIUMVIOLETRED", "ORANGE", "YELLOW", "ORANGE", "MEDIUMVIOLETRED", "YELLOW", "YELLOW", "ORANGE", "YELLOW", "ORANGE",
     "MEDIUMVIOLETRED", "MEDIUMVIOLETRED", "YELLOW", "MEDIUMVIOLETRED", "MEDIUMVIOLETRED", "YELLOW", "YELLOW", "MEDIUMVIOLETRED", "YELLOW", "YELLOW",
     "MEDIUMVIOLETRED", "ORANGE", "YELLOW", "ORANGE", "ORANGE", "YELLOW", "ORANGE", "ORANGE",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "TEAL", "DARKGREEN", "MAROON", "DARKGREEN", "TEAL", "MAROON", "MAROON", "DARKGREEN", "MAROON", "MIDNIGHTBLUE",
     "MAROON", "MAROON", "TEAL", "DARKGREEN", "MAROON", "MAROON", "MIDNIGHTBLUE", "MAROON", "DARKGREEN", "DARKGREEN",
@@ -149,10 +151,10 @@ void ColorFallIterator::generatePuzzles(QObject* parent) {
     "TEAL", "DARKGREEN", "MAROON", "MIDNIGHTBLUE", "DARKGREEN", "DARKGREEN", "MAROON", "MIDNIGHTBLUE",
     "TEAL", "TEAL", "MAROON", "TEAL", "TEAL", "MAROON", "MAROON", "TEAL", "TEAL", "MAROON",
     "MIDNIGHTBLUE", "MIDNIGHTBLUE", "MAROON", "MIDNIGHTBLUE", "MIDNIGHTBLUE", "TEAL", "MIDNIGHTBLUE", "MIDNIGHTBLUE",
-  }, parent)));
+  }, parent ) ) );
 
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "ORANGE", "ORANGE", "YELLOW", "FIREBRICK", "ORANGE", "ORANGE", "YELLOW", "ORANGE", "DARKOLIVEGREEN", "YELLOW",
     "DARKOLIVEGREEN", "ORANGE", "YELLOW", "YELLOW", "FIREBRICK", "YELLOW", "ORANGE", "ORANGE",
@@ -160,9 +162,9 @@ void ColorFallIterator::generatePuzzles(QObject* parent) {
     "FIREBRICK", "FIREBRICK", "YELLOW", "FIREBRICK", "FIREBRICK", "DARKOLIVEGREEN", "FIREBRICK", "FIREBRICK", "YELLOW", "FIREBRICK",
     "DARKOLIVEGREEN", "DARKOLIVEGREEN", "YELLOW", "DARKOLIVEGREEN", "DARKOLIVEGREEN", "YELLOW", "YELLOW", "DARKOLIVEGREEN", "YELLOW", "YELLOW",
     "DARKOLIVEGREEN", "ORANGE", "YELLOW", "ORANGE", "FIREBRICK", "YELLOW", "ORANGE", "FIREBRICK",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "MEDIUMAQUAMARINE", "CRIMSON", "CRIMSON", "MEDIUMAQUAMARINE", "PURPLE", "PURPLE", "PURPLE", "MEDIUMAQUAMARINE", "PURPLE", "PURPLE",
     "PURPLE", "PURPLE", "MEDIUMAQUAMARINE", "CRIMSON", "CRIMSON", "PURPLE", "MEDIUMAQUAMARINE", "PURPLE", "PURPLE", "MEDIUMAQUAMARINE",
@@ -172,10 +174,10 @@ void ColorFallIterator::generatePuzzles(QObject* parent) {
     "CRIMSON", "CRIMSON", "PURPLE", "PURPLE", "CRIMSON", "MEDIUMAQUAMARINE", "CRIMSON", "CRIMSON", "CRIMSON", "PURPLE",
     "PURPLE", "PURPLE", "MEDIUMAQUAMARINE", "CRIMSON", "MEDIUMAQUAMARINE", "PURPLE", "CRIMSON", "MEDIUMAQUAMARINE", "CRIMSON", "CRIMSON",
     "PURPLE", "MEDIUMAQUAMARINE", "PURPLE", "CRIMSON", "PURPLE", "MEDIUMAQUAMARINE", "CRIMSON", "CRIMSON", "MEDIUMAQUAMARINE", "PURPLE",
-  }, parent)));
+  }, parent ) ) );
 
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "BLUEVIOLET", "BLUEVIOLET", "SPRINGGREEN", "INDIANRED", "SPRINGGREEN", "BLUEVIOLET", "INDIANRED", "SPRINGGREEN", "INDIANRED", "INDIANRED",
     "BLUEVIOLET", "SPRINGGREEN", "BLUEVIOLET", "INDIANRED", "BLUEVIOLET", "SPRINGGREEN", "INDIANRED", "INDIANRED", "SPRINGGREEN", "BLUEVIOLET",
@@ -185,9 +187,9 @@ void ColorFallIterator::generatePuzzles(QObject* parent) {
     "BLUEVIOLET", "BLUEVIOLET", "SPRINGGREEN", "INDIANRED", "INDIANRED", "BLUEVIOLET", "SPRINGGREEN", "BLUEVIOLET", "BLUEVIOLET", "SPRINGGREEN",
     "INDIANRED", "INDIANRED", "BLUEVIOLET", "INDIANRED", "BLUEVIOLET", "INDIANRED", "SPRINGGREEN", "BLUEVIOLET", "SPRINGGREEN", "INDIANRED",
     "INDIANRED", "INDIANRED", "BLUEVIOLET", "BLUEVIOLET", "INDIANRED", "SPRINGGREEN", "INDIANRED", "INDIANRED", "INDIANRED", "BLUEVIOLET",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "GOLD", "FUCHSIA", "AQUA", "FUCHSIA", "AQUA", "FUCHSIA", "GOLD", "AQUA", "GOLD", "FUCHSIA",
     "GOLD", "FUCHSIA", "GOLD", "AQUA", "AQUA", "AQUA", "FUCHSIA", "GOLD", "AQUA", "AQUA",
@@ -197,9 +199,9 @@ void ColorFallIterator::generatePuzzles(QObject* parent) {
     "GOLD", "AQUA", "FUCHSIA", "AQUA", "FUCHSIA", "AQUA", "AQUA", "AQUA", "GOLD", "FUCHSIA",
     "FUCHSIA", "AQUA", "GOLD", "FUCHSIA", "FUCHSIA", "GOLD", "AQUA", "FUCHSIA", "AQUA", "GOLD",
     "FUCHSIA", "FUCHSIA", "AQUA", "AQUA", "FUCHSIA", "GOLD", "FUCHSIA", "FUCHSIA", "FUCHSIA", "AQUA",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "DARKORCHID", "DARKGREEN", "MIDNIGHTBLUE", "DARKORCHID", "MIDNIGHTBLUE", "DARKGREEN", "DARKGREEN", "DARKORCHID", "DARKGREEN", "MIDNIGHTBLUE",
     "MIDNIGHTBLUE", "MIDNIGHTBLUE", "MIDNIGHTBLUE", "MIDNIGHTBLUE", "MIDNIGHTBLUE", "DARKORCHID", "DARKGREEN", "MIDNIGHTBLUE", "MIDNIGHTBLUE", "MIDNIGHTBLUE",
@@ -209,9 +211,9 @@ void ColorFallIterator::generatePuzzles(QObject* parent) {
     "MIDNIGHTBLUE", "MIDNIGHTBLUE", "DARKORCHID", "DARKGREEN", "MIDNIGHTBLUE", "DARKORCHID", "DARKORCHID", "DARKORCHID", "DARKORCHID", "MIDNIGHTBLUE",
     "MIDNIGHTBLUE", "DARKGREEN", "MIDNIGHTBLUE", "DARKORCHID", "DARKGREEN", "DARKORCHID", "DARKORCHID", "DARKGREEN", "DARKORCHID", "MIDNIGHTBLUE",
     "MIDNIGHTBLUE", "DARKORCHID", "MIDNIGHTBLUE", "DARKORCHID", "DARKGREEN", "MIDNIGHTBLUE", "DARKGREEN", "MIDNIGHTBLUE", "DARKGREEN", "DARKORCHID",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "MEDIUMSEAGREEN", "MEDIUMSEAGREEN", "MEDIUMSLATEBLUE", "MEDIUMORCHID", "MEDIUMSLATEBLUE", "MEDIUMSEAGREEN", "MEDIUMSEAGREEN", "MEDIUMORCHID", "MEDIUMSEAGREEN", "MEDIUMSLATEBLUE",
     "MEDIUMSLATEBLUE", "MEDIUMSLATEBLUE", "MEDIUMSLATEBLUE", "MEDIUMSLATEBLUE", "MEDIUMSLATEBLUE", "MEDIUMORCHID", "MEDIUMSEAGREEN", "MEDIUMSLATEBLUE", "MEDIUMSLATEBLUE", "MEDIUMSLATEBLUE",
@@ -221,9 +223,9 @@ void ColorFallIterator::generatePuzzles(QObject* parent) {
     "MEDIUMSLATEBLUE", "MEDIUMSLATEBLUE", "MEDIUMORCHID", "MEDIUMSEAGREEN", "MEDIUMSLATEBLUE", "MEDIUMORCHID", "MEDIUMORCHID", "MEDIUMORCHID", "MEDIUMORCHID", "MEDIUMSLATEBLUE",
     "MEDIUMSLATEBLUE", "MEDIUMSEAGREEN", "MEDIUMSLATEBLUE", "MEDIUMORCHID", "MEDIUMSEAGREEN", "MEDIUMORCHID", "MEDIUMORCHID", "MEDIUMSEAGREEN", "MEDIUMORCHID", "MEDIUMSLATEBLUE",
     "MEDIUMSLATEBLUE", "MEDIUMORCHID", "MEDIUMSLATEBLUE", "MEDIUMORCHID", "MEDIUMSEAGREEN", "MEDIUMSLATEBLUE", "MEDIUMSEAGREEN", "MEDIUMSLATEBLUE", "MEDIUMSEAGREEN", "MEDIUMORCHID",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "GOLD", "GOLD", "INDIGO", "RED", "INDIGO", "RED", "INDIGO", "INDIGO", "TEAL", "RED",
     "RED", "GOLD", "RED", "GOLD", "RED", "INDIGO", "GOLD", "GOLD", "RED", "INDIGO",
@@ -233,9 +235,9 @@ void ColorFallIterator::generatePuzzles(QObject* parent) {
     "INDIGO", "GOLD", "INDIGO", "RED", "GOLD", "RED", "GOLD", "INDIGO", "INDIGO", "INDIGO",
     "TEAL", "INDIGO", "RED", "TEAL", "INDIGO", "TEAL", "RED", "GOLD", "INDIGO", "RED",
     "RED", "TEAL", "RED", "INDIGO", "GOLD", "RED", "TEAL", "INDIGO", "RED", "INDIGO",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "MEDIUMVIOLETRED", "MOCCASIN", "MEDIUMVIOLETRED", "MOCCASIN", "MEDIUMVIOLETRED", "BLUEVIOLET", "MOCCASIN", "MOCCASIN", "MEDIUMVIOLETRED", "BLUEVIOLET",
     "DARKTURQUOISE",  "MEDIUMVIOLETRED", "MEDIUMVIOLETRED", "BLUEVIOLET", "MOCCASIN", "MEDIUMVIOLETRED", "DARKTURQUOISE", "BLUEVIOLET", "MEDIUMVIOLETRED", "BLUEVIOLET",
@@ -245,9 +247,9 @@ void ColorFallIterator::generatePuzzles(QObject* parent) {
     "BLUEVIOLET", "MOCCASIN", "BLUEVIOLET", "MEDIUMVIOLETRED", "MOCCASIN", "MEDIUMVIOLETRED", "MOCCASIN", "BLUEVIOLET", "BLUEVIOLET", "BLUEVIOLET",
     "DARKTURQUOISE", "BLUEVIOLET", "MEDIUMVIOLETRED", "DARKTURQUOISE", "BLUEVIOLET", "MEDIUMVIOLETRED", "DARKTURQUOISE", "MOCCASIN", "MEDIUMVIOLETRED", "DARKTURQUOISE",
     "BLUEVIOLET", "DARKTURQUOISE", "MOCCASIN", "DARKTURQUOISE", "BLUEVIOLET", "DARKTURQUOISE", "DARKTURQUOISE", "MEDIUMVIOLETRED", "BLUEVIOLET", "MEDIUMVIOLETRED",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "DARKTURQUOISE", "MAROON", "CORNFLOWERBLUE", "DARKTURQUOISE", "MAROON", "CORNFLOWERBLUE", "DARKTURQUOISE", "DARKGOLDENROD",
     "MAROON", "DARKTURQUOISE", "DARKGOLDENROD", "DARKTURQUOISE", "MAROON", "DARKTURQUOISE", "DARKTURQUOISE", "CORNFLOWERBLUE", "MAROON", "CORNFLOWERBLUE",
@@ -258,9 +260,9 @@ void ColorFallIterator::generatePuzzles(QObject* parent) {
     "MAROON", "DARKGOLDENROD", "MAROON", "CORNFLOWERBLUE", "DARKGOLDENROD", "CORNFLOWERBLUE", "DARKGOLDENROD", "MAROON",
     "DARKGOLDENROD", "DARKGOLDENROD", "MAROON", "CORNFLOWERBLUE", "MAROON", "CORNFLOWERBLUE", "MAROON", "MAROON", "DARKTURQUOISE", "CORNFLOWERBLUE",
     "DARKTURQUOISE", "MAROON", "CORNFLOWERBLUE", "DARKTURQUOISE", "MAROON", "DARKTURQUOISE", "CORNFLOWERBLUE",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "CORAL",  "CORAL", "YELLOW", "BLUEVIOLET", "YELLOW", "CORAL", "TEAL", "BLUEVIOLET", "CORAL", "BLUEVIOLET",
     "YELLOW", "YELLOW", "BLUEVIOLET", "CORAL", "BLUEVIOLET", "CORAL", "BLUEVIOLET", "BLUEVIOLET", "TEAL", "CORAL",
@@ -270,6 +272,6 @@ void ColorFallIterator::generatePuzzles(QObject* parent) {
     "TEAL", "BLUEVIOLET", "CORAL", "TEAL", "BLUEVIOLET", "CORAL", "TEAL", "YELLOW", "CORAL", "TEAL",
     "CORAL", "YELLOW", "CORAL", "YELLOW", "CORAL", "BLUEVIOLET", "YELLOW", "YELLOW", "CORAL", "BLUEVIOLET",
     "TEAL", "BLUEVIOLET", "CORAL", "TEAL", "BLUEVIOLET", "TEAL", "CORAL", "YELLOW", "BLUEVIOLET", "CORAL",
-  }, parent)));
+  }, parent ) ) );
 
 }
