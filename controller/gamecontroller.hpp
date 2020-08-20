@@ -52,7 +52,7 @@ public:
 
 private:
   const QString mAppliationTitle{ "Puzzle Pak"};
-  const QString mApplicationVersion{ "1.25"};
+  const QString mApplicationVersion{ "1.40"};
 
   SwitchboardBuilder mSwitchboardBuilder;
   ShapesFactory mShapesFactory;
