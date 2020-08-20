@@ -173,7 +173,7 @@ Page {
                 MouseJoint {
                     id: mouseJointId
                     bodyA: solutionBodyId
-                    collideConnected: false
+                    collideConnected: true
                     maxForce: 100
                 }
 
