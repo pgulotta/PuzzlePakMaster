@@ -47,9 +47,9 @@ Page {
             return
         for (var i = 0; i < solutionModelId.count; i++) {
             solutionModelId.itemAt(
-                        i).x = xPositionDeltaProblem + GamePuzzlePieces[i].xPosition
+                        i).x = xPositionDeltaProblem + TangramPuzzlePieces[i].xPosition
             solutionModelId.itemAt(
-                        i).y = yPositionDeltaProblem + GamePuzzlePieces[i].yPosition
+                        i).y = yPositionDeltaProblem + TangramPuzzlePieces[i].yPosition
         }
         shouldSolvePuzzle = false
     }
@@ -102,11 +102,11 @@ Page {
 
                 Repeater {
                     id: problemModelId
-                    model: GamePuzzlePieces
+                    model: TangramPuzzlePieces
                     delegate: Polyform {
                         id: problemDelegateId
-                        xPosition: xPositionDeltaProblem + GamePuzzlePieces[index].xPosition
-                        yPosition: yPositionDeltaProblem + GamePuzzlePieces[index].yPosition
+                        xPosition: xPositionDeltaProblem + TangramPuzzlePieces[index].xPosition
+                        yPosition: yPositionDeltaProblem + TangramPuzzlePieces[index].yPosition
                         world: problemWorldId
                         piecesIndex: index
                         fixedRotation: true
@@ -223,7 +223,7 @@ Page {
 
                     Repeater {
                         id: solutionModelId
-                        model: GamePuzzlePieces
+                        model: TangramPuzzlePieces
                         delegate: Polyform {
                             id: solutionDelegateId
                             z: 10
@@ -305,8 +305,8 @@ Page {
         onTriggered: {
             clearPoints()
             GameController.nextPuzzle()
-            problemModelId.model = GamePuzzlePieces
-            solutionModelId.model = GamePuzzlePieces
+            problemModelId.model = TangramPuzzlePieces
+            solutionModelId.model = TangramPuzzlePieces
             problemSecondsClockId.resetClock(
                         GameController.getCurrentPuzzleBestScore())
             solutionSecondsClockId.resetClock(0)

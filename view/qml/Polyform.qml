@@ -20,11 +20,11 @@ PolygonItem {
     x: xPosition
     y: yPosition
     z: zOrder
-    rotation: GamePuzzlePieces[piecesIndex].rotation
-    fillColor: GamePuzzlePieces[piecesIndex].fillColor
-    vertices: GamePuzzlePieces[piecesIndex].vertices
-    width: GamePuzzlePieces[piecesIndex].polygonWidth
-    height: GamePuzzlePieces[piecesIndex].polygonHeight
+    rotation: TangramPuzzlePieces[piecesIndex].rotation
+    fillColor: TangramPuzzlePieces[piecesIndex].fillColor
+    vertices: TangramPuzzlePieces[piecesIndex].vertices
+    width: TangramPuzzlePieces[piecesIndex].polygonWidth
+    height: TangramPuzzlePieces[piecesIndex].polygonHeight
 
     onItemSelected: {
         polyformSelected(index, body)
@@ -52,7 +52,7 @@ PolygonItem {
         target: polyformId
         property: "rotation"
         from: 360
-        to: GamePuzzlePieces[index].rotation
+        to: TangramPuzzlePieces[index].rotation
         duration: Constants.animationDuration
         running: true
         loops: 1
