@@ -25,6 +25,10 @@ const QString LineUpHelpText{QObject::tr( "The Line Up game objective is to find
                                             "Then select one or more circle(s) in the last row.  Repeat until all circles in the last row are colored. "
                                             "Check your prediction by selecting the bottom row's check button. If correct, the next puzzle is presented, else the row's correct colored circles count is shown on the left and "
                                             "color and position count is displayed on the right. Display the solution by selecting the toolbar check button." )};
+const QString TileSlideHelpText{QObject::tr( "The Tangram puzzle is a tiling puzzle where a set of different colored pieces can be assembled in different ways to form distinct geometric shapes. "
+                                               "The tangram consists of seven flat pieces, called tans, which are put together to form different shapes. "
+                                               "The objective of this game is to form the specified shape using all seven tans. The tans cannot overlap. "
+                                               "Display the solution by selecting the toolbar check button." )};
 
 
 class SwitchboardBuilder final : public QObject
@@ -70,6 +74,12 @@ private:
                                            "qrc:/view/images/tangram.png",
                                            "qrc:/view/qml/PolyformsPage.qml",
                                            "qrc:/view/music/bensound-theduel.mp3", TangramHelpText,
+                                           parent()} );
+
+    mGameMetaData.append( new GameMetaData{constants.TileSlide, tr( "Tile Slide" ),
+                                           "qrc:/view/images/tile-slide.png",
+                                           "qrc:/view/qml/TileSlidePage.qml.qml",
+                                           "qrc:/view/music/bensound-theduel.mp3", TileSlideHelpText,
                                            parent()} );
     mGameMetaData.append( new GameMetaData{constants.About, tr( "About" ),
                                            "qrc:/view/images/about.png",

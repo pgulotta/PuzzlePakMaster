@@ -5,8 +5,8 @@
 #include <vector>
 #include <iterator>
 #include <memory>
-#include "model/puzzle.hpp"
 #include "shapesfactory.hpp"
+#include "model/puzzle.hpp"
 #include "model/gamemetadata.hpp"
 
 using Puzzles = std::vector<std::shared_ptr<Puzzle>>;

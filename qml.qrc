@@ -7,6 +7,7 @@
         <file>view/images/tangram-monochrome.png</file>
         <file>view/images/line-up.png</file>
         <file>view/images/color-fall.png</file>
+        <file>view/images/tile-slide.png</file>
         <file>view/images/palette.png</file>
         <file>view/images/circles.png</file>
         <file>view/images/validate.png</file>
@@ -35,5 +36,6 @@
         <file>view/qml/ParticleEmitter.qml</file>
         <file>view/qml/PuzzleScore.qml</file>
         <file>view/qml/ColorFallPage.qml</file>
+        <file>view/qml/TileSlidePage.qml</file>
     </qresource>
 </RCC>

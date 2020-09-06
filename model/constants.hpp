@@ -3,8 +3,9 @@
 #include <QString>
 #include <QColor>
 
-class Constants {
- public:
+class Constants
+{
+public:
   const QColor Pink{"#FF80AB"};
   const QColor Orange{"#FF6D00"};
   const QColor Amber{"#FFBA19"};
@@ -16,6 +17,7 @@ class Constants {
   const QString GameTangrams{"Tangrams"};
   const QString GameTangramsMonochrome{"TangramsMonochrome"};
   const QString ColorFall{"ColorFall"};
+  const QString TileSlide{"TileSlide"};
   const QString About{"About"};
   const QString ShouldPlayMusic{"shouldPlayMusic"};
 };

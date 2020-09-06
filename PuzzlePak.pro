@@ -30,11 +30,13 @@ HEADERS += \
     controller/monochrometangramsiterator.hpp \
     controller/lineupiterator.hpp \
     controller/gameiterator.hpp \
+    controller/tileslideiterator.hpp \
     datastore/dataaccessadapter.hpp \
     datastore/handle.hpp \
     datastore/sqlite.hpp \
     datastore/sqlite3.h \
     shared/qmlobjectlistmodel.hpp \
+
 
 SOURCES += \
     controller/main.cpp \
@@ -48,8 +50,10 @@ SOURCES += \
     controller/puzzlepiecessolutionanalyzer.cpp \
     controller/colorfalliterator.cpp \
     controller/colorfallsolutionanalyzer.cpp \
+    controller/tileslideiterator.cpp \
     datastore/dataaccessadapter.cpp \
     datastore/sqlite3.c \
+
 
 
 
@@ -80,6 +84,8 @@ DISTFILES += \
     android/build.gradle \
     android/gradle/wrapper/gradle-wrapper.properties \
     android/gradlew.bat \
+
+ANDROID_ABIS = armeabi-v7a arm64-v8a x86 x86_64
 
 
 
