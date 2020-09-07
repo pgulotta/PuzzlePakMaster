@@ -58,9 +58,9 @@ void GameController::nextPuzzle()
   emit gamePuzzleChanged();
 }
 
-bool GameController::isProblemSolved( QVariantList problemPositionPoints,  QVariantList solutionPositionPoints,
-                                      QVariantList problemWorldPoints,
-                                      QVariantList solutionWorldPoints ) const
+bool GameController::isPuzzleSolved( QVariantList problemPositionPoints,  QVariantList solutionPositionPoints,
+                                     QVariantList problemWorldPoints,
+                                     QVariantList solutionWorldPoints ) const
 {
   if ( mPuzzlePiecesSolutionAnalyzer.isPuzzleSolved( problemPositionPoints, solutionPositionPoints,
                                                      mShapesFactory.acceptableVariance() ) ) {

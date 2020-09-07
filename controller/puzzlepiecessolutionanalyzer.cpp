@@ -74,7 +74,7 @@ bool PuzzlePiecesSolutionAnalyzer::isPuzzleSolved( QVariantList solutionPoints, 
     }
   }
 
-  //qDebug() << "isProblemSolved? " << result;
+  //qDebug() << "isPuzzleSolved? " << result;
   return result;
 }
 

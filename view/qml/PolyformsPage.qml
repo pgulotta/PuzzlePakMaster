@@ -199,7 +199,7 @@ Page {
                             mouseJointId.bodyB = null
                             pressedBodyId = null
                             populatePoints()
-                            var isSolved = GameController.isProblemSolved(
+                            var isSolved = GameController.isPuzzleSolved(
                                         problemPositionPoints,
                                         solutionPositionPoints,
                                         problemCenterPoints,

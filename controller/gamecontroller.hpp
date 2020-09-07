@@ -38,8 +38,8 @@ public:
   Q_INVOKABLE int getCurrentPuzzleBestScore() const;
   Q_INVOKABLE void setSelectedPuzzle( int previousPuzzleIndex );
   Q_INVOKABLE void setSelectedGame( const QString& moniker, const QString& player );
-  Q_INVOKABLE bool isProblemSolved( QVariantList problemPositionPoints,  QVariantList solutionPositionPoints,
-                                    QVariantList problemWorldPoints, QVariantList solutionWorldPoints ) const;
+  Q_INVOKABLE bool isPuzzleSolved( QVariantList problemPositionPoints,  QVariantList solutionPositionPoints,
+                                   QVariantList problemWorldPoints, QVariantList solutionWorldPoints ) const;
   Q_INVOKABLE QList<int> findColorGroupIndexes( int index, int columnCount, QVariantList grid );
   Q_INVOKABLE QStringList getUpdatedFillColors( int columnCount,  QList<int> indexColors,  QStringList colors );
 
