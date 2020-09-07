@@ -11,6 +11,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG +=  c++1z
 
 HEADERS += \
+    controller/imagesfactory.hpp \
     model/gamemetadata.hpp \
     model/shape.hpp \
     model/puzzle.hpp \
@@ -39,6 +40,7 @@ HEADERS += \
 
 
 SOURCES += \
+    controller/imagesfactory.cpp \
     controller/main.cpp \
     controller/gamecontroller.cpp \
     controller/initializer.cpp \

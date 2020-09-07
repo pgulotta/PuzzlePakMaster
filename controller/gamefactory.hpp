@@ -2,6 +2,7 @@
 
 
 #include <memory>
+#include "imagesfactory.hpp"
 #include "model/gamemetadata.hpp"
 #include "model/puzzle.hpp"
 #include <QObject>
@@ -11,28 +12,30 @@ class ShapesFactory;
 class PuzzlesFactory;
 class Puzzle;
 
-class GameFactory  final : public QObject {
+class GameFactory  final : public QObject
+{
   Q_OBJECT
 
- public:
-  GameFactory(ShapesFactory& shapesFactory, QObject* parent );
+public:
+  GameFactory( ShapesFactory& shapesFactory, QObject* parent );
   int puzzlesCount() ;
   void nextPuzzle() ;
   QList<QObject*>& currentGamePieces() ;
-  void selectGame(const QString& monikerSelected, const QString& player) ;
-  void setSelectedPuzzle(int previousPuzzleIndex);
+  void selectGame( const QString& monikerSelected, const QString& player ) ;
+  void setSelectedPuzzle( int previousPuzzleIndex );
   int currentPuzzleIndex() const;
   QString currentGameMoniker() const;
   QString currentPlayer() const;
   const Colors* currentPuzzleColors() ;
 
 
- private:
+private:
   const std::shared_ptr<Puzzle>  currentPuzzle() const;
   void resetPuzzle() ;
   static QString createUniqueId();
 
   ShapesFactory& mShapesFactory;
+  ImagesFactory mSlidingTilesFactory ;
   std::shared_ptr<Puzzle> mCurrentPuzzle{nullptr};
   std::shared_ptr<PuzzlesFactory> mMonochromeTangramsGame;
   std::shared_ptr<PuzzlesFactory> mTangramsGame;

@@ -11,6 +11,8 @@
 #include <QUuid>
 #include <QTime>
 
+Constants constants;
+
 GameFactory::GameFactory( ShapesFactory& shapesFactory, QObject* parent ):
   QObject{parent},
   mShapesFactory{shapesFactory}
@@ -30,7 +32,12 @@ QString GameFactory::currentPlayer() const
 
 void GameFactory::nextPuzzle()
 {
-  mCurrentGame->nextPuzzle();
+  if ( mCurrentGameMoniker  ==  constants.TileSlide ) {
+    mSlidingTilesFactory.nextPuzzle();
+  } else {
+    mCurrentGame->nextPuzzle();
+  }
+
   resetPuzzle();
 }
 
@@ -48,12 +55,15 @@ QList<QObject*>& GameFactory::currentGamePieces()
 
 int GameFactory::puzzlesCount()
 {
-  return  ( mCurrentGame == nullptr ) ? 0 : mCurrentGame->puzzlesCount();
+  if ( mCurrentGameMoniker  ==  constants.TileSlide ) {
+    return mSlidingTilesFactory.puzzlesCount();
+  } else {
+    return  ( mCurrentGame == nullptr ) ? 0 : mCurrentGame->puzzlesCount();
+  }
 }
 
 void GameFactory::selectGame( const QString& monikerSelected, const QString& player )
 {
-  Constants constants;
   mCurrentGameMoniker = monikerSelected;
   mCurrentPlayer = player;
 
@@ -90,6 +100,8 @@ void GameFactory::selectGame( const QString& monikerSelected, const QString& pla
     }
 
     mCurrentGame = mColorFallGame;
+  } else if  ( monikerSelected == constants.TileSlide ) {
+    mCurrentGame = nullptr;
   } else {
     Q_ASSERT_X( false, "GameFactory::selectGame", "This option should be handled in the qml file" );
   }
@@ -104,12 +116,20 @@ const std::shared_ptr<Puzzle> GameFactory::currentPuzzle() const
 
 void GameFactory::setSelectedPuzzle( int previousPuzzleIndex )
 {
-  mCurrentGame->selectPuzzle( previousPuzzleIndex );
+  if ( mCurrentGameMoniker  ==  constants.TileSlide ) {
+    mSlidingTilesFactory.selectPuzzle( previousPuzzleIndex );
+  } else {
+    mCurrentGame->selectPuzzle( previousPuzzleIndex );
+  }
 }
 
 int GameFactory::currentPuzzleIndex() const
 {
-  return mCurrentGame->currentPuzzleIndex();
+  if ( mCurrentGameMoniker  ==  constants.TileSlide ) {
+    return mSlidingTilesFactory.currentPuzzleIndex();
+  } else {
+    return mCurrentGame->currentPuzzleIndex();
+  }
 }
 
 void GameFactory::resetPuzzle()
