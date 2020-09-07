@@ -23,8 +23,8 @@ PolygonItem {
     rotation: TangramPuzzlePieces[piecesIndex].rotation
     fillColor: TangramPuzzlePieces[piecesIndex].fillColor
     vertices: TangramPuzzlePieces[piecesIndex].vertices
-    width: TangramPuzzlePieces[piecesIndex].polygonWidth
-    height: TangramPuzzlePieces[piecesIndex].polygonHeight
+    width: TangramPuzzlePieces[piecesIndex].width
+    height: TangramPuzzlePieces[piecesIndex].height
 
     onItemSelected: {
         polyformSelected(index, body)
