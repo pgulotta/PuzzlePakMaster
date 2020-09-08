@@ -33,9 +33,9 @@ QString GameFactory::currentPlayer() const
 void GameFactory::nextPuzzle()
 {
   if ( mCurrentGameMoniker  ==  constants.TileSlide ) {
-    mSlidingTilesFactory.nextPuzzle();
+    mTilesSlideGame->nextPuzzle();
   } else {
-    mCurrentGame->nextPuzzle();
+    mCurrentPuzzleGame->nextPuzzle();
   }
 
   resetPuzzle();
@@ -56,9 +56,9 @@ QList<QObject*>& GameFactory::currentGamePieces()
 int GameFactory::puzzlesCount()
 {
   if ( mCurrentGameMoniker  ==  constants.TileSlide ) {
-    return mSlidingTilesFactory.puzzlesCount();
+    return mTilesSlideGame->puzzlesCount();
   } else {
-    return  ( mCurrentGame == nullptr ) ? 0 : mCurrentGame->puzzlesCount();
+    return  ( mCurrentPuzzleGame == nullptr ) ? 0 : mCurrentPuzzleGame->puzzlesCount();
   }
 }
 
@@ -75,7 +75,7 @@ void GameFactory::selectGame( const QString& monikerSelected, const QString& pla
       mTangramsGame->generatePuzzles();
     }
 
-    mCurrentGame = mTangramsGame;
+    mCurrentPuzzleGame = mTangramsGame;
   } else if  ( monikerSelected == constants.GameTangramsMonochrome ) {
     if ( !mMonochromeTangramsGame ) {
       mMonochromeTangramsGame =  std::shared_ptr<PuzzlesFactory>( new PuzzlesFactory(
@@ -83,7 +83,7 @@ void GameFactory::selectGame( const QString& monikerSelected, const QString& pla
       mMonochromeTangramsGame->generatePuzzles();
     }
 
-    mCurrentGame = mMonochromeTangramsGame;
+    mCurrentPuzzleGame = mMonochromeTangramsGame;
   } else if  ( monikerSelected == constants.GameLineUp ) {
     if ( !mLineUpGame ) {
       mLineUpGame =  std::shared_ptr<PuzzlesFactory>( new PuzzlesFactory( std::shared_ptr<GameIterator>
@@ -91,7 +91,7 @@ void GameFactory::selectGame( const QString& monikerSelected, const QString& pla
       mLineUpGame->generatePuzzles();
     }
 
-    mCurrentGame = mLineUpGame;
+    mCurrentPuzzleGame = mLineUpGame;
   } else if  ( monikerSelected == constants.ColorFall ) {
     if ( !mColorFallGame ) {
       mColorFallGame =  std::shared_ptr<PuzzlesFactory>( new PuzzlesFactory( std::shared_ptr<GameIterator>
@@ -99,9 +99,13 @@ void GameFactory::selectGame( const QString& monikerSelected, const QString& pla
       mColorFallGame->generatePuzzles();
     }
 
-    mCurrentGame = mColorFallGame;
+    mCurrentPuzzleGame = mColorFallGame;
   } else if  ( monikerSelected == constants.TileSlide ) {
-    mCurrentGame = nullptr;
+    if ( !mTilesSlideGame ) {
+      mTilesSlideGame = std::shared_ptr<TilesSlideGame>( new TilesSlideGame( parent() ) );
+    }
+
+    mCurrentPuzzleGame = nullptr;
   } else {
     Q_ASSERT_X( false, "GameFactory::selectGame", "This option should be handled in the qml file" );
   }
@@ -111,30 +115,30 @@ void GameFactory::selectGame( const QString& monikerSelected, const QString& pla
 
 const std::shared_ptr<Puzzle> GameFactory::currentPuzzle() const
 {
-  return mCurrentGame->currentPuzzle();
+  return mCurrentPuzzleGame->currentPuzzle();
 }
 
 void GameFactory::setSelectedPuzzle( int previousPuzzleIndex )
 {
   if ( mCurrentGameMoniker  ==  constants.TileSlide ) {
-    mSlidingTilesFactory.selectPuzzle( previousPuzzleIndex );
+    mTilesSlideGame->selectPuzzle( previousPuzzleIndex );
   } else {
-    mCurrentGame->selectPuzzle( previousPuzzleIndex );
+    mCurrentPuzzleGame->selectPuzzle( previousPuzzleIndex );
   }
 }
 
 int GameFactory::currentPuzzleIndex() const
 {
   if ( mCurrentGameMoniker  ==  constants.TileSlide ) {
-    return mSlidingTilesFactory.currentPuzzleIndex();
+    return mTilesSlideGame->currentPuzzleIndex();
   } else {
-    return mCurrentGame->currentPuzzleIndex();
+    return mCurrentPuzzleGame->currentPuzzleIndex();
   }
 }
 
 void GameFactory::resetPuzzle()
 {
-  mCurrentPuzzle = nullptr;
+// mCurrentPuzzle = nullptr;
 }
 
 QString GameFactory::createUniqueId()
@@ -144,7 +148,7 @@ QString GameFactory::createUniqueId()
 
 const Colors* GameFactory::currentPuzzleColors()
 {
-  return mCurrentGame->currentPuzzleColors();
+  return mCurrentPuzzleGame->currentPuzzleColors();
 }
 
 

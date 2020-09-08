@@ -12,6 +12,7 @@ CONFIG +=  c++1z
 
 HEADERS += \
     controller/imagesfactory.hpp \
+    controller/tilesslidegame.hpp \
     model/gamemetadata.hpp \
     model/shape.hpp \
     model/puzzle.hpp \
@@ -31,7 +32,6 @@ HEADERS += \
     controller/monochrometangramsiterator.hpp \
     controller/lineupiterator.hpp \
     controller/gameiterator.hpp \
-    controller/tileslideiterator.hpp \
     datastore/dataaccessadapter.hpp \
     datastore/handle.hpp \
     datastore/sqlite.hpp \
@@ -52,7 +52,7 @@ SOURCES += \
     controller/puzzlepiecessolutionanalyzer.cpp \
     controller/colorfalliterator.cpp \
     controller/colorfallsolutionanalyzer.cpp \
-    controller/tileslideiterator.cpp \
+    controller/tilesslidegame.cpp \
     datastore/dataaccessadapter.cpp \
     datastore/sqlite3.c \
 

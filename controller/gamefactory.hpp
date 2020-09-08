@@ -2,7 +2,7 @@
 
 
 #include <memory>
-#include "imagesfactory.hpp"
+#include "tilesslidegame.hpp"
 #include "model/gamemetadata.hpp"
 #include "model/puzzle.hpp"
 #include <QObject>
@@ -35,13 +35,16 @@ private:
   static QString createUniqueId();
 
   ShapesFactory& mShapesFactory;
-  ImagesFactory mSlidingTilesFactory ;
-  std::shared_ptr<Puzzle> mCurrentPuzzle{nullptr};
+
+  std::shared_ptr<TilesSlideGame> mTilesSlideGame;
+
+//  std::shared_ptr<Puzzle> mCurrentPuzzle{nullptr};
+
   std::shared_ptr<PuzzlesFactory> mMonochromeTangramsGame;
   std::shared_ptr<PuzzlesFactory> mTangramsGame;
   std::shared_ptr<PuzzlesFactory> mLineUpGame;
   std::shared_ptr<PuzzlesFactory> mColorFallGame;
-  std::shared_ptr<PuzzlesFactory> mCurrentGame;
+  std::shared_ptr<PuzzlesFactory> mCurrentPuzzleGame;
   QString mCurrentGameMoniker;
   QString mCurrentPlayer;
 
