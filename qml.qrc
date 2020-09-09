@@ -11,6 +11,11 @@
         <file>view/images/palette.png</file>
         <file>view/images/circles.png</file>
         <file>view/images/validate.png</file>
+        <file>view/images/tile0.jpg</file>
+        <file>view/images/tile1.jpg</file>
+        <file>view/images/tile2.jpg</file>
+        <file>view/images/tile3.jpg</file>
+        <file>view/images/tile4.jpg</file>
         <file>view/music/bensound-theduel.mp3</file>
         <file>view/music/cheering.wav</file>
         <file>view/qml/Constants.qml</file>

@@ -11,7 +11,8 @@ public:
   int puzzlesCount() const;
 
 private:
-  int mCurrentPuzzleIndex;
+  int mCurrentPuzzleIndex{0};
+  int mCurrentRowColumnCount{0};
 };
 
 
