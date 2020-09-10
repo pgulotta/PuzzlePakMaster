@@ -78,7 +78,7 @@ private:
 
     mGameMetaData.append( new GameMetaData{constants.TileSlide, tr( "Tile Slide" ),
                                            "qrc:/view/images/tile-slide.png",
-                                           "qrc:/view/qml/TileSlidePage.qml.qml",
+                                           "qrc:/view/qml/TileSlidePage.qml",
                                            "qrc:/view/music/bensound-theduel.mp3", TileSlideHelpText,
                                            parent()} );
     mGameMetaData.append( new GameMetaData{constants.About, tr( "About" ),

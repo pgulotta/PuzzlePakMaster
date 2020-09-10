@@ -9,7 +9,7 @@ import QtQuick.Controls.Material 2.12
 import com.twentysixapps.puzzlepak.constants 1.0
 
 Page {
-    id: colorFallPageId
+    id: tileSlidePageId
 
     property bool shouldSolvePuzzle
     property string helpText
@@ -19,7 +19,7 @@ Page {
     property int rowCount: isPortraitMode ? 0 : 8
     property var gridModel
 
-    objectName: "ColorFallPage"
+    objectName: "TileSlidePage"
     width: windowWidth
     state: Constants.stateUnsolved
 
@@ -50,11 +50,11 @@ Page {
     Component.onCompleted: {
         setToolbarTitle(title)
         shouldPlayMusic = GameController.shouldPlayMusic()
-        gridModel = GameController.puzzleColors()
-        for (var j = 0; j < gridModel.length; j++) {
-            repeaterId.itemAt(j).rotation = 180
-            repeaterId.itemAt(j).scale = 1.0
-        }
+        //gridModel = GameController.puzzleColors()
+        //        for (var j = 0; j < gridModel.length; j++) {
+        //            repeaterId.itemAt(j).rotation = 180
+        //            repeaterId.itemAt(j).scale = 1.0
+        //        }
     }
 
     Component.onDestruction: {
@@ -190,7 +190,7 @@ Page {
         repeat: false
         onTriggered: {
             GameController.nextPuzzle()
-            puzzleColorsGridId.state = colorFallPageId.state
+            puzzleColorsGridId.state = tileSlidePageId.state
             columnCount = isPortraitMode ? 8 : 0
             rowCount = isPortraitMode ? 0 : 8
             gridModel = GameController.puzzleColors()

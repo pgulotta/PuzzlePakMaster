@@ -27,7 +27,7 @@ void GameController::setSelectedGame( const QString& moniker, const QString& pla
   qInfo() << Q_FUNC_INFO << ":  moniker = " << moniker << "  player=" << player;
   mGameFactory.selectGame( moniker, player );
   mGameFactory.setSelectedPuzzle( mDataAccessAdapter.getGameLatestPuzzleIndex( moniker, player ) );
-  emit gamePuzzleChanged();
+  //emit gamePuzzleChanged();
 }
 
 QString GameController::getLastPlayer() const
