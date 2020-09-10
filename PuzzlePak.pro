@@ -11,14 +11,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG +=  c++1z
 
 HEADERS += \
+    controller/imageprovider.hpp \
     controller/imagesfactory.hpp \
-    controller/tilesslidegame.hpp \
-    model/gamemetadata.hpp \
-    model/shape.hpp \
-    model/puzzle.hpp \
-    model/piece.hpp \
-    model/constants.hpp \
-    model/score.hpp \
+    controller/tileslidegame.hpp \
     controller/puzzlepiecessolutionanalyzer.hpp \
     controller/colorfalliterator.hpp \
     controller/colorfallsolutionanalyzer.hpp \
@@ -32,6 +27,12 @@ HEADERS += \
     controller/monochrometangramsiterator.hpp \
     controller/lineupiterator.hpp \
     controller/gameiterator.hpp \
+    model/gamemetadata.hpp \
+    model/shape.hpp \
+    model/puzzle.hpp \
+    model/piece.hpp \
+    model/constants.hpp \
+    model/score.hpp \
     datastore/dataaccessadapter.hpp \
     datastore/handle.hpp \
     datastore/sqlite.hpp \
@@ -40,7 +41,9 @@ HEADERS += \
 
 
 SOURCES += \
+    controller/imageprovider.cpp \
     controller/imagesfactory.cpp \
+    controller/tileslidegame.cpp \
     controller/main.cpp \
     controller/gamecontroller.cpp \
     controller/initializer.cpp \
@@ -52,17 +55,11 @@ SOURCES += \
     controller/puzzlepiecessolutionanalyzer.cpp \
     controller/colorfalliterator.cpp \
     controller/colorfallsolutionanalyzer.cpp \
-    controller/tilesslidegame.cpp \
     datastore/dataaccessadapter.cpp \
     datastore/sqlite3.c \
 
 
-
-
 RESOURCES += qml.qrc
-
-#INCLUDEPATH += ./qml-box2d/Box2D
-#include(./qml-box2d/box2d-static.pri)
 
 INCLUDEPATH += ../qml-box2d/Box2D
 include(../qml-box2d/box2d-static.pri)

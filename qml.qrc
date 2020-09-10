@@ -42,5 +42,6 @@
         <file>view/qml/PuzzleScore.qml</file>
         <file>view/qml/ColorFallPage.qml</file>
         <file>view/qml/TileSlidePage.qml</file>
+        <file>view/qml/RectangleBoxBody.qml</file>
     </qresource>
 </RCC>

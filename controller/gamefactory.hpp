@@ -2,7 +2,6 @@
 
 
 #include <memory>
-#include "tilesslidegame.hpp"
 #include "model/gamemetadata.hpp"
 #include "model/puzzle.hpp"
 #include <QObject>
@@ -38,7 +37,6 @@ private:
   QString mCurrentGameMoniker;
   QString mCurrentPlayer;
 
-  std::shared_ptr<TilesSlideGame> mTilesSlideGame;
   std::shared_ptr<PuzzlesFactory> mMonochromeTangramsGame;
   std::shared_ptr<PuzzlesFactory> mTangramsGame;
   std::shared_ptr<PuzzlesFactory> mLineUpGame;

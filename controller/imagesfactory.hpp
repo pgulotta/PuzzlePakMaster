@@ -1,7 +1,10 @@
 #pragma once
 
 #include <QString>
+#include <memory>
 
+
+class  ImageProvider;
 
 class ImagesFactory
 {
@@ -22,6 +25,8 @@ private:
   const int MAX_ROW_COLUMN {5};
   int mCurrentImageIndex{-1};
   int mCurrentRowColumnCount{MIN_ROW_COLUMN};
+
+  std::shared_ptr<ImageProvider> mTilesSlideProvider;
 
 };
 

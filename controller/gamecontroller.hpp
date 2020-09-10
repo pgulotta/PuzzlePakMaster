@@ -15,11 +15,6 @@ class QVariant;
 class GameController final : public QObject
 {
   Q_OBJECT
-
-signals:
-  void gamePuzzleChanged();
-
-
 public:
   Q_INVOKABLE QString applicationTitle() const ;
   Q_INVOKABLE QString applicationVersion() const ;
@@ -48,6 +43,9 @@ public:
   GameController( QObject* parent );
   const QList<QObject*>& gamesMetaData() const ;
   QList<QObject*>& gamePuzzlePieces();
+
+signals:
+  void gamePuzzleChanged();
 
 
 private:

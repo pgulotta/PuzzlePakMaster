@@ -7,6 +7,7 @@ import QtQuick.Dialogs 1.2
 import QtQuick.Particles 2.15
 import QtQuick.Controls.Material 2.12
 import com.twentysixapps.puzzlepak.constants 1.0
+import Box2DStatic 2.0
 
 Page {
     id: tileSlidePageId
@@ -15,46 +16,30 @@ Page {
     property string helpText
     property alias musicSource: playMusicId.musicSource
     property alias shouldPlayMusic: playMusicId.shouldPlayMusic
-    property int columnCount: isPortraitMode ? 8 : 0
-    property int rowCount: isPortraitMode ? 0 : 8
-    property var gridModel
+    property alias puzzlePieceModel: repeaterId.model
+
+    property Body pressedBody: null
+    property int imagePieceWidth: 0
+    property int imagePieceHeight: 0
+    property var xCoordinatesList
+    property var yCoordinatesList
 
     objectName: "TileSlidePage"
     width: windowWidth
     state: Constants.stateUnsolved
 
-    onGridModelChanged: {
-        if (isPortraitMode) {
-            if (rowCount === 0) {
-                rowCount = Math.floor(gridModel.length / columnCount)
-            }
-        } else {
-            if (columnCount === 0) {
-                columnCount = Math.floor(gridModel.length / rowCount)
-            }
-        }
-        backgroundColorId.color = Qt.darker(GameController.puzzleColors()[0],
-                                            1.75)
-    }
-
-    Rectangle {
-        id: backgroundColorId
-        anchors.fill: parent
-        Behavior on color {
-            ColorAnimation {
-                duration: Constants.animationDuration
-            }
+    onWidthChanged: {
+        if (width > 0) {
+            puzzlePieceModel = GameController.puzzlePieceCount(windowWidth,
+                                                               windowHeight)
+            imagePieceWidth = GameController.imagePieceWidth()
+            imagePieceHeight = GameController.imagePieceHeight()
         }
     }
 
     Component.onCompleted: {
         setToolbarTitle(title)
         shouldPlayMusic = GameController.shouldPlayMusic()
-        //gridModel = GameController.puzzleColors()
-        //        for (var j = 0; j < gridModel.length; j++) {
-        //            repeaterId.itemAt(j).rotation = 180
-        //            repeaterId.itemAt(j).scale = 1.0
-        //        }
     }
 
     Component.onDestruction: {
@@ -69,8 +54,13 @@ Page {
 
     onShouldSolvePuzzleChanged: {
         state = Constants.stateSolved
-        puzzleColorsGridId.state = Constants.stateSolved
+        //puzzleColorsGridId.state = Constants.stateSolved
         shouldSolvePuzzle = false
+    }
+
+    background: Rectangle {
+        anchors.fill: parent
+        gradient: BackgroundGradient {}
     }
 
     RowLayout {
@@ -96,89 +86,153 @@ Page {
             Layout.margins: largePadding
         }
     }
+    MouseJoint {
+        id: mouseJoint
+        bodyA: anchorId
+        dampingRatio: 0.8
+        maxForce: 100
+    }
 
-    Grid {
-        id: puzzleColorsGridId
+    MouseArea {
+        id: mouseArea
+        anchors.fill: parent
+
+        onPressed: {
+            if (pressedBody != null) {
+                mouseJoint.maxForce = pressedBody.getMass() * 500
+                mouseJoint.target = Qt.point(mouseX, mouseY)
+                mouseJoint.bodyB = pressedBody
+                pressedBody.bodyType = Body.Dynamic
+            }
+        }
+
+        onPositionChanged: {
+            mouseJoint.target = Qt.point(mouseX, mouseY)
+            if (pressedBody != null)
+                pressedBody.bodyType = Body.Dynamic
+        }
+
+        onReleased: {
+            if (pressedBody != null) {
+                pressedBody.bodyType = Body.Static
+                isPuzzleSolved()
+            }
+            mouseJoint.bodyB = null
+            pressedBody = null
+        }
+    }
+
+    Image {
+        id: background
         anchors.centerIn: parent
-        rows: rowCount
-        Repeater {
-            id: repeaterId
-            model: gridModel
-            onModelChanged: {
-                if (rowCount > 0
-                        && puzzleColorsGridId.state === Constants.stateSolved) {
-                    for (var j = 0; j < gridModel.length; j++) {
-                        if (repeaterId.itemAt(j) !== null) {
-                            repeaterId.itemAt(j).rotation = 0
-                            repeaterId.itemAt(j).scale = 0.0
-                        }
-                    }
+        source: "image://puzzleImage"
+        opacity: .25
+        sourceSize.width: if (GameController !== null)
+                              GameController.imageWidth()
+        sourceSize.height: if (GameController !== null)
+                               GameController.imageHeight()
+    }
+
+    World {
+        id: physicsWorld
+    }
+
+    RectangleBoxBody {
+        height: 0
+        anchors {
+            left: parent.left
+            right: parent.right
+            top: parent.top
+        }
+    }
+
+    RectangleBoxBody {
+        width: 0
+        anchors {
+            left: parent.left
+            top: parent.top
+            bottom: parent.bottom
+        }
+    }
+
+    RectangleBoxBody {
+        height: 0
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
+    }
+    RectangleBoxBody {
+        width: 0
+        anchors {
+            right: parent.right
+            top: parent.top
+            bottom: parent.bottom
+        }
+    }
+
+    Body {
+        id: anchorId
+        world: physicsWorld
+    }
+
+    Repeater {
+        id: repeaterId
+
+        delegate: Rectangle {
+            id: rectangle
+            x: windowWidth / 2 * Math.random()
+            y: windowHeight / 2 * Math.random()
+            width: imagePieceWidth
+            height: imagePieceHeight
+            smooth: true
+            Image {
+                id: imageId
+                source: "image://puzzleImage/" + index
+                fillMode: Image.Pad
+                anchors.fill: parent
+                sourceSize.width: rectangle.width
+                sourceSize.height: rectangle.height
+            }
+
+            Body {
+                id: rectangleBodyId
+
+                target: rectangle
+                world: physicsWorld
+
+                bodyType: Body.Dynamic
+                Box {
+                    id: boxBodyId
+                    width: rectangle.width
+                    height: rectangle.height
+                    restitution: 0.5
+                    friction: 0.55
                 }
             }
-            delegate: Rectangle {
-                id: rectangleId
-                scale: rowCount > 0 ? 1.0 : 0.0
-                color: modelData
-                border.width: 1
-                border.color: Material.accent
-                width: isPortraitMode ? drawUnit : drawUnit * 1.2
-                height: isPortraitMode ? drawUnit * 1.2 : drawUnit * 0.9
-                radius: rectRadius
-                enabled: color !== "#00000000"
 
-                Behavior on rotation {
-                    RotationAnimation {
-                        direction: RotationAnimation.Clockwise
-                        duration: Constants.animationDuration
-                        easing.type: Easing.InOutBack
-                    }
+            MouseArea {
+                anchors.fill: parent
+                onPressed: {
+                    mouse.accepted = false
+                    pressedBody = rectangleBodyId
+                    pressedBody.bodyType = Body.Dynamic
                 }
-                Behavior on scale {
-                    NumberAnimation {
-                        duration: Constants.animationDuration
-                        easing.type: Easing.InOutBack
-                    }
+            }
+            Behavior on scale {
+                NumberAnimation {
+                    duration: 3000
+                    easing.type: Easing.InOutBack
                 }
-                Behavior on opacity {
-                    NumberAnimation {
-                        duration: Constants.animationDuration
-                    }
-                }
-                MouseArea {
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    onHoveredChanged: rectangleId.opacity = containsMouse ? 0.4 : 1.0
-                    onClicked: {
-                        if (!isSelectionValid(modelData))
-                            return
-
-                        var length = gridModel.length
-                        var colCount = length / rowCount
-                        var colorsList = new Array
-                        for (var i = 0; i < length; i++) {
-                            colorsList[i] = repeaterId.itemAt(i).color
-                        }
-
-                        var indexColors = GameController.findColorGroupIndexes(
-                                    index, colCount, colorsList)
-                        currentScoreId.score += Math.pow(
-                                    indexColors.length - 1, 2)
-                        var grid = GameController.getUpdatedFillColors(
-                                    colCount, indexColors, colorsList)
-                        if (grid.length === 0) {
-                            puzzleColorsGridId.state = Constants.stateNewPuzzle
-                            selectPuzzle()
-                            playMusicId.tryPlaySoundEffect()
-                            currentScoreId.setHighBestScore(bestScoreId.score)
-                        } else {
-                            gridModel = grid
-                        }
-                    }
+            }
+            Behavior on opacity {
+                NumberAnimation {
+                    duration: 3000
                 }
             }
         }
     }
-
     MusicPlayer {
         id: playMusicId
     }
@@ -190,34 +244,44 @@ Page {
         repeat: false
         onTriggered: {
             GameController.nextPuzzle()
-            puzzleColorsGridId.state = tileSlidePageId.state
-            columnCount = isPortraitMode ? 8 : 0
-            rowCount = isPortraitMode ? 0 : 8
-            gridModel = GameController.puzzleColors()
-            for (var j = 0; j < gridModel.length; j++) {
-                if (repeaterId.itemAt(j) !== null) {
-                    repeaterId.itemAt(j).rotation = 360
-                    repeaterId.itemAt(j).scale = 1.0
-                    repeaterId.itemAt(j).opacity = 1.0
-                }
-            }
+            //puzzleColorsGridId.state = tileSlidePageId.state
             bestScoreId.resetCounter(GameController.getCurrentPuzzleBestScore())
             currentScoreId.resetCounter(0)
         }
     }
 
     function selectPuzzle() {
-        for (var j = 0; j < gridModel.length; j++) {
-            if (repeaterId.itemAt(j) !== null) {
-                repeaterId.itemAt(j).opacity = 0.0
-                repeaterId.itemAt(j).scale = 0.0
-                repeaterId.itemAt(j).opacity = 0.0
-            }
-        }
         puzzleTimerId.start()
     }
 
     function isSelectionValid(modelData) {
         return (modelData === "#00000000") ? false : true
+    }
+
+    function isPuzzleSolved() {
+        if (puzzlePieceModel === undefined)
+            return
+        xCoordinatesList = new Array
+        yCoordinatesList = new Array
+        for (var index = 0; index < puzzlePieceModel; ++index) {
+            var itemAt = repeaterId.itemAt(index)
+            xCoordinatesList[index] = itemAt.x
+            yCoordinatesList[index] = itemAt.y
+            // console.log("isPuzzleSolved  index=" + index + " x=" + itemAt.x + "  y=" + itemAt.y + " width=" + itemAt.height + " width=" + itemAt.height)
+        }
+        if (GameController.isPuzzleSolved(xCoordinatesList, yCoordinatesList)) {
+            for (var i = 0; i < puzzlePieceModel; ++i) {
+                var item = repeaterId.itemAt(i)
+                item.opacity = 0.0
+                item.scale = 0.1
+                item.data[0].bodyType = Body.Dynamic
+                item.data[0].fixtures[0].density = 0
+                item.data[0].fixtures[0].restitution = 1.0
+                item.data[0].fixtures[0].friction = 0
+                item.data[0].fixtures[0].rotation = Math.random() * 360
+                item.data[0].fixtures[0].x += Math.random() * 10
+                item.data[0].fixtures[0].y += Math.random() * 10
+            }
+        }
     }
 }

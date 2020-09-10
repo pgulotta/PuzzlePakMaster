@@ -1,4 +1,5 @@
 #include "imagesfactory.hpp"
+#include "imageprovider.hpp"
 #include <QDebug>
 
 //  eg.: ImageProvider mImageProvider{4, ":/images/tile9.jpg"};

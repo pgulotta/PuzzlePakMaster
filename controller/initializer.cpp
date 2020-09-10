@@ -11,6 +11,7 @@ Initializer::Initializer( QObject* parent ) :
 {
 
   connect( &mGameController, &GameController::gamePuzzleChanged, this, &Initializer::onGamePuzzleChanged );
+  connect( &mTileSlideGame, &TileSlideGame::gamePuzzleChanged, this, &Initializer::onTileSlideGameChanged );
 
   Box2DPlugin plugin;
   plugin.registerTypes( "Box2DStatic" );
@@ -19,6 +20,7 @@ Initializer::Initializer( QObject* parent ) :
   auto rootContext = mQmlApplicationEngine.rootContext();
   qmlRegisterType<GameMetaData>( "GameMetaDataType", 1, 0, "GameMetaData" );
   rootContext->setContextProperty( "GameController", &mGameController );
+  rootContext->setContextProperty( "TileSlideGame", &mTileSlideGame );
   rootContext->setContextProperty( "GamesMetaData", QVariant::fromValue( mGameController.gamesMetaData() ) );
   mQmlApplicationEngine.load( QUrl( QStringLiteral( "qrc:/view/qml/MainPage.qml" ) ) );
 }
@@ -27,4 +29,9 @@ void Initializer::onGamePuzzleChanged()
 {
   mQmlApplicationEngine.rootContext()->setContextProperty( "TangramPuzzlePieces",
                                                            QVariant::fromValue( mGameController.gamePuzzlePieces() ) );
+}
+
+void Initializer::onTileSlideGameChanged()
+{
+  // pat todo
 }

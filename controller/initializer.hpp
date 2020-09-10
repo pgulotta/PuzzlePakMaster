@@ -1,29 +1,32 @@
 #pragma once
 
 #include "gamecontroller.hpp"
+#include "tileslidegame.hpp"
 #include <QQmlApplicationEngine>
 #include <QObject>
 
 
-class Initializer final : public QObject {
+class Initializer final : public QObject
+{
   Q_OBJECT
 
- private slots:
+private slots:
   void onGamePuzzleChanged();
+  void onTileSlideGameChanged();
 
- signals:
+signals:
 
- public:
-  explicit Initializer(QObject* parent );
-  explicit Initializer(const Initializer& ) = delete;
-  Initializer& operator= (const Initializer& rhs) = delete;
+public:
+  explicit Initializer( QObject* parent );
+  explicit Initializer( const Initializer& ) = delete;
+  Initializer& operator= ( const Initializer& rhs ) = delete;
 
 
 
- private:
+private:
   QQmlApplicationEngine mQmlApplicationEngine;
   GameController mGameController;
-
+  TileSlideGame mTileSlideGame;
 
 };
 
