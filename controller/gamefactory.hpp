@@ -35,20 +35,15 @@ private:
   static QString createUniqueId();
 
   ShapesFactory& mShapesFactory;
+  QString mCurrentGameMoniker;
+  QString mCurrentPlayer;
 
   std::shared_ptr<TilesSlideGame> mTilesSlideGame;
-
-//  std::shared_ptr<Puzzle> mCurrentPuzzle{nullptr};
-
   std::shared_ptr<PuzzlesFactory> mMonochromeTangramsGame;
   std::shared_ptr<PuzzlesFactory> mTangramsGame;
   std::shared_ptr<PuzzlesFactory> mLineUpGame;
   std::shared_ptr<PuzzlesFactory> mColorFallGame;
   std::shared_ptr<PuzzlesFactory> mCurrentPuzzleGame;
-  QString mCurrentGameMoniker;
-  QString mCurrentPlayer;
-
-
 
 };
 
