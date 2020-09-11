@@ -1,11 +1,15 @@
-#include "imagesfactory.hpp"
+#include "tileslidegamefactory.hpp"
 #include "imageprovider.hpp"
+#include "tileslidegame.hpp"
 #include <QDebug>
 
 //  eg.: ImageProvider mImageProvider{4, ":/images/tile9.jpg"};
 
+TileSlideGameFactory::TileSlideGameFactory( QObject* parent ) : QObject( parent )
+{
+}
 
-QString ImagesFactory::getNextImageFileName( )
+QString TileSlideGameFactory::getNextImageFileName( )
 {
   //:/view/images/tile0.jpg
   if ( !( mCurrentRowColumnCount == MAX_ROW_COLUMN && mCurrentImageIndex == MAX_IMAGE_INDEX ) ) {
@@ -18,29 +22,22 @@ QString ImagesFactory::getNextImageFileName( )
   return IMAGE_NAME_ROOT + QString::number( mCurrentImageIndex ) + IMAGE_NAME_SUFFIX ;
 }
 
-ImagesFactory::ImagesFactory()
-{
-//  for ( int i = 0 ; i < 30; ++i ) {
-//    qDebug() << Q_FUNC_INFO << getNextImageFileName() << "  mCurrentRowColumnCount=" << mCurrentRowColumnCount;
-//  }
-}
-
-void ImagesFactory::selectPuzzle( int previousPuzzleIndex )
+void TileSlideGameFactory::selectPuzzle( int previousPuzzleIndex )
 {
 
 }
 
-void ImagesFactory::nextPuzzle()
+void TileSlideGameFactory::nextPuzzle()
 {
 
 }
 
-int ImagesFactory::currentPuzzleIndex() const
+int TileSlideGameFactory::currentPuzzleIndex() const
 {
   return mCurrentImageIndex;
 }
 
-int ImagesFactory::puzzlesCount() const
+int TileSlideGameFactory::puzzlesCount() const
 {
   return 0;
 }

@@ -10,7 +10,7 @@ class TileSlideGame final : public QObject
   Q_OBJECT
 public:
   explicit TileSlideGame( QObject* parent = nullptr );
-  ImageProvider* getImageProvider() {return &mImageProvider;}
+// ImageProvider* getImageProvider() {return &mImageProvider;}
   Q_INVOKABLE int puzzlePieceCount( int windowWidth, int windowHeight )  {return mImageProvider.puzzlePieceCount( windowWidth, windowHeight ); }
   Q_INVOKABLE int imageWidth() const {return mImageProvider.imageWidth() ;}
   Q_INVOKABLE int imageHeight() const {return mImageProvider.imageHeight() ;}

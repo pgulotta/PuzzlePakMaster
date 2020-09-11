@@ -1,15 +1,26 @@
 #pragma once
 
+
+#include <QObject>
 #include <QString>
 #include <memory>
 
 
-class  ImageProvider;
 
-class ImagesFactory
+class TileSlideGame;
+
+
+class TileSlideGameFactory: public QObject
 {
+  Q_OBJECT
+
+private slots:
+
+signals:
+
+
 public:
-  ImagesFactory();
+  explicit TileSlideGameFactory( QObject* parent = nullptr );
   void selectPuzzle( int previousPuzzleIndex );
   void nextPuzzle();
   int currentPuzzleIndex() const;
@@ -26,8 +37,8 @@ private:
   int mCurrentImageIndex{-1};
   int mCurrentRowColumnCount{MIN_ROW_COLUMN};
 
-  std::shared_ptr<ImageProvider> mTilesSlideProvider;
 
+  std::shared_ptr<TileSlideGame> mTileSlideGame;
 };
 
 

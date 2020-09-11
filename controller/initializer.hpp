@@ -1,7 +1,6 @@
 #pragma once
 
 #include "gamecontroller.hpp"
-#include "tileslidegame.hpp"
 #include <QQmlApplicationEngine>
 #include <QObject>
 
@@ -12,7 +11,7 @@ class Initializer final : public QObject
 
 private slots:
   void onGamePuzzleChanged();
-  void onTileSlideGameChanged();
+
 
 signals:
 
@@ -26,7 +25,7 @@ public:
 private:
   QQmlApplicationEngine mQmlApplicationEngine;
   GameController mGameController;
-  TileSlideGame mTileSlideGame;
+
 
 };
 

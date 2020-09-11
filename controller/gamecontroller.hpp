@@ -40,9 +40,11 @@ public:
 
 
 public:
-  GameController( QObject* parent );
+  explicit GameController( QObject* parent );
   const QList<QObject*>& gamesMetaData() const ;
   QList<QObject*>& gamePuzzlePieces();
+  //std::shared_ptr<TileSlideGame> tileSlideGame() {return mGameFactory.tileSlideGame();}
+
 
 signals:
   void gamePuzzleChanged();

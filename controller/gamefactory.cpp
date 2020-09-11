@@ -91,6 +91,8 @@ void GameFactory::selectGame( const QString& monikerSelected, const QString& pla
     }
 
     mCurrentPuzzleGame = mColorFallGame;
+  } else if  ( monikerSelected == constants.TileSlide ) {
+
   } else {
     Q_ASSERT_X( false, "GameFactory::selectGame", "This option should be handled in the qml file" );
   }

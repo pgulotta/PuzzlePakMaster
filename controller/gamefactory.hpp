@@ -2,6 +2,7 @@
 
 
 #include <memory>
+#include "tileslidegame.hpp"
 #include "model/gamemetadata.hpp"
 #include "model/puzzle.hpp"
 #include <QObject>
