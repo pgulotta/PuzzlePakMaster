@@ -4,17 +4,21 @@
 #include <QGuiApplication>
 #include <math.h>
 
-ImageProvider::ImageProvider( int columnRowCount, const QString imagePath  ):
+
+ImageProvider::ImageProvider():
   QQuickImageProvider( QQuickImageProvider::Image ),
-  mDevicePixelRatio ( static_cast<double>( QGuiApplication::primaryScreen()->devicePixelRatio() ) ),
-  mColumnRowCount( columnRowCount  ),
-  mImagePath( imagePath )
+  mDevicePixelRatio ( static_cast<double>( QGuiApplication::primaryScreen()->devicePixelRatio() ) )
+{}
+
+
+void ImageProvider::setImageProvider( int columnRowCount, const QString imagePath  )
 {
+  mColumnRowCount = columnRowCount;
+  mImagePath = imagePath;
   qDebug() << Q_FUNC_INFO << "mDevicePixelRatio=" << mDevicePixelRatio << " mColumnRowCount=" <<
            mColumnRowCount  <<
            "   mImagePath=" << mImagePath;
 }
-
 
 int ImageProvider::puzzlePieceCount( int windowWidth, int windowHeight )
 {

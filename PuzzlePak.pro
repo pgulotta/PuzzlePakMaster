@@ -26,7 +26,6 @@ HEADERS += \
     controller/monochrometangramsiterator.hpp \
     controller/lineupiterator.hpp \
     controller/gameiterator.hpp \
-    controller/tileslidegamefactory.hpp \
     model/gamemetadata.hpp \
     model/shape.hpp \
     model/puzzle.hpp \
@@ -54,7 +53,6 @@ SOURCES += \
     controller/puzzlepiecessolutionanalyzer.cpp \
     controller/colorfalliterator.cpp \
     controller/colorfallsolutionanalyzer.cpp \
-    controller/tileslidegamefactory.cpp \
     datastore/dataaccessadapter.cpp \
     datastore/sqlite3.c \
 

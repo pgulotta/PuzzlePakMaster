@@ -1,7 +1,7 @@
 #include "gamecontroller.hpp"
-
 #include <QList>
 
+Constants constants;
 
 GameController::GameController( QObject* parent ):
   QObject( parent ),
@@ -28,6 +28,7 @@ void GameController::setSelectedGame( const QString& moniker, const QString& pla
   mGameFactory.selectGame( moniker, player );
   mGameFactory.setSelectedPuzzle( mDataAccessAdapter.getGameLatestPuzzleIndex( moniker, player ) );
   emit gamePuzzleChanged();
+
 }
 
 QString GameController::getLastPlayer() const
@@ -56,6 +57,7 @@ void GameController::nextPuzzle()
 {
   mGameFactory.nextPuzzle();
   emit gamePuzzleChanged();
+
 }
 
 bool GameController::isPuzzleSolved( QVariantList problemPositionPoints,  QVariantList solutionPositionPoints,

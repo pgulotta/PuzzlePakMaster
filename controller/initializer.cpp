@@ -21,15 +21,20 @@ Initializer::Initializer( QObject* parent ) :
   auto rootContext = mQmlApplicationEngine.rootContext();
   qmlRegisterType<GameMetaData>( "GameMetaDataType", 1, 0, "GameMetaData" );
   rootContext->setContextProperty( "GameController", &mGameController );
-  //rootContext->setContextProperty( "TileSlideGame", mGameController.tileSlideGame().get() );
+  rootContext->setContextProperty( "TileSlideGame", &mGameController.tileSlideGame() );
   rootContext->setContextProperty( "GamesMetaData", QVariant::fromValue( mGameController.gamesMetaData() ) );
   mQmlApplicationEngine.load( QUrl( QStringLiteral( "qrc:/view/qml/MainPage.qml" ) ) );
 }
 
 void Initializer::onGamePuzzleChanged()
 {
-  mQmlApplicationEngine.rootContext()->setContextProperty( "TangramPuzzlePieces",
-                                                           QVariant::fromValue( mGameController.gamePuzzlePieces() ) );
+  qDebug() << Q_FUNC_INFO << mGameController.currentGameMoniker();
+  static Constants constants;
+
+  if ( mGameController.currentGameMoniker() == constants.GameTangramsMonochrome ||
+       mGameController.currentGameMoniker() == constants.GameTangrams )
+    mQmlApplicationEngine.rootContext()->setContextProperty( "TangramPuzzlePieces",
+                                                             QVariant::fromValue( mGameController.gamePuzzlePieces() ) );
 }
 
 

@@ -8,7 +8,8 @@ class QVariant;
 class ImageProvider : public QQuickImageProvider
 {
 public:
-  ImageProvider( int columnRowCount, const QString imagePath );
+  ImageProvider();
+  void setImageProvider( int columnRowCount, const QString imagePath );
   QImage requestImage( const QString& id, QSize* size, const QSize& requestedSize ) override;
 
   int puzzlePieceCount( int windowWidth, int windowHeight ) ;
@@ -24,8 +25,8 @@ public:
 
 private:
   double mDevicePixelRatio;
-  const int mColumnRowCount;
-  const QString mImagePath;
+  int mColumnRowCount;
+  QString mImagePath;
 
 
   QImage mImage;

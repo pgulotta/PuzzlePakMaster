@@ -3,6 +3,7 @@
 #include <QObject>
 #include "switchboardbuilder.hpp"
 #include "gamefactory.hpp"
+#include "tileslidegame.hpp"
 #include "shapesfactory.hpp"
 #include "puzzlepiecessolutionanalyzer.hpp"
 #include "colorfallsolutionanalyzer.hpp"
@@ -16,6 +17,12 @@ class GameController final : public QObject
 {
   Q_OBJECT
 public:
+  explicit GameController( QObject* parent );
+  const QList<QObject*>& gamesMetaData() const ;
+  QList<QObject*>& gamePuzzlePieces();
+  TileSlideGame& tileSlideGame() {return mTileSlideGame;} ;
+  QString currentGameMoniker() const {return mGameFactory.currentGameMoniker();}
+
   Q_INVOKABLE QString applicationTitle() const ;
   Q_INVOKABLE QString applicationVersion() const ;
   Q_INVOKABLE QString aboutMoniker() const;
@@ -39,13 +46,6 @@ public:
   Q_INVOKABLE QStringList getUpdatedFillColors( int columnCount,  QList<int> indexColors,  QStringList colors );
 
 
-public:
-  explicit GameController( QObject* parent );
-  const QList<QObject*>& gamesMetaData() const ;
-  QList<QObject*>& gamePuzzlePieces();
-  //std::shared_ptr<TileSlideGame> tileSlideGame() {return mGameFactory.tileSlideGame();}
-
-
 signals:
   void gamePuzzleChanged();
 
@@ -54,12 +54,16 @@ private:
   const QString mAppliationTitle{ "Puzzle Pak"};
   const QString mApplicationVersion{ "1.40"};
 
+  GameFactory mGameFactory;
+  DataAccessAdapter mDataAccessAdapter;
   SwitchboardBuilder mSwitchboardBuilder;
   ShapesFactory mShapesFactory;
-  GameFactory mGameFactory;
+  TileSlideGame mTileSlideGame{parent()};
   PuzzlePiecesSolutionAnalyzer mPuzzlePiecesSolutionAnalyzer;
   ColorFallSolutionAnalyzer mColorFallSolutionAnalyzer;
-  DataAccessAdapter mDataAccessAdapter;
+
+
+
 };
 
 

@@ -30,10 +30,10 @@ Page {
 
     onWidthChanged: {
         if (width > 0) {
-            puzzlePieceModel = GameController.puzzlePieceCount(windowWidth,
-                                                               windowHeight)
-            imagePieceWidth = GameController.imagePieceWidth()
-            imagePieceHeight = GameController.imagePieceHeight()
+            puzzlePieceModel = TileSlideGame.puzzlePieceCount(windowWidth,
+                                                              windowHeight)
+            imagePieceWidth = TileSlideGame.imagePieceWidth()
+            imagePieceHeight = TileSlideGame.imagePieceHeight()
         }
     }
 
@@ -127,10 +127,10 @@ Page {
         anchors.centerIn: parent
         source: "image://puzzleImage"
         opacity: .25
-        sourceSize.width: if (GameController !== null)
-                              GameController.imageWidth()
-        sourceSize.height: if (GameController !== null)
-                               GameController.imageHeight()
+        sourceSize.width: if (TileSlideGame !== null)
+                              TileSlideGame.imageWidth()
+        sourceSize.height: if (TileSlideGame !== null)
+                               TileSlideGame.imageHeight()
     }
 
     World {
@@ -243,7 +243,7 @@ Page {
         running: false
         repeat: false
         onTriggered: {
-            GameController.nextPuzzle()
+            TileSlideGame.nextPuzzle()
             //puzzleColorsGridId.state = tileSlidePageId.state
             bestScoreId.resetCounter(GameController.getCurrentPuzzleBestScore())
             currentScoreId.resetCounter(0)
@@ -269,7 +269,7 @@ Page {
             yCoordinatesList[index] = itemAt.y
             // console.log("isPuzzleSolved  index=" + index + " x=" + itemAt.x + "  y=" + itemAt.y + " width=" + itemAt.height + " width=" + itemAt.height)
         }
-        if (GameController.isPuzzleSolved(xCoordinatesList, yCoordinatesList)) {
+        if (TileSlideGame.isPuzzleSolved(xCoordinatesList, yCoordinatesList)) {
             for (var i = 0; i < puzzlePieceModel; ++i) {
                 var item = repeaterId.itemAt(i)
                 item.opacity = 0.0

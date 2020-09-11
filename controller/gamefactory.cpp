@@ -11,8 +11,6 @@
 #include <QUuid>
 #include <QTime>
 
-Constants constants;
-
 GameFactory::GameFactory( ShapesFactory& shapesFactory, QObject* parent ):
   QObject{parent},
   mShapesFactory{shapesFactory}
@@ -57,6 +55,8 @@ void GameFactory::selectGame( const QString& monikerSelected, const QString& pla
 {
   mCurrentGameMoniker = monikerSelected;
   mCurrentPlayer = player;
+
+  static Constants constants;
 
   //qInfo() << Q_FUNC_INFO << "  mCurrentGameMoniker=" <<  mCurrentGameMoniker << "  mCurrentPlayer=" << mCurrentPlayer;
   if  ( monikerSelected == constants.GameTangrams ) {
