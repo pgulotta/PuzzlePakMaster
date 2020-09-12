@@ -3,7 +3,6 @@
 #include <QObject>
 #include "switchboardbuilder.hpp"
 #include "gamefactory.hpp"
-#include "tileslidegame.hpp"
 #include "shapesfactory.hpp"
 #include "puzzlepiecessolutionanalyzer.hpp"
 #include "colorfallsolutionanalyzer.hpp"
@@ -11,7 +10,7 @@
 #include <memory>
 
 class QVariant;
-
+class ImageProvider;
 
 class GameController final : public QObject
 {
@@ -20,7 +19,8 @@ public:
   explicit GameController( QObject* parent );
   const QList<QObject*>& gamesMetaData() const ;
   QList<QObject*>& gamePuzzlePieces();
-  TileSlideGame& tileSlideGame() {return mTileSlideGame;} ;
+  TileSlideGame& tileSlideGame() {return mGameFactory.tileSlideGame();} ;
+  ImageProvider* imageProvider() {return mGameFactory.imageProvider();}
   QString currentGameMoniker() const {return mGameFactory.currentGameMoniker();}
 
   Q_INVOKABLE QString applicationTitle() const ;
@@ -58,7 +58,7 @@ private:
   DataAccessAdapter mDataAccessAdapter;
   SwitchboardBuilder mSwitchboardBuilder;
   ShapesFactory mShapesFactory;
-  TileSlideGame mTileSlideGame{parent()};
+
   PuzzlePiecesSolutionAnalyzer mPuzzlePiecesSolutionAnalyzer;
   ColorFallSolutionAnalyzer mColorFallSolutionAnalyzer;
 

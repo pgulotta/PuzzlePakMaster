@@ -24,7 +24,7 @@ QString TileSlideGame::getNextImageFileName( )
 
 void TileSlideGame::selectPuzzle( int previousPuzzleIndex )
 {
-
+  mImageProvider.setImage( 3, ":/view/images/tile0.jpg" );
 }
 
 void TileSlideGame::nextPuzzle()

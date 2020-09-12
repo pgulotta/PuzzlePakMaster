@@ -27,7 +27,8 @@ public:
   QString currentGameMoniker() const;
   QString currentPlayer() const;
   const Colors* currentPuzzleColors() ;
-
+  TileSlideGame& tileSlideGame() {return mTileSlideGame;} ;
+  ImageProvider* imageProvider() { return  mTileSlideGame.imageProvider();}
 
 private:
   const std::shared_ptr<Puzzle>  currentPuzzle() const;
@@ -37,7 +38,7 @@ private:
   ShapesFactory& mShapesFactory;
   QString mCurrentGameMoniker;
   QString mCurrentPlayer;
-
+  TileSlideGame mTileSlideGame{parent()};
   std::shared_ptr<PuzzlesFactory> mMonochromeTangramsGame;
   std::shared_ptr<PuzzlesFactory> mTangramsGame;
   std::shared_ptr<PuzzlesFactory> mLineUpGame;

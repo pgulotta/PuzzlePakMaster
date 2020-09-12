@@ -54,7 +54,6 @@ Page {
 
     onShouldSolvePuzzleChanged: {
         state = Constants.stateSolved
-        //puzzleColorsGridId.state = Constants.stateSolved
         shouldSolvePuzzle = false
     }
 
@@ -237,21 +236,10 @@ Page {
         id: playMusicId
     }
 
-    Timer {
-        id: puzzleTimerId
-        interval: Constants.animationDuration
-        running: false
-        repeat: false
-        onTriggered: {
-            TileSlideGame.nextPuzzle()
-            //puzzleColorsGridId.state = tileSlidePageId.state
-            bestScoreId.resetCounter(GameController.getCurrentPuzzleBestScore())
-            currentScoreId.resetCounter(0)
-        }
-    }
-
     function selectPuzzle() {
-        puzzleTimerId.start()
+        TileSlideGame.nextPuzzle()
+        bestScoreId.resetCounter(GameController.getCurrentPuzzleBestScore())
+        currentScoreId.resetCounter(0)
     }
 
     function isSelectionValid(modelData) {

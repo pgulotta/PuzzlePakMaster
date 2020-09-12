@@ -18,6 +18,7 @@ signals:
 
 public:
   explicit TileSlideGame( QObject* parent = nullptr );
+  ImageProvider* imageProvider() {return &mImageProvider;}
   void selectPuzzle( int previousPuzzleIndex );
   void nextPuzzle();
   int currentPuzzleIndex() const;

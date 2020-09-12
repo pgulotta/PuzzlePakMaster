@@ -9,7 +9,7 @@ class ImageProvider : public QQuickImageProvider
 {
 public:
   ImageProvider();
-  void setImageProvider( int columnRowCount, const QString imagePath );
+  void setImage( int columnRowCount, const QString imagePath );
   QImage requestImage( const QString& id, QSize* size, const QSize& requestedSize ) override;
 
   int puzzlePieceCount( int windowWidth, int windowHeight ) ;

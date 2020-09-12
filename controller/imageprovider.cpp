@@ -11,7 +11,7 @@ ImageProvider::ImageProvider():
 {}
 
 
-void ImageProvider::setImageProvider( int columnRowCount, const QString imagePath  )
+void ImageProvider::setImage( int columnRowCount, const QString imagePath  )
 {
   mColumnRowCount = columnRowCount;
   mImagePath = imagePath;
