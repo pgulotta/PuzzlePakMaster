@@ -30,8 +30,12 @@ QString GameFactory::currentPlayer() const
 
 void GameFactory::nextPuzzle()
 {
-  mCurrentPuzzleGame->nextPuzzle();
-  resetPuzzle();
+  if ( mCurrentPuzzleGame == nullptr ) {
+    mTileSlideGame.nextPuzzle();
+  } else {
+    mCurrentPuzzleGame->nextPuzzle();
+  }
+
 }
 
 QList<QObject*>& GameFactory::currentGamePieces()
@@ -48,7 +52,7 @@ QList<QObject*>& GameFactory::currentGamePieces()
 
 int GameFactory::puzzlesCount()
 {
-  return  ( mCurrentPuzzleGame == nullptr ) ? 0 : mCurrentPuzzleGame->puzzlesCount();
+  return  ( mCurrentPuzzleGame == nullptr ) ? mTileSlideGame.puzzlesCount() : mCurrentPuzzleGame->puzzlesCount();
 }
 
 void GameFactory::selectGame( const QString& monikerSelected, const QString& player )
@@ -92,17 +96,16 @@ void GameFactory::selectGame( const QString& monikerSelected, const QString& pla
 
     mCurrentPuzzleGame = mColorFallGame;
   } else if  ( monikerSelected == constants.TileSlide ) {
-
+    mCurrentPuzzleGame = nullptr;
+    mTileSlideGame.generatePuzzle();
   } else {
     Q_ASSERT_X( false, "GameFactory::selectGame", "This option should be handled in the qml file" );
   }
-
-  resetPuzzle();
 }
 
 const std::shared_ptr<Puzzle> GameFactory::currentPuzzle() const
 {
-  return mCurrentPuzzleGame->currentPuzzle();
+  return mCurrentPuzzleGame == nullptr ? nullptr : mCurrentPuzzleGame->currentPuzzle();
 }
 
 void GameFactory::setSelectedPuzzle( int previousPuzzleIndex )
@@ -125,11 +128,6 @@ int GameFactory::currentPuzzleIndex() const
   }
 }
 
-void GameFactory::resetPuzzle()
-{
-// mCurrentPuzzle = nullptr;
-}
-
 QString GameFactory::createUniqueId()
 {
   return QUuid::createUuid().toString().remove( '{' ).remove( '}' );
@@ -137,7 +135,7 @@ QString GameFactory::createUniqueId()
 
 const Colors* GameFactory::currentPuzzleColors()
 {
-  return mCurrentPuzzleGame->currentPuzzleColors();
+  return  mCurrentPuzzleGame == nullptr ? nullptr : mCurrentPuzzleGame->currentPuzzleColors();
 }
 
 

@@ -32,7 +32,6 @@ public:
 
 private:
   const std::shared_ptr<Puzzle>  currentPuzzle() const;
-  void resetPuzzle() ;
   static QString createUniqueId();
 
   ShapesFactory& mShapesFactory;

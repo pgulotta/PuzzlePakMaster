@@ -9,36 +9,47 @@ TileSlideGame::TileSlideGame( QObject* parent ) : QObject( parent )
 {
 }
 
-QString TileSlideGame::getNextImageFileName( )
+void TileSlideGame::assignToImageProvider( )
 {
   //:/view/images/tile0.jpg
-  if ( !( mCurrentRowColumnCount == MAX_ROW_COLUMN && mCurrentImageIndex == MAX_IMAGE_INDEX ) ) {
-    if ( ++mCurrentImageIndex > MAX_IMAGE_INDEX ) {
-      mCurrentImageIndex = 0;
-      ++mCurrentRowColumnCount;
-    }
+  if ( mCurrentImageIndex < MIN_IMAGE_INDEX  || mCurrentImageIndex > MAX_IMAGE_INDEX ) {
+    mCurrentImageIndex = MIN_IMAGE_INDEX;
+    mCurrentRowColumnCount = MIN_ROW_COLUMN;
   }
 
-  return IMAGE_NAME_ROOT + QString::number( mCurrentImageIndex ) + IMAGE_NAME_SUFFIX ;
+  if ( mCurrentRowColumnCount < MIN_ROW_COLUMN || mCurrentRowColumnCount > MAX_ROW_COLUMN ) {
+    mCurrentRowColumnCount = MIN_ROW_COLUMN;
+  }
+
+  mImageFileName = IMAGE_NAME_ROOT + QString::number( mCurrentImageIndex ) + IMAGE_NAME_SUFFIX ;
+  mImageProvider.setImage( mCurrentRowColumnCount, mImageFileName );
 }
 
-void TileSlideGame::selectPuzzle( int previousPuzzleIndex )
+void TileSlideGame::selectPuzzle( int puzzleIndex )
 {
-  mImageProvider.setImage( 3, ":/view/images/tile0.jpg" );
+  mCurrentImageIndex = mCurrentImageIndex / 10;
+  mCurrentRowColumnCount = puzzleIndex - mCurrentImageIndex;
+  assignToImageProvider();
 }
 
 void TileSlideGame::nextPuzzle()
 {
-
+  ++mCurrentRowColumnCount;
+  assignToImageProvider();
 }
 
 int TileSlideGame::currentPuzzleIndex() const
 {
-  return mCurrentImageIndex;
+  return mCurrentImageIndex * 10 + mCurrentRowColumnCount;
 }
 
 int TileSlideGame::puzzlesCount() const
 {
-  return 0;
+  return ( 1 + mCurrentImageIndex ) * MIN_ROW_COLUMN ;
+}
+
+void TileSlideGame::generatePuzzle()
+{
+  assignToImageProvider();
 }
 

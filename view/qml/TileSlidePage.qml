@@ -62,29 +62,12 @@ Page {
         gradient: BackgroundGradient {}
     }
 
-    RowLayout {
-        anchors {
-            top: parent.top
-            left: parent.left
-            right: parent.right
-        }
-        width: parent.width
-        PuzzleScore {
-            id: bestScoreId
-            z: 2
-            Layout.alignment: Qt.AlignLeft
-            Layout.fillWidth: false
-            Layout.margins: mediumPadding
-            score: GameController.getCurrentPuzzleBestScore()
-        }
-        PuzzleScore {
-            id: currentScoreId
-            z: 2
-            Layout.alignment: Qt.AlignRight
-            Layout.fillWidth: false
-            Layout.margins: largePadding
-        }
+    SecondsClock {
+        id: problemSecondsClockId
+        z: 2
+        secondsCounter: GameController.getCurrentPuzzleBestScore()
     }
+
     MouseJoint {
         id: mouseJoint
         bodyA: anchorId
