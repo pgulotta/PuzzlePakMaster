@@ -51,7 +51,7 @@ Page {
         gradient: BackgroundGradient {}
     }
 
-    RowLayout {
+    Row {
         id: scoresRowId
         z: 10
 
@@ -63,8 +63,8 @@ Page {
             right: parent.right
             topMargin: mediumPadding
             leftMargin: largePadding
+            rightMargin: largePadding
         }
-
         PuzzleScore {
             id: bestScoreId
             Layout.alignment: Qt.AlignLeft
@@ -73,7 +73,7 @@ Page {
         }
         PuzzleScore {
             id: currentScoreId
-            Layout.alignment: Qt.AlignRight
+            anchors.right: parent.right
             Layout.fillWidth: true
         }
     }
