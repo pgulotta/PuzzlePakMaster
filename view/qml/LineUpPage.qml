@@ -46,6 +46,7 @@ Page {
     }
 
     background: Rectangle {
+        id: backgroundId
         anchors.fill: parent
         gradient: BackgroundGradient {}
     }
@@ -53,26 +54,27 @@ Page {
     RowLayout {
         id: scoresRowId
         z: 10
+
         spacing: 0
 
         anchors {
             top: parent.top
             left: parent.left
+            right: parent.right
             topMargin: mediumPadding
             leftMargin: largePadding
-            rightMargin: largePadding
         }
 
         PuzzleScore {
             id: bestScoreId
             Layout.alignment: Qt.AlignLeft
-            Layout.fillWidth: false
+            Layout.fillWidth: true
             score: GameController.getCurrentPuzzleBestScore()
         }
         PuzzleScore {
             id: currentScoreId
             Layout.alignment: Qt.AlignRight
-            Layout.fillWidth: false
+            Layout.fillWidth: true
         }
     }
 
