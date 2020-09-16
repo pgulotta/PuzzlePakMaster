@@ -12,10 +12,10 @@ import Box2DStatic 2.0
 Page {
     id: tileSlidePageId
 
-    property bool shouldSolvePuzzle
     property string helpText
     property alias musicSource: playMusicId.musicSource
     property alias shouldPlayMusic: playMusicId.shouldPlayMusic
+    property alias sourceImage: backgroundImageId.source
     property alias puzzlePieceModel: repeaterId.model
     property alias bestScore: bestScoreId.secondsCounter
     property alias currentScore: currentScoreId.secondsCounter
@@ -52,11 +52,6 @@ Page {
         if (state === Constants.stateNewPuzzle) {
             selectPuzzle()
         }
-    }
-
-    onShouldSolvePuzzleChanged: {
-        state = Constants.stateSolved
-        shouldSolvePuzzle = false
     }
 
     background: Rectangle {
@@ -126,7 +121,7 @@ Page {
     }
 
     Image {
-        id: background
+        id: backgroundImageId
         anchors.centerIn: parent
         source: "image://puzzleImage"
         opacity: .25
@@ -244,15 +239,19 @@ Page {
     function setHighBestScore(currentBestScore, currentScore) {
         if (currentScore === 0)
             return
-        if (currentBestScore === 0 || currentBestScore < currentScore)
+        if (currentBestScore < currentScore)
             GameController.setCurrentPuzzleBestScore(currentScore)
     }
 
     function selectPuzzle() {
-        stopTimerText()
         GameController.nextPuzzle()
+        sourceImage = "image://puzzleImage"
+        imagePieceWidth = TileSlideGame.imagePieceWidth()
+        imagePieceHeight = TileSlideGame.imagePieceHeight()
         puzzlePieceModel = TileSlideGame.puzzlePieceCount(windowWidth,
                                                           windowHeight)
+        bestScoreId.resetClock(GameController.getCurrentPuzzleBestScore())
+        currentScoreId.resetClock(0)
     }
 
     function isPuzzleSolved() {
@@ -269,7 +268,11 @@ Page {
             stopTimerText()
             playMusicId.tryPlaySoundEffect()
             setHighBestScore(bestScore, currentScore)
-            selectPuzzle()
+            //sourceImage = null
+            puzzlePieceModel = null
+            imagePieceWidth = 0
+            imagePieceHeight = 0
+            state = Constants.stateNewPuzzle
         }
     }
 

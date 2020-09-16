@@ -37,7 +37,7 @@ void TileSlideGame::selectPuzzle( int puzzleIndex )
 void TileSlideGame::nextPuzzle()
 {
   qDebug() << Q_FUNC_INFO;
-  ++mCurrentRowColumnCount;
+  ++mCurrentImageIndex;
   assignToImageProvider();
 }
 
