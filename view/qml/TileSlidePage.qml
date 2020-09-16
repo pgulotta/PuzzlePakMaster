@@ -17,6 +17,8 @@ Page {
     property alias musicSource: playMusicId.musicSource
     property alias shouldPlayMusic: playMusicId.shouldPlayMusic
     property alias puzzlePieceModel: repeaterId.model
+    property alias bestScore: bestScoreId.secondsCounter
+    property alias currentScore: currentScoreId.secondsCounter
 
     property Body pressedBody: null
     property int imagePieceWidth: 0
@@ -62,10 +64,28 @@ Page {
         gradient: BackgroundGradient {}
     }
 
-    SecondsClock {
-        id: problemSecondsClockId
-        z: 2
-        secondsCounter: GameController.getCurrentPuzzleBestScore()
+    RowLayout {
+        anchors {
+            top: parent.top
+            left: parent.left
+            right: parent.right
+        }
+        width: parent.width
+        SecondsClock {
+            id: bestScoreId
+            z: 2
+            Layout.alignment: Qt.AlignLeft
+            Layout.fillWidth: false
+            Layout.margins: mediumPadding
+            secondsCounter: GameController.getCurrentPuzzleBestScore()
+        }
+        SecondsClock {
+            id: currentScoreId
+            z: 2
+            Layout.alignment: Qt.AlignRight
+            Layout.fillWidth: false
+            Layout.margins: largePadding
+        }
     }
 
     MouseJoint {
@@ -86,6 +106,7 @@ Page {
                 mouseJoint.bodyB = pressedBody
                 pressedBody.bodyType = Body.Dynamic
             }
+            startTimerText()
         }
 
         onPositionChanged: {
@@ -97,10 +118,10 @@ Page {
         onReleased: {
             if (pressedBody != null) {
                 pressedBody.bodyType = Body.Static
+                mouseJoint.bodyB = null
+                pressedBody = null
                 isPuzzleSolved()
             }
-            mouseJoint.bodyB = null
-            pressedBody = null
         }
     }
 
@@ -215,18 +236,23 @@ Page {
             }
         }
     }
+
     MusicPlayer {
         id: playMusicId
     }
 
-    function selectPuzzle() {
-        TileSlideGame.nextPuzzle()
-        bestScoreId.resetCounter(GameController.getCurrentPuzzleBestScore())
-        currentScoreId.resetCounter(0)
+    function setHighBestScore(currentBestScore, currentScore) {
+        if (currentScore === 0)
+            return
+        if (currentBestScore === 0 || currentBestScore < currentScore)
+            GameController.setCurrentPuzzleBestScore(currentScore)
     }
 
-    function isSelectionValid(modelData) {
-        return (modelData === "#00000000") ? false : true
+    function selectPuzzle() {
+        stopTimerText()
+        GameController.nextPuzzle()
+        puzzlePieceModel = TileSlideGame.puzzlePieceCount(windowWidth,
+                                                          windowHeight)
     }
 
     function isPuzzleSolved() {
@@ -238,21 +264,22 @@ Page {
             var itemAt = repeaterId.itemAt(index)
             xCoordinatesList[index] = itemAt.x
             yCoordinatesList[index] = itemAt.y
-            // console.log("isPuzzleSolved  index=" + index + " x=" + itemAt.x + "  y=" + itemAt.y + " width=" + itemAt.height + " width=" + itemAt.height)
         }
         if (TileSlideGame.isPuzzleSolved(xCoordinatesList, yCoordinatesList)) {
-            for (var i = 0; i < puzzlePieceModel; ++i) {
-                var item = repeaterId.itemAt(i)
-                item.opacity = 0.0
-                item.scale = 0.1
-                item.data[0].bodyType = Body.Dynamic
-                item.data[0].fixtures[0].density = 0
-                item.data[0].fixtures[0].restitution = 1.0
-                item.data[0].fixtures[0].friction = 0
-                item.data[0].fixtures[0].rotation = Math.random() * 360
-                item.data[0].fixtures[0].x += Math.random() * 10
-                item.data[0].fixtures[0].y += Math.random() * 10
-            }
+            stopTimerText()
+            playMusicId.tryPlaySoundEffect()
+            setHighBestScore(bestScore, currentScore)
+            selectPuzzle()
         }
+    }
+
+    function startTimerText() {
+        if (!currentScoreId.timerRunning)
+            currentScoreId.timerRunning = true
+    }
+
+    function stopTimerText() {
+        if (currentScoreId.timerRunning)
+            currentScoreId.timerRunning = false
     }
 }

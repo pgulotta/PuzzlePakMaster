@@ -21,10 +21,11 @@ public:
   ImageProvider* imageProvider() {return &mImageProvider;}
 
   void selectPuzzle( int puzzleIndex );
-  void nextPuzzle();
+
   int currentPuzzleIndex() const;
   int puzzlesCount() const;
   void generatePuzzle();
+  void nextPuzzle();
   Q_INVOKABLE int puzzlePieceCount( int windowWidth, int windowHeight )  {return mImageProvider.puzzlePieceCount( windowWidth, windowHeight ); }
   Q_INVOKABLE int imageWidth() const {return mImageProvider.imageWidth() ;}
   Q_INVOKABLE int imageHeight() const {return mImageProvider.imageHeight() ;}
