@@ -18,7 +18,7 @@ signals:
 
 public:
   explicit TileSlideGame( QObject* parent = nullptr );
-  ImageProvider* imageProvider() {return &mImageProvider;}
+  ImageProvider* imageProvider() {return mImageProvider.get();}
 
   void selectPuzzle( int puzzleIndex );
 
@@ -26,12 +26,13 @@ public:
   int puzzlesCount() const;
   void generatePuzzle();
   void nextPuzzle();
-  Q_INVOKABLE int puzzlePieceCount( int windowWidth, int windowHeight )  {return mImageProvider.puzzlePieceCount( windowWidth, windowHeight ); }
-  Q_INVOKABLE int imageWidth() const {return mImageProvider.imageWidth() ;}
-  Q_INVOKABLE int imageHeight() const {return mImageProvider.imageHeight() ;}
-  Q_INVOKABLE int imagePieceWidth() const { return mImageProvider.imagePieceWidth() ;}
-  Q_INVOKABLE int imagePieceHeight() const { return mImageProvider.imagePieceHeight();}
-  Q_INVOKABLE bool isPuzzleSolved( QVariantList xCoordinatesList, QVariantList yCoordinatesList ) const { return mImageProvider.isPuzzleSolved( xCoordinatesList, yCoordinatesList );}
+
+  Q_INVOKABLE int puzzlePieceCount( int windowWidth, int windowHeight )  {return mImageProvider->puzzlePieceCount( windowWidth, windowHeight ); }
+  Q_INVOKABLE int imageWidth() const {return mImageProvider->mImageWidth;}
+  Q_INVOKABLE int imageHeight() const {return mImageProvider->mImageHeight ;}
+  Q_INVOKABLE int imagePieceWidth() const { return mImageProvider->mImagePieceWidth ;}
+  Q_INVOKABLE int imagePieceHeight() const { return mImageProvider->mImagePieceHeight;}
+  Q_INVOKABLE bool isPuzzleSolved( QVariantList xCoordinatesList, QVariantList yCoordinatesList ) const { return mImageProvider->isPuzzleSolved( xCoordinatesList, yCoordinatesList );}
 
 
 private:
@@ -46,7 +47,7 @@ private:
   int mCurrentImageIndex{MIN_IMAGE_INDEX};
   int mCurrentRowColumnCount{MIN_ROW_COLUMN};
   QString mImageFileName;
-  ImageProvider mImageProvider;
+  std::shared_ptr<ImageProvider> mImageProvider;
 };
 
 

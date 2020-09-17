@@ -265,15 +265,17 @@ Page {
             yCoordinatesList[index] = itemAt.y
         }
         if (TileSlideGame.isPuzzleSolved(xCoordinatesList, yCoordinatesList)) {
+            console.log("isPuzzleSolved YES !!!!!!!!!!!!!!!!!!!!!!!!")
             stopTimerText()
             playMusicId.tryPlaySoundEffect()
             setHighBestScore(bestScore, currentScore)
             //sourceImage = null
-            puzzlePieceModel = null
-            imagePieceWidth = 0
-            imagePieceHeight = 0
+            //puzzlePieceModel = null
+            //imagePieceWidth = 0
+            // imagePieceHeight = 0
             state = Constants.stateNewPuzzle
-        }
+        } else
+            console.log("isPuzzleSolved NO !!!!!!!!!!!!!!!!!!!!!!!!")
     }
 
     function startTimerText() {

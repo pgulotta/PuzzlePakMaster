@@ -7,7 +7,7 @@
 #include "puzzlepiecessolutionanalyzer.hpp"
 #include "colorfallsolutionanalyzer.hpp"
 #include "datastore/dataaccessadapter.hpp"
-#include <memory>
+
 
 class QVariant;
 class ImageProvider;

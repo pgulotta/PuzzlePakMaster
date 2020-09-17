@@ -22,6 +22,8 @@ void ImageProvider::setImage( int columnRowCount, const QString imagePath  )
 
 int ImageProvider::puzzlePieceCount( int windowWidth, int windowHeight )
 {
+  mWindowWidth = windowWidth;
+  mWindowHeight = windowHeight;
   QImage image{mImagePath};
   qDebug() << Q_FUNC_INFO << "Initial image:  " << image.width() << " x " << image.height();
 
@@ -44,9 +46,9 @@ int ImageProvider::puzzlePieceCount( int windowWidth, int windowHeight )
   mImagePieceHeight =  mColumnRowCount == 0 ? 0 :  static_cast<int>(  ceil( mImageHeight / mColumnRowCount /
                                                                             mDevicePixelRatio ) );
 
-//  qDebug() << Q_FUNC_INFO << "Window:  " << windowWidth << " x " << windowHeight;
-//  qDebug() << Q_FUNC_INFO << "Image:  " << mImageWidth << " x " << mImageHeight;
-//  qDebug() << Q_FUNC_INFO << "Piece:  " << mImagePieceWidth << " x " << mImagePieceHeight;
+  qDebug() << Q_FUNC_INFO << "Window:  " << windowWidth << " x " << windowHeight;
+  qDebug() << Q_FUNC_INFO << "Image:  " << mImageWidth << " x " << mImageHeight;
+  qDebug() << Q_FUNC_INFO << "Piece:  " << mImagePieceWidth << " x " << mImagePieceHeight;
 
   return ceil( mColumnRowCount * mColumnRowCount );
   //return 0;
@@ -54,6 +56,7 @@ int ImageProvider::puzzlePieceCount( int windowWidth, int windowHeight )
 
 bool ImageProvider::isPuzzleSolved( QVariantList xCoordinatesList, QVariantList yCoordinatesList ) const
 {
+  qDebug() << Q_FUNC_INFO << "Image:  " << mImageWidth << " x " << mImageHeight;
   auto xCoordinatesListCount = xCoordinatesList.count();
 
   if ( xCoordinatesListCount == 0 ) {

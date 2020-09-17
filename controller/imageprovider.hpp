@@ -1,7 +1,7 @@
 #pragma once
 
 #include <QQuickImageProvider>
-#include <memory>
+
 class QVariant;
 
 
@@ -11,24 +11,12 @@ public:
   ImageProvider();
   void setImage( int columnRowCount, const QString imagePath );
   QImage requestImage( const QString& id, QSize* size, const QSize& requestedSize ) override;
-
   int puzzlePieceCount( int windowWidth, int windowHeight ) ;
-
-  int imageWidth() const { return mImageWidth ;}
-  int imageHeight() const { return mImageHeight;}
-
-  int imagePieceWidth() const { return mImagePieceWidth ;}
-  int imagePieceHeight() const { return mImagePieceHeight;}
-
   bool isPuzzleSolved( QVariantList xCoordinatesList, QVariantList yCoordinatesList ) const;
 
-
-private:
   double mDevicePixelRatio;
   int mColumnRowCount;
   QString mImagePath;
-
-
   QImage mImage;
 
   double mImageWidth{0};
@@ -40,7 +28,8 @@ private:
   double mPieceXPosition{0};
   double mPieceYPosition{0};
 
-
+  int mWindowWidth{0};
+  int mWindowHeight{0};
 
 };
 
