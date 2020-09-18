@@ -16,8 +16,8 @@ public:
   const QString GameLineUp{"LineUp"};
   const QString GameTangrams{"Tangrams"};
   const QString GameTangramsMonochrome{"TangramsMonochrome"};
-  const QString ColorFall{"ColorFall"};
-  const QString TileSlide{"TileSlide"};
+  const QString GameColorFall{"ColorFall"};
+  const QString GameTileSlide{"TileSlide"};
   const QString About{"About"};
   const QString ShouldPlayMusic{"shouldPlayMusic"};
 };

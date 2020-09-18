@@ -239,7 +239,7 @@ Page {
     function setHighBestScore(currentBestScore, currentScore) {
         if (currentScore === 0)
             return
-        if (currentBestScore < currentScore)
+        if (currentBestScore > currentScore)
             GameController.setCurrentPuzzleBestScore(currentScore)
     }
 
@@ -269,13 +269,8 @@ Page {
             stopTimerText()
             playMusicId.tryPlaySoundEffect()
             setHighBestScore(bestScore, currentScore)
-            //sourceImage = null
-            //puzzlePieceModel = null
-            //imagePieceWidth = 0
-            // imagePieceHeight = 0
             state = Constants.stateNewPuzzle
-        } else
-            console.log("isPuzzleSolved NO !!!!!!!!!!!!!!!!!!!!!!!!")
+        }
     }
 
     function startTimerText() {

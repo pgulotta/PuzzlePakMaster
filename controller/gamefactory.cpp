@@ -87,7 +87,7 @@ void GameFactory::selectGame( const QString& monikerSelected, const QString& pla
     }
 
     mCurrentPuzzleGame = mLineUpGame;
-  } else if  ( monikerSelected == constants.ColorFall ) {
+  } else if  ( monikerSelected == constants.GameColorFall ) {
     if ( !mColorFallGame ) {
       mColorFallGame =  std::shared_ptr<PuzzlesFactory>( new PuzzlesFactory( std::shared_ptr<GameIterator>
       { new ColorFallIterator( mShapesFactory, player )}, this ) );
@@ -95,9 +95,9 @@ void GameFactory::selectGame( const QString& monikerSelected, const QString& pla
     }
 
     mCurrentPuzzleGame = mColorFallGame;
-  } else if  ( monikerSelected == constants.TileSlide ) {
+  } else if  ( monikerSelected == constants.GameTileSlide ) {
     mCurrentPuzzleGame = nullptr;
-    mTileSlideGame.generatePuzzle();
+    mTileSlideGame. assignToImageProvider();
   } else {
     Q_ASSERT_X( false, "GameFactory::selectGame", "This option should be handled in the qml file" );
   }

@@ -36,6 +36,13 @@ void Initializer::onGamePuzzleChanged()
        mGameController.currentGameMoniker() == constants.GameTangrams )
     mQmlApplicationEngine.rootContext()->setContextProperty( "TangramPuzzlePieces",
                                                              QVariant::fromValue( mGameController.gamePuzzlePieces() ) );
+
+//  if ( mGameController.currentGameMoniker() == constants.GameTileSlide ) {
+//    mQmlApplicationEngine.removeImageProvider( "puzzleImage" );
+//    mQmlApplicationEngine.addImageProvider( "puzzleImage", mGameController.imageProvider() );
+//  }
 }
+
+
 
 

@@ -60,7 +60,7 @@ private:
       "qrc:/view/qml/PolyformsPage.qml",
       "qrc:/view/music/bensound-theduel.mp3", OneColorTangramHelpText,
       parent()} );
-    mGameMetaData.append( new GameMetaData{constants.ColorFall, tr( "Color Fall" ),
+    mGameMetaData.append( new GameMetaData{constants.GameColorFall, tr( "Color Fall" ),
                                            "qrc:/view/images/color-fall.png",
                                            "qrc:/view/qml/ColorFallPage.qml",
                                            "qrc:/view/music/bensound-theduel.mp3", ColorFallHelpText,
@@ -76,7 +76,7 @@ private:
                                            "qrc:/view/music/bensound-theduel.mp3", TangramHelpText,
                                            parent()} );
 
-    mGameMetaData.append( new GameMetaData{constants.TileSlide, tr( "Tile Slide" ),
+    mGameMetaData.append( new GameMetaData{constants.GameTileSlide, tr( "Tile Slide" ),
                                            "qrc:/view/images/tile-slide.png",
                                            "qrc:/view/qml/TileSlidePage.qml",
                                            "qrc:/view/music/bensound-theduel.mp3", TileSlideHelpText,

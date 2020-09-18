@@ -23,9 +23,9 @@ public:
   void selectPuzzle( int puzzleIndex );
 
   int currentPuzzleIndex() const;
-  int puzzlesCount() const;
-  void generatePuzzle();
+  int puzzlesCount() const {return PUZZLES_COUNT;}
   void nextPuzzle();
+  void assignToImageProvider();
 
   Q_INVOKABLE int puzzlePieceCount( int windowWidth, int windowHeight )  {return mImageProvider->puzzlePieceCount( windowWidth, windowHeight ); }
   Q_INVOKABLE int imageWidth() const {return mImageProvider->mImageWidth;}
@@ -36,14 +36,17 @@ public:
 
 
 private:
-  void assignToImageProvider( ) ;
+
 
   const QString IMAGE_NAME_ROOT {":/view/images/tile"};
   const QString IMAGE_NAME_SUFFIX {".jpg"};
   const int MIN_IMAGE_INDEX{0};
   const int MAX_IMAGE_INDEX{4};
+  const int TOTAL_IMAGE_COUNT{MAX_IMAGE_INDEX - MIN_IMAGE_INDEX + 1};  // 5
   const int MIN_ROW_COLUMN{ 2 };
   const int MAX_ROW_COLUMN {5};
+  const int TOTAL_ROW_COLUMN_COUNT {MAX_ROW_COLUMN - MIN_ROW_COLUMN + 1};// 4
+  const int PUZZLES_COUNT {TOTAL_IMAGE_COUNT * TOTAL_ROW_COLUMN_COUNT};
   int mCurrentImageIndex{MIN_IMAGE_INDEX};
   int mCurrentRowColumnCount{MIN_ROW_COLUMN};
   QString mImageFileName;

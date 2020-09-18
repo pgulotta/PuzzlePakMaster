@@ -41,12 +41,23 @@ void TileSlideGame::assignToImageProvider( )
   mImageProvider->mWindowHeight = windowHeight ;
 
   //:/view/images/tile0.jpg
-  if ( mCurrentImageIndex < MIN_IMAGE_INDEX  || mCurrentImageIndex > MAX_IMAGE_INDEX ) {
+
+  if (  mCurrentRowColumnCount > MAX_ROW_COLUMN ) {
+    mCurrentRowColumnCount = MIN_ROW_COLUMN;
+    ++mCurrentImageIndex;
+  }
+
+  if ( mCurrentImageIndex < MIN_IMAGE_INDEX ) {
     mCurrentImageIndex = MIN_IMAGE_INDEX;
     mCurrentRowColumnCount = MIN_ROW_COLUMN;
   }
 
-  if ( mCurrentRowColumnCount < MIN_ROW_COLUMN || mCurrentRowColumnCount > MAX_ROW_COLUMN ) {
+  if ( mCurrentImageIndex > MAX_IMAGE_INDEX ) {
+    mCurrentImageIndex = MAX_IMAGE_INDEX;
+    mCurrentRowColumnCount = MAX_ROW_COLUMN;
+  }
+
+  if ( mCurrentRowColumnCount < MIN_ROW_COLUMN ) {
     mCurrentRowColumnCount = MIN_ROW_COLUMN;
   }
 
@@ -58,9 +69,13 @@ void TileSlideGame::assignToImageProvider( )
 void TileSlideGame::selectPuzzle( int puzzleIndex )
 {
   qDebug() << Q_FUNC_INFO;
-  mCurrentImageIndex = mCurrentImageIndex / 10;
+
+  mCurrentImageIndex = ( mCurrentImageIndex - 1 ) / 10 ;
   mCurrentRowColumnCount = puzzleIndex - mCurrentImageIndex;
   assignToImageProvider();
+
+  qDebug() << Q_FUNC_INFO << " puzzleIndex=" << puzzleIndex << " mCurrentImageIndex=" << mCurrentImageIndex <<
+           " mCurrentRowColumnCount=" << mCurrentRowColumnCount;
 }
 
 void TileSlideGame::nextPuzzle()
@@ -76,15 +91,4 @@ int TileSlideGame::currentPuzzleIndex() const
   return mCurrentImageIndex * 10 + mCurrentRowColumnCount;
 }
 
-int TileSlideGame::puzzlesCount() const
-{
-  qDebug() << Q_FUNC_INFO;
-  return ( 1 + mCurrentImageIndex ) * MIN_ROW_COLUMN ;
-}
-
-void TileSlideGame::generatePuzzle()
-{
-  qDebug() << Q_FUNC_INFO;
-  assignToImageProvider();
-}
 
