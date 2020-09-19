@@ -3,7 +3,7 @@
 #include "tileslidegame.hpp"
 #include <QDebug>
 
-int getImageId( int rowColumn, int imageIndex )
+int getImageId( int imageIndex, int rowColumn )
 {
   return  imageIndex * 10 + rowColumn;
 }
