@@ -5,7 +5,7 @@
 #include "imageprovider.hpp"
 #include <QString>
 #include <memory>
-
+#include <vector>
 
 class TileSlideGame: public QObject
 {
@@ -36,8 +36,6 @@ public:
 
 
 private:
-
-
   const QString IMAGE_NAME_ROOT {":/view/images/tile"};
   const QString IMAGE_NAME_SUFFIX {".jpg"};
   const int MIN_IMAGE_INDEX{0};
@@ -51,6 +49,7 @@ private:
   int mCurrentRowColumnCount{MIN_ROW_COLUMN};
   QString mImageFileName;
   std::shared_ptr<ImageProvider> mImageProvider;
+  std::vector<int> mPuzzleIndex;
 };
 
 

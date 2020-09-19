@@ -3,11 +3,20 @@
 #include "tileslidegame.hpp"
 #include <QDebug>
 
-//  eg.: ImageProvider mImageProvider{4, ":/images/tile9.jpg"};
+int getImageId( int rowColumn, int imageIndex )
+{
+  return  imageIndex * 10 + rowColumn;
+}
 
 TileSlideGame::TileSlideGame( QObject* parent ) : QObject( parent )
 {
   mImageProvider = std::shared_ptr<ImageProvider>( new ImageProvider() );
+
+  for ( int rowColumn = MIN_ROW_COLUMN; rowColumn <= MAX_ROW_COLUMN; ++rowColumn ) {
+    for ( int imageIndex = MIN_IMAGE_INDEX; imageIndex <= MAX_IMAGE_INDEX; ++imageIndex ) {
+      mPuzzleIndex.push_back( getImageId( imageIndex, rowColumn )  );
+    }
+  }
 }
 
 void TileSlideGame::assignToImageProvider( )
@@ -68,10 +77,8 @@ void TileSlideGame::assignToImageProvider( )
 
 void TileSlideGame::selectPuzzle( int puzzleIndex )
 {
-  qDebug() << Q_FUNC_INFO;
-
-  mCurrentImageIndex = ( mCurrentImageIndex - 1 ) / 10 ;
-  mCurrentRowColumnCount = puzzleIndex - mCurrentImageIndex;
+  mCurrentImageIndex = mPuzzleIndex[puzzleIndex] / 10;
+  mCurrentRowColumnCount = mPuzzleIndex[puzzleIndex] - mCurrentImageIndex * 10;
   assignToImageProvider();
 
   qDebug() << Q_FUNC_INFO << " puzzleIndex=" << puzzleIndex << " mCurrentImageIndex=" << mCurrentImageIndex <<
@@ -88,7 +95,19 @@ void TileSlideGame::nextPuzzle()
 int TileSlideGame::currentPuzzleIndex() const
 {
   qDebug() << Q_FUNC_INFO;
-  return mCurrentImageIndex * 10 + mCurrentRowColumnCount;
+  int imageId =  getImageId( mCurrentImageIndex, mCurrentRowColumnCount );
+  int puzzleIndex{0};
+
+  for (  std::vector<int>::size_type index = 0 ; index < mPuzzleIndex.size(); ++index ) {
+    if ( mPuzzleIndex[index] == imageId ) {
+      puzzleIndex = index;
+      break;
+    }
+  }
+
+  qDebug() << Q_FUNC_INFO << " puzzleIndex=" << puzzleIndex << " mCurrentImageIndex=" << mCurrentImageIndex <<
+           " mCurrentRowColumnCount=" << mCurrentRowColumnCount;
+  return puzzleIndex;
 }
 
 

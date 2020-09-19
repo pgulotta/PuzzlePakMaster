@@ -15,9 +15,7 @@ void ImageProvider::setImage( int columnRowCount, const QString imagePath  )
 {
   mColumnRowCount = columnRowCount;
   mImagePath = imagePath;
-  qDebug() << Q_FUNC_INFO << "mDevicePixelRatio=" << mDevicePixelRatio << " mColumnRowCount=" <<
-           mColumnRowCount  <<
-           "   mImagePath=" << mImagePath;
+  //qDebug() << Q_FUNC_INFO << "mDevicePixelRatio=" << mDevicePixelRatio << " mColumnRowCount=" << mColumnRowCount  <<" mImagePath=" << mImagePath;
 }
 
 int ImageProvider::puzzlePieceCount( int windowWidth, int windowHeight )
@@ -25,11 +23,9 @@ int ImageProvider::puzzlePieceCount( int windowWidth, int windowHeight )
   mWindowWidth = windowWidth;
   mWindowHeight = windowHeight;
   QImage image{mImagePath};
-  qDebug() << Q_FUNC_INFO << "Initial image:  " << image.width() << " x " << image.height();
 
   if ( image.width()*mDevicePixelRatio > windowWidth  ||
        image.height()*mDevicePixelRatio > windowHeight  ) {
-    qDebug() <<  Q_FUNC_INFO << "Image size adjusted";
     auto widthDimension = std::min( static_cast<double>( windowWidth ), image.width() * mDevicePixelRatio ) ;
     auto heightDimension =   std::min( static_cast<double>( windowHeight ), image.height() * mDevicePixelRatio ) ;
     auto dimension = ( windowWidth > windowHeight ) ? widthDimension : heightDimension ;
@@ -46,9 +42,9 @@ int ImageProvider::puzzlePieceCount( int windowWidth, int windowHeight )
   mImagePieceHeight =  mColumnRowCount == 0 ? 0 :  static_cast<int>(  ceil( mImageHeight / mColumnRowCount /
                                                                             mDevicePixelRatio ) );
 
-  qDebug() << Q_FUNC_INFO << "Window:  " << windowWidth << " x " << windowHeight;
-  qDebug() << Q_FUNC_INFO << "Image:  " << mImageWidth << " x " << mImageHeight;
-  qDebug() << Q_FUNC_INFO << "Piece:  " << mImagePieceWidth << " x " << mImagePieceHeight;
+//  qDebug() << Q_FUNC_INFO << "Window:  " << windowWidth << " x " << windowHeight;
+//  qDebug() << Q_FUNC_INFO << "Image:  " << mImageWidth << " x " << mImageHeight;
+//  qDebug() << Q_FUNC_INFO << "Piece:  " << mImagePieceWidth << " x " << mImagePieceHeight;
 
   return ceil( mColumnRowCount * mColumnRowCount );
   //return 0;
