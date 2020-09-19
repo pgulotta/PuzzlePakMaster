@@ -108,14 +108,14 @@ const std::shared_ptr<Puzzle> GameFactory::currentPuzzle() const
   return mCurrentPuzzleGame == nullptr ? nullptr : mCurrentPuzzleGame->currentPuzzle();
 }
 
-void GameFactory::setSelectedPuzzle( int previousPuzzleIndex )
+void GameFactory::setSelectedPuzzle( int puzzleIndex )
 {
   if ( mCurrentPuzzleGame == nullptr ) {
-    mTileSlideGame.selectPuzzle( previousPuzzleIndex );
+    mTileSlideGame.selectPuzzle( puzzleIndex );
   } else
 
   {
-    mCurrentPuzzleGame->selectPuzzle( previousPuzzleIndex );
+    mCurrentPuzzleGame->selectPuzzle( puzzleIndex );
   }
 }
 

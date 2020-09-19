@@ -265,7 +265,6 @@ Page {
             yCoordinatesList[index] = itemAt.y
         }
         if (TileSlideGame.isPuzzleSolved(xCoordinatesList, yCoordinatesList)) {
-            console.log("isPuzzleSolved YES !!!!!!!!!!!!!!!!!!!!!!!!")
             stopTimerText()
             playMusicId.tryPlaySoundEffect()
             setHighBestScore(bestScore, currentScore)

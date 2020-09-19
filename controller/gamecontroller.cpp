@@ -17,9 +17,9 @@ void GameController::setDrawUnit( qreal drawUnit )
   }
 }
 
-void GameController::setSelectedPuzzle( int previousPuzzleIndex )
+void GameController::setSelectedPuzzle( int puzzleIndex )
 {
-  mGameFactory.setSelectedPuzzle( previousPuzzleIndex );
+  mGameFactory.setSelectedPuzzle( puzzleIndex );
 }
 
 void GameController::setSelectedGame( const QString& moniker, const QString& player )

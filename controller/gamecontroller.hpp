@@ -38,7 +38,7 @@ public:
   Q_INVOKABLE void setLastPlayer( const QString& lastPlayer ) const;
   Q_INVOKABLE void setCurrentPuzzleBestScore( int bestScore ) const;
   Q_INVOKABLE int getCurrentPuzzleBestScore() const;
-  Q_INVOKABLE void setSelectedPuzzle( int previousPuzzleIndex );
+  Q_INVOKABLE void setSelectedPuzzle( int puzzleIndex );
   Q_INVOKABLE void setSelectedGame( const QString& moniker, const QString& player );
   Q_INVOKABLE bool isPuzzleSolved( QVariantList problemPositionPoints,  QVariantList solutionPositionPoints,
                                    QVariantList problemWorldPoints, QVariantList solutionWorldPoints ) const;

@@ -22,7 +22,7 @@ public:
   void nextPuzzle() ;
   QList<QObject*>& currentGamePieces() ;
   void selectGame( const QString& monikerSelected, const QString& player ) ;
-  void setSelectedPuzzle( int previousPuzzleIndex );
+  void setSelectedPuzzle( int puzzleIndex );
   int currentPuzzleIndex() const;
   QString currentGameMoniker() const;
   QString currentPlayer() const;
