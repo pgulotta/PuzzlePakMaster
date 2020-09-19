@@ -28,7 +28,6 @@ Page {
 
     objectName: "TileSlidePage"
     width: windowWidth
-    state: Constants.stateUnsolved
 
     onWidthChanged: {
         if (width > 0) {
@@ -40,18 +39,14 @@ Page {
     }
 
     Component.onCompleted: {
+        console.log("Component.onCompleted:  ++++++++++++++++++++++++++++++++++++++")
         setToolbarTitle(title)
         shouldPlayMusic = GameController.shouldPlayMusic()
     }
 
     Component.onDestruction: {
+        console.log("Component.onDestruction:  ++++++++++++++++++++++++++++++++++++++")
         playMusicId.stop()
-    }
-
-    onStateChanged: {
-        if (state === Constants.stateNewPuzzle) {
-            selectPuzzle()
-        }
     }
 
     background: Rectangle {
@@ -244,14 +239,13 @@ Page {
     }
 
     function selectPuzzle() {
-        GameController.nextPuzzle()
-        sourceImage = "image://puzzleImage"
+        currentScoreId.resetClock(0)
         imagePieceWidth = TileSlideGame.imagePieceWidth()
         imagePieceHeight = TileSlideGame.imagePieceHeight()
         puzzlePieceModel = TileSlideGame.puzzlePieceCount(windowWidth,
                                                           windowHeight)
         bestScoreId.resetClock(GameController.getCurrentPuzzleBestScore())
-        currentScoreId.resetClock(0)
+        sourceImage = "image://puzzleImage"
     }
 
     function isPuzzleSolved() {
@@ -268,7 +262,8 @@ Page {
             stopTimerText()
             playMusicId.tryPlaySoundEffect()
             setHighBestScore(bestScore, currentScore)
-            state = Constants.stateNewPuzzle
+            GameController.nextPuzzle()
+            selectPuzzle()
         }
     }
 

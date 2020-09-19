@@ -97,7 +97,7 @@ void GameFactory::selectGame( const QString& monikerSelected, const QString& pla
     mCurrentPuzzleGame = mColorFallGame;
   } else if  ( monikerSelected == constants.GameTileSlide ) {
     mCurrentPuzzleGame = nullptr;
-    mTileSlideGame. assignToImageProvider();
+    mTileSlideGame.selectPuzzle( 0 ); // assignToImageProvider();
   } else {
     Q_ASSERT_X( false, "GameFactory::selectGame", "This option should be handled in the qml file" );
   }

@@ -25,17 +25,38 @@ public:
   int currentPuzzleIndex() const;
   int puzzlesCount() const {return PUZZLES_COUNT;}
   void nextPuzzle();
-  void assignToImageProvider();
 
-  Q_INVOKABLE int puzzlePieceCount( int windowWidth, int windowHeight )  {return mImageProvider->puzzlePieceCount( windowWidth, windowHeight ); }
-  Q_INVOKABLE int imageWidth() const {return mImageProvider->mImageWidth;}
-  Q_INVOKABLE int imageHeight() const {return mImageProvider->mImageHeight ;}
-  Q_INVOKABLE int imagePieceWidth() const { return mImageProvider->mImagePieceWidth ;}
-  Q_INVOKABLE int imagePieceHeight() const { return mImageProvider->mImagePieceHeight;}
+  Q_INVOKABLE int puzzlePieceCount( int windowWidth, int windowHeight )
+  {
+    qDebug() << Q_FUNC_INFO;
+    return mImageProvider->puzzlePieceCount( windowWidth, windowHeight );
+  }
+  Q_INVOKABLE int imageWidth() const
+  {
+    qDebug() << Q_FUNC_INFO;
+    return mImageProvider->mImageWidth;
+  }
+  Q_INVOKABLE int imageHeight() const
+  {
+    qDebug() << Q_FUNC_INFO;
+    return mImageProvider->mImageHeight ;
+  }
+  Q_INVOKABLE int imagePieceWidth() const
+  {
+    qDebug() << Q_FUNC_INFO;
+    return mImageProvider->mImagePieceWidth ;
+  }
+  Q_INVOKABLE int imagePieceHeight() const
+  {
+    qDebug() << Q_FUNC_INFO;
+    return mImageProvider->mImagePieceHeight;
+  }
   Q_INVOKABLE bool isPuzzleSolved( QVariantList xCoordinatesList, QVariantList yCoordinatesList ) const { return mImageProvider->isPuzzleSolved( xCoordinatesList, yCoordinatesList );}
 
 
 private:
+  void assignToImageProvider();
+
   const QString IMAGE_NAME_ROOT {":/view/images/tile"};
   const QString IMAGE_NAME_SUFFIX {".jpg"};
   const int MIN_IMAGE_INDEX{0};
