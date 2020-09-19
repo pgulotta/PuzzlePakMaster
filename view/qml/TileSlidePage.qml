@@ -262,8 +262,24 @@ Page {
             stopTimerText()
             playMusicId.tryPlaySoundEffect()
             setHighBestScore(bestScore, currentScore)
+            animateSuccess()
             GameController.nextPuzzle()
             selectPuzzle()
+        }
+    }
+
+    function animateSuccess() {
+        for (var i = 0; i < puzzlePieceModel; ++i) {
+            var item = repeaterId.itemAt(i)
+            item.opacity = 0.0
+            item.scale = 0.1
+            item.data[0].bodyType = Body.Dynamic
+            item.data[0].fixtures[0].density = 0
+            item.data[0].fixtures[0].restitution = 1.0
+            item.data[0].fixtures[0].friction = 0
+            item.data[0].fixtures[0].rotation = Math.random() * 360
+            item.data[0].fixtures[0].x += Math.random() * 10
+            item.data[0].fixtures[0].y += Math.random() * 10
         }
     }
 

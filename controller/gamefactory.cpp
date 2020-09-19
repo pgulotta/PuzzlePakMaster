@@ -112,9 +112,7 @@ void GameFactory::setSelectedPuzzle( int puzzleIndex )
 {
   if ( mCurrentPuzzleGame == nullptr ) {
     mTileSlideGame.selectPuzzle( puzzleIndex );
-  } else
-
-  {
+  } else  {
     mCurrentPuzzleGame->selectPuzzle( puzzleIndex );
   }
 }

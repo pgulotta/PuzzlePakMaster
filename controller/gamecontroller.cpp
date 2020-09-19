@@ -57,7 +57,6 @@ void GameController::nextPuzzle()
 {
   mGameFactory.nextPuzzle();
   emit gamePuzzleChanged();
-
 }
 
 bool GameController::isPuzzleSolved( QVariantList problemPositionPoints,  QVariantList solutionPositionPoints,
