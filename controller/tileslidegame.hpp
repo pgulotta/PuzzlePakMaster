@@ -49,7 +49,7 @@ private:
   int mCurrentRowColumnCount{MIN_ROW_COLUMN};
   QString mImageFileName;
   std::shared_ptr<ImageProvider> mImageProvider;
-  std::vector<int> mPuzzleIndex;
+  std::vector<int> mPuzzleIdList;
 };
 
 
