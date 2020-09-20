@@ -39,14 +39,20 @@ Page {
     }
 
     Component.onCompleted: {
-        console.log("Component.onCompleted:  ++++++++++++++++++++++++++++++++++++++")
         setToolbarTitle(title)
         shouldPlayMusic = GameController.shouldPlayMusic()
+        selectPuzzle()
     }
 
     Component.onDestruction: {
-        console.log("Component.onDestruction:  ++++++++++++++++++++++++++++++++++++++")
         playMusicId.stop()
+    }
+
+    Connections {
+        target: GameController
+        function onGamePuzzleChanged() {
+            selectPuzzle()
+        }
     }
 
     background: Rectangle {
@@ -118,7 +124,7 @@ Page {
     Image {
         id: backgroundImageId
         anchors.centerIn: parent
-        source: "image://puzzleImage"
+        //  source: "image://puzzleImage"
         opacity: .25
         sourceSize.width: if (TileSlideGame !== null)
                               TileSlideGame.imageWidth()
@@ -240,12 +246,12 @@ Page {
 
     function selectPuzzle() {
         currentScoreId.resetClock(0)
+        sourceImage = "image://puzzleImage"
         imagePieceWidth = TileSlideGame.imagePieceWidth()
         imagePieceHeight = TileSlideGame.imagePieceHeight()
         puzzlePieceModel = TileSlideGame.puzzlePieceCount(windowWidth,
                                                           windowHeight)
         bestScoreId.resetClock(GameController.getCurrentPuzzleBestScore())
-        sourceImage = "image://puzzleImage"
     }
 
     function isPuzzleSolved() {
@@ -264,7 +270,6 @@ Page {
             setHighBestScore(bestScore, currentScore)
             animateSuccess()
             GameController.nextPuzzle()
-            selectPuzzle()
         }
     }
 

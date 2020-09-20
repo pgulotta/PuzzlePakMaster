@@ -37,6 +37,8 @@ ApplicationWindow {
     readonly property int largeFontPointSize: dp(26)
     readonly property int dialogSize: dp(220)
 
+    property alias currentPage: stackViewId.currentItem
+
     objectName: "MainPage"
 
     visible: true
@@ -213,6 +215,7 @@ ApplicationWindow {
             ToolButton {
                 text: Constants.checkChar
                 visible: stackViewId.currentItem.objectName !== "ColorFallPage"
+                         && stackViewId.currentItem.objectName !== "TileSlidePage"
                 font.bold: true
                 font.pointSize: mediumLargeFontPointSize
                 anchors.verticalCenter: parent.verticalCenter
