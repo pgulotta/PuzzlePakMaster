@@ -124,12 +124,7 @@ Page {
     Image {
         id: backgroundImageId
         anchors.centerIn: parent
-        //  source: "image://puzzleImage"
-        opacity: .25
-        sourceSize.width: if (TileSlideGame !== null)
-                              TileSlideGame.imageWidth()
-        sourceSize.height: if (TileSlideGame !== null)
-                               TileSlideGame.imageHeight()
+        opacity: 0.40
     }
 
     World {
@@ -240,15 +235,16 @@ Page {
     function setHighBestScore(currentBestScore, currentScore) {
         if (currentScore === 0)
             return
-        if (currentBestScore > currentScore)
+        if (currentBestScore === 0 || currentBestScore > currentScore)
             GameController.setCurrentPuzzleBestScore(currentScore)
     }
 
     function selectPuzzle() {
         currentScoreId.resetClock(0)
-        sourceImage = "image://puzzleImage"
+
         imagePieceWidth = TileSlideGame.imagePieceWidth()
         imagePieceHeight = TileSlideGame.imagePieceHeight()
+        sourceImage = "image://puzzleImage"
         puzzlePieceModel = TileSlideGame.puzzlePieceCount(windowWidth,
                                                           windowHeight)
         bestScoreId.resetClock(GameController.getCurrentPuzzleBestScore())
