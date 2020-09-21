@@ -23,6 +23,7 @@ QtObject {
 
     readonly property int shortAnimationDuration: 300
     readonly property int animationDuration: 1100
+    readonly property int longAnimationDuration: 2500
     readonly property int invalidItem: -1
 
     //    The fixture density is used to compute the mass properties of the parentbody.

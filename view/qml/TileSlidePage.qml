@@ -175,6 +175,7 @@ Page {
         id: repeaterId
 
         delegate: Rectangle {
+            property alias itemImage: imageId.source
             id: rectangle
             x: windowWidth / 2 * Math.random()
             y: windowHeight / 2 * Math.random()
@@ -216,13 +217,13 @@ Page {
             }
             Behavior on scale {
                 NumberAnimation {
-                    duration: 3000
+                    duration: Constants.longAnimationDuration
                     easing.type: Easing.InOutBack
                 }
             }
             Behavior on opacity {
                 NumberAnimation {
-                    duration: 3000
+                    duration: Constants.longAnimationDuration
                 }
             }
         }
@@ -240,13 +241,20 @@ Page {
     }
 
     function selectPuzzle() {
-        currentScoreId.resetClock(0)
+        console.log("selectPuzzle *********************+++++++++++++++++++++++------------")
 
+        currentScoreId.resetClock(0)
         imagePieceWidth = TileSlideGame.imagePieceWidth()
         imagePieceHeight = TileSlideGame.imagePieceHeight()
         sourceImage = "image://puzzleImage"
         puzzlePieceModel = TileSlideGame.puzzlePieceCount(windowWidth,
                                                           windowHeight)
+        for (var i = 0; i < puzzlePieceModel; ++i) {
+            var item = repeaterId.itemAt(i)
+            item.opacity = 1.0
+            item.scale = 1.0
+            item.itemImage = "image://puzzleImage/" + i
+        }
         bestScoreId.resetClock(GameController.getCurrentPuzzleBestScore())
     }
 
@@ -264,8 +272,10 @@ Page {
             stopTimerText()
             playMusicId.tryPlaySoundEffect()
             setHighBestScore(bestScore, currentScore)
-            animateSuccess()
+            puzzlePieceModel = 0
+            sourceImage = ""
             GameController.nextPuzzle()
+            animateSuccess()
         }
     }
 
