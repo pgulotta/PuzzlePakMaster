@@ -10,8 +10,6 @@ int getPuzzleId( int imageIndex, int rowColumn )
 
 TileSlideGame::TileSlideGame( QObject* parent ) : QObject( parent )
 {
-  mImageProvider = std::shared_ptr<ImageProvider>( new ImageProvider() );
-
   for ( int rowColumn = MIN_ROW_COLUMN; rowColumn <= MAX_ROW_COLUMN; ++rowColumn ) {
     for ( int imageIndex = MIN_IMAGE_INDEX; imageIndex <= MAX_IMAGE_INDEX; ++imageIndex ) {
       mPuzzleIdList.push_back( getPuzzleId( imageIndex, rowColumn )  );
@@ -21,36 +19,6 @@ TileSlideGame::TileSlideGame( QObject* parent ) : QObject( parent )
 
 void TileSlideGame::assignToImageProvider( )
 {
-  double devicePixelRatio = mImageProvider->mDevicePixelRatio;
-  int columnRowCount = mImageProvider->mColumnRowCount;
-  QString imagePath = mImageProvider->mImagePath;
-  QImage image =  mImageProvider->mImage;
-  double imageWidth = mImageProvider->mImageWidth;
-  double imageHeight = mImageProvider->mImageHeight;
-  double imagePieceWidth = mImageProvider->mImagePieceWidth;
-  double imagePieceHeight =  mImageProvider->mImagePieceHeight ;
-  double mPieceXPosition = mImageProvider->mPieceXPosition;
-  double mPieceYPosition = mImageProvider->mPieceYPosition;
-  int windowWidth = mImageProvider->mWindowWidth;
-  int windowHeight = mImageProvider->mWindowHeight;
-
-  mImageProvider = std::shared_ptr<ImageProvider>( new ImageProvider() );
-
-  mImageProvider->mDevicePixelRatio = devicePixelRatio;
-  mImageProvider->mColumnRowCount = columnRowCount ;
-  mImageProvider->mImagePath = imagePath ;
-  mImageProvider->mImage = image ;
-  mImageProvider->mImageWidth = imageWidth;
-  mImageProvider->mImageHeight = imageHeight;
-  mImageProvider->mImagePieceWidth = imagePieceWidth;
-  mImageProvider->mImagePieceHeight = imagePieceHeight;
-  mImageProvider->mPieceXPosition = mPieceXPosition;
-  mImageProvider->mPieceYPosition = mPieceYPosition ;
-  mImageProvider->mWindowWidth = windowWidth;
-  mImageProvider->mWindowHeight = windowHeight ;
-
-  //:/view/images/tile0.jpg
-
   if (  mCurrentRowColumnCount > MAX_ROW_COLUMN ) {
     mCurrentRowColumnCount = MIN_ROW_COLUMN;
     ++mCurrentImageIndex;

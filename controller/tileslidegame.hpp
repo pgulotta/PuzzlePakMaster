@@ -18,7 +18,7 @@ signals:
 
 public:
   explicit TileSlideGame( QObject* parent = nullptr );
-  ImageProvider* imageProvider() {return mImageProvider.get();}
+  ImageProvider* imageProvider() {return mImageProvider;}
 
   void selectPuzzle( int puzzleIndex );
 
@@ -69,7 +69,7 @@ private:
   int mCurrentImageIndex{MIN_IMAGE_INDEX};
   int mCurrentRowColumnCount{MIN_ROW_COLUMN};
   QString mImageFileName;
-  std::shared_ptr<ImageProvider> mImageProvider;
+  ImageProvider* mImageProvider { new ImageProvider() };  // qml releases this resource
   std::vector<int> mPuzzleIdList;
 };
 
