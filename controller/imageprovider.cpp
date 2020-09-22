@@ -11,15 +11,18 @@ ImageProvider::ImageProvider():
 {}
 
 
-void ImageProvider::setImage( int columnRowCount, const QString imagePath  )
+void ImageProvider::setImagePath( int columnRowCount, const QString imagePath  )
 {
   mColumnRowCount = columnRowCount;
   mImagePath = imagePath;
-  //qDebug() << Q_FUNC_INFO << "mDevicePixelRatio=" << mDevicePixelRatio << " mColumnRowCount=" << mColumnRowCount  <<" mImagePath=" << mImagePath;
+  puzzlePieceCount( mWindowWidth, mWindowHeight );
+  qDebug() << " 1 " << Q_FUNC_INFO << "mDevicePixelRatio=" << mDevicePixelRatio << " mColumnRowCount=" << mColumnRowCount
+           << " mImagePath=" << mImagePath;
 }
 
 int ImageProvider::puzzlePieceCount( int windowWidth, int windowHeight )
 {
+  qDebug() << " 2 " <<  Q_FUNC_INFO;
   mWindowWidth = windowWidth;
   mWindowHeight = windowHeight;
   QImage image{mImagePath};
@@ -29,19 +32,19 @@ int ImageProvider::puzzlePieceCount( int windowWidth, int windowHeight )
     auto widthDimension = std::min( static_cast<double>( windowWidth ), image.width() * mDevicePixelRatio ) ;
     auto heightDimension =   std::min( static_cast<double>( windowHeight ), image.height() * mDevicePixelRatio ) ;
     auto dimension = ( windowWidth > windowHeight ) ? widthDimension : heightDimension ;
-    mImage =  image.scaled( dimension, dimension, Qt::KeepAspectRatio ) ;
+    mImage = std::make_unique<QImage>(  image.scaled( dimension, dimension, Qt::KeepAspectRatio ) ) ;
   } else {
     qDebug() <<  Q_FUNC_INFO << "Image size NOT adjusted";
-    mImage = QImage( image );
+    mImage = std::make_unique<QImage>( image  ) ;
   }
 
-  mImageWidth = mImage.width();
-  mImageHeight =  mImage.height();
+  mImageWidth = mImage->width();
+  mImageHeight =  mImage->height();
   mImagePieceWidth = mColumnRowCount == 0 ? 0 : static_cast<int>( ceil( mImageWidth / mColumnRowCount  /
                                                                         mDevicePixelRatio ) );
   mImagePieceHeight =  mColumnRowCount == 0 ? 0 :  static_cast<int>(  ceil( mImageHeight / mColumnRowCount /
                                                                             mDevicePixelRatio ) );
-
+  qDebug() << Q_FUNC_INFO << "Image path:  " << mImagePath << "  mImage.sizeInBytes=" << mImage->sizeInBytes() ;
 //  qDebug() << Q_FUNC_INFO << "Window:  " << windowWidth << " x " << windowHeight;
 //  qDebug() << Q_FUNC_INFO << "Image:  " << mImageWidth << " x " << mImageHeight;
 //  qDebug() << Q_FUNC_INFO << "Piece:  " << mImagePieceWidth << " x " << mImagePieceHeight;
@@ -118,16 +121,15 @@ QImage ImageProvider::requestImage( const QString& id, QSize* size, const QSize&
   Q_UNUSED( size );
   Q_UNUSED( requestedSize );
 
-//  qDebug() << Q_FUNC_INFO << "+++++++++++++"   ;
-//  qDebug() << Q_FUNC_INFO << "id=" << id;
-//  qDebug() << Q_FUNC_INFO << "id=" <<  id.toInt();
-
+  qDebug() << Q_FUNC_INFO << " 3  id=" <<  id.toInt();
 
   if ( id.isEmpty() ) {
     mPieceXPosition = 0;
     mPieceYPosition = 0;
-    return mImage.copy( mPieceXPosition, mPieceYPosition, mImageWidth,
-                        mImageHeight  );
+    QImage* image = new QImage( mImage->copy( mPieceXPosition, mPieceYPosition, mImageWidth,
+                                              mImageHeight  ) );
+    qDebug() << " 3 FULL Image  ************  " << image->sizeInBytes();
+    return *image;
   } else {
     int x = mPieceXPosition ;
     int y = mPieceYPosition ;
@@ -139,11 +141,13 @@ QImage ImageProvider::requestImage( const QString& id, QSize* size, const QSize&
       mPieceYPosition += ( mImagePieceHeight  );
     }
 
-    //qDebug() << Q_FUNC_INFO  << " x=" << x  << "  y=" << y << "  " << mImagePieceWidth << " x " << mImagePieceHeight;
+    //qDebug() << " 3 " << Q_FUNC_INFO  << " x=" << x  << "  y=" << y << "  " << mImagePieceWidth << " x " << mImagePieceHeight;
 
-    return mImage.copy( x * mDevicePixelRatio, y * mDevicePixelRatio, mImagePieceWidth * mDevicePixelRatio,
-                        mImagePieceHeight * mDevicePixelRatio );
-
+    QImage* image = new QImage(
+      mImage->copy( x * mDevicePixelRatio, y * mDevicePixelRatio, mImagePieceWidth * mDevicePixelRatio,
+                    mImagePieceHeight * mDevicePixelRatio ) );
+    qDebug() << " 3 partial image" << image->sizeInBytes();
+    return *image;
   }
 }
 

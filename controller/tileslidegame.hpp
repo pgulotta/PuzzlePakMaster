@@ -28,27 +28,22 @@ public:
 
   Q_INVOKABLE int puzzlePieceCount( int windowWidth, int windowHeight )
   {
-    qDebug() << Q_FUNC_INFO;
     return mImageProvider->puzzlePieceCount( windowWidth, windowHeight );
   }
   Q_INVOKABLE int imageWidth() const
   {
-    qDebug() << Q_FUNC_INFO;
     return mImageProvider->mImageWidth;
   }
   Q_INVOKABLE int imageHeight() const
   {
-    qDebug() << Q_FUNC_INFO;
     return mImageProvider->mImageHeight ;
   }
   Q_INVOKABLE int imagePieceWidth() const
   {
-    qDebug() << Q_FUNC_INFO;
     return mImageProvider->mImagePieceWidth ;
   }
   Q_INVOKABLE int imagePieceHeight() const
   {
-    qDebug() << Q_FUNC_INFO;
     return mImageProvider->mImagePieceHeight;
   }
   Q_INVOKABLE bool isPuzzleSolved( QVariantList xCoordinatesList, QVariantList yCoordinatesList ) const { return mImageProvider->isPuzzleSolved( xCoordinatesList, yCoordinatesList );}

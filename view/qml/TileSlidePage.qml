@@ -37,11 +37,9 @@ Page {
             imagePieceHeight = TileSlideGame.imagePieceHeight()
         }
     }
-
     Component.onCompleted: {
         setToolbarTitle(title)
         shouldPlayMusic = GameController.shouldPlayMusic()
-        selectPuzzle()
     }
 
     Component.onDestruction: {
@@ -51,7 +49,28 @@ Page {
     Connections {
         target: GameController
         function onGamePuzzleChanged() {
-            selectPuzzle()
+            sourceImage = ""
+            puzzlePieceModel = TileSlideGame.puzzlePieceCount(windowWidth,
+                                                              windowHeight)
+            imagePieceWidth = TileSlideGame.imagePieceWidth()
+            imagePieceHeight = TileSlideGame.imagePieceHeight()
+
+            sourceImage = ""
+            sourceImage = "image://puzzleImage"
+            for (var index = 0; index < puzzlePieceModel; ++index) {
+                var itemPiece = repeaterId.itemAt(index)
+                itemPiece.opacity = 1.0
+                itemPiece.scale = 1.0
+                itemPiece.itemImage = ""
+            }
+            for (var i = 0; i < puzzlePieceModel; ++i) {
+                var item = repeaterId.itemAt(i)
+                item.itemImage = "image://puzzleImage/" + i
+            }
+            bestScoreId.resetClock(GameController.getCurrentPuzzleBestScore())
+            console.log("puzzlePieceModel=" + puzzlePieceModel)
+            console.log("imagePieceWidth=" + imagePieceWidth)
+            console.log("sourceImage  = " + backgroundImageId.source)
         }
     }
 
@@ -240,24 +259,6 @@ Page {
             GameController.setCurrentPuzzleBestScore(currentScore)
     }
 
-    function selectPuzzle() {
-        console.log("selectPuzzle *********************+++++++++++++++++++++++------------")
-
-        currentScoreId.resetClock(0)
-        imagePieceWidth = TileSlideGame.imagePieceWidth()
-        imagePieceHeight = TileSlideGame.imagePieceHeight()
-        sourceImage = "image://puzzleImage"
-        puzzlePieceModel = TileSlideGame.puzzlePieceCount(windowWidth,
-                                                          windowHeight)
-        for (var i = 0; i < puzzlePieceModel; ++i) {
-            var item = repeaterId.itemAt(i)
-            item.opacity = 1.0
-            item.scale = 1.0
-            item.itemImage = "image://puzzleImage/" + i
-        }
-        bestScoreId.resetClock(GameController.getCurrentPuzzleBestScore())
-    }
-
     function isPuzzleSolved() {
         if (puzzlePieceModel === undefined)
             return
@@ -272,10 +273,9 @@ Page {
             stopTimerText()
             playMusicId.tryPlaySoundEffect()
             setHighBestScore(bestScore, currentScore)
-            puzzlePieceModel = 0
-            sourceImage = ""
+            currentScoreId.resetClock(0)
             GameController.nextPuzzle()
-            animateSuccess()
+            //animateSuccess()
         }
     }
 
