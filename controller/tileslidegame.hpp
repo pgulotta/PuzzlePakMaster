@@ -21,14 +21,14 @@ public:
   ImageProvider* imageProvider() {return mImageProvider;}
 
   void selectPuzzle( int puzzleIndex );
-
+  void setWindowSize( int windowWidth, int windowHeight );
   int currentPuzzleIndex() const;
   int puzzlesCount() const {return PUZZLES_COUNT;}
   void nextPuzzle();
 
-  Q_INVOKABLE int puzzlePieceCount( int windowWidth, int windowHeight )
+  Q_INVOKABLE int puzzlePieceCount( )
   {
-    return mImageProvider->puzzlePieceCount( windowWidth, windowHeight );
+    return mImageProvider->puzzlePieceCount( );
   }
   Q_INVOKABLE int imageWidth() const
   {
@@ -47,6 +47,7 @@ public:
     return mImageProvider->mImagePieceHeight;
   }
   Q_INVOKABLE bool isPuzzleSolved( QVariantList xCoordinatesList, QVariantList yCoordinatesList ) const { return mImageProvider->isPuzzleSolved( xCoordinatesList, yCoordinatesList );}
+
 
 
 private:

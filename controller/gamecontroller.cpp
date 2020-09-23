@@ -82,6 +82,11 @@ QStringList GameController::getUpdatedFillColors( int columnCount, QList<int> in
   return  mColorFallSolutionAnalyzer.getUpdatedFillColors( columnCount, indexColors, colors );
 }
 
+void GameController::setWindowSize( int windowWidth, int windowHeight )
+{
+  mGameFactory.setWindowSize(  windowWidth,  windowHeight );
+}
+
 QString GameController::applicationTitle() const
 {
   return mAppliationTitle;

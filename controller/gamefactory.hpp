@@ -18,6 +18,7 @@ class GameFactory  final : public QObject
 
 public:
   GameFactory( ShapesFactory& shapesFactory, QObject* parent );
+  void setWindowSize( int windowWidth, int windowHeight );
   int puzzlesCount() ;
   void nextPuzzle() ;
   QList<QObject*>& currentGamePieces() ;

@@ -31,8 +31,7 @@ Page {
 
     onWidthChanged: {
         if (width > 0) {
-            puzzlePieceModel = TileSlideGame.puzzlePieceCount(windowWidth,
-                                                              windowHeight)
+            puzzlePieceModel = TileSlideGame.puzzlePieceCount()
             imagePieceWidth = TileSlideGame.imagePieceWidth()
             imagePieceHeight = TileSlideGame.imagePieceHeight()
         }
@@ -50,8 +49,7 @@ Page {
         target: GameController
         function onGamePuzzleChanged() {
             sourceImage = ""
-            puzzlePieceModel = TileSlideGame.puzzlePieceCount(windowWidth,
-                                                              windowHeight)
+            puzzlePieceModel = TileSlideGame.puzzlePieceCount()
             imagePieceWidth = TileSlideGame.imagePieceWidth()
             imagePieceHeight = TileSlideGame.imagePieceHeight()
 
@@ -153,8 +151,7 @@ Page {
                 for (var i = 0; i < puzzlePieceModel; ++i) {
                     var item = repeaterId.itemAt(i)
                     item.itemImageSource = sourceImage + "/" + i
-                    console.log("&&&&&&&&&&&&&&&&&&&& item.itemImageSource = "
-                                + item.itemImageSource)
+                    console.log("item.itemImageSource = " + item.itemImageSource)
                 }
             }
         }

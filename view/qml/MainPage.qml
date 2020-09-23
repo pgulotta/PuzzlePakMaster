@@ -278,9 +278,12 @@ ApplicationWindow {
     }
 
     function calculateDependents() {
-
-        windowHeight = height
+        console.log("calculateDependents: windowWidth=" + windowWidth
+                    + "  windowHeight" + windowHeight)
+        if (windowWidth === 0 || windowHeight === 0)
+            return
         windowWidth = width
+        windowHeight = height
         isPortraitMode = windowHeight > windowWidth
         drawUnit = isPortraitMode ? windowWidth * .09 : windowHeight * .09
         imageDimension = isPortraitMode ? windowHeight * 0.2 : windowWidth * 0.16
@@ -290,5 +293,6 @@ ApplicationWindow {
         controlYFirst = windowHeight * 0.4
         controlXLast = windowWidth * -0.1
         controlYLast = windowHeight * 0.4
+        GameController.setWindowSize(windowWidth, windowHeight)
     }
 }

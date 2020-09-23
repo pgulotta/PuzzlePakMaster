@@ -17,6 +17,11 @@ TileSlideGame::TileSlideGame( QObject* parent ) : QObject( parent )
   }
 }
 
+void TileSlideGame::setWindowSize( int windowWidth, int windowHeight )
+{
+  mImageProvider->setWindowSize( windowWidth, windowHeight );
+}
+
 void TileSlideGame::assignToImageProvider( )
 {
   if (  mCurrentRowColumnCount > MAX_ROW_COLUMN ) {

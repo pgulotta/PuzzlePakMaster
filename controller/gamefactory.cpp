@@ -19,6 +19,13 @@ GameFactory::GameFactory( ShapesFactory& shapesFactory, QObject* parent ):
   qsrand( ( uint )time.msec() );
 }
 
+void GameFactory::setWindowSize( int windowWidth, int windowHeight )
+{
+  if ( mCurrentPuzzleGame == nullptr ) {
+    mTileSlideGame.setWindowSize( windowWidth, windowHeight );
+  }
+}
+
 QString GameFactory::currentGameMoniker() const
 {
   return  mCurrentGameMoniker;

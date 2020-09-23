@@ -9,9 +9,10 @@ class ImageProvider : public QQuickImageProvider
 {
 public:
   ImageProvider();
+  void setWindowSize( int windowWidth, int windowHeight );
   void setImagePath( int columnRowCount, const QString imagePath );
   QImage requestImage( const QString& id, QSize* size, const QSize& requestedSize ) override;
-  int puzzlePieceCount( int windowWidth, int windowHeight ) ;
+  int puzzlePieceCount(  ) ;
   bool isPuzzleSolved( QVariantList xCoordinatesList, QVariantList yCoordinatesList ) const;
   const QImage* getImage() const {return mImage.get();}
 

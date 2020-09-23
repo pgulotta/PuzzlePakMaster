@@ -15,14 +15,12 @@ void ImageProvider::setImagePath( int columnRowCount, const QString imagePath  )
 {
   mColumnRowCount = columnRowCount;
   mImagePath = imagePath;
-  puzzlePieceCount( mWindowWidth, mWindowHeight );
-  qDebug() << " 1 " << Q_FUNC_INFO << "mDevicePixelRatio=" << mDevicePixelRatio << " mColumnRowCount=" << mColumnRowCount
-           << " mImagePath=" << mImagePath;
+  setWindowSize( mWindowWidth, mWindowHeight );
 }
 
-int ImageProvider::puzzlePieceCount( int windowWidth, int windowHeight )
+void ImageProvider::setWindowSize( int windowWidth, int windowHeight )
 {
-  qDebug() << " 2 " <<  Q_FUNC_INFO;
+  qDebug() << " 2 " <<  Q_FUNC_INFO << "  Window:  " << windowWidth << " x " << windowHeight;
   mWindowWidth = windowWidth;
   mWindowHeight = windowHeight;
   QImage image{mImagePath};
@@ -45,17 +43,18 @@ int ImageProvider::puzzlePieceCount( int windowWidth, int windowHeight )
   mImagePieceHeight =  mColumnRowCount == 0 ? 0 :  static_cast<int>(  ceil( mImageHeight / mColumnRowCount /
                                                                             mDevicePixelRatio ) );
   qDebug() << Q_FUNC_INFO << "Image path:  " << mImagePath << "  mImage.sizeInBytes=" << mImage->sizeInBytes() ;
-//  qDebug() << Q_FUNC_INFO << "Window:  " << windowWidth << " x " << windowHeight;
-//  qDebug() << Q_FUNC_INFO << "Image:  " << mImageWidth << " x " << mImageHeight;
-//  qDebug() << Q_FUNC_INFO << "Piece:  " << mImagePieceWidth << " x " << mImagePieceHeight;
+  //qDebug() << Q_FUNC_INFO << "Window:  " << mWindowWidth << " x " << mWindowHeight;
+  //  qDebug() << Q_FUNC_INFO << "Image:  " << mImageWidth << " x " << mImageHeight;
+  //  qDebug() << Q_FUNC_INFO << "Piece:  " << mImagePieceWidth << " x " << mImagePieceHeight;
+}
 
+int ImageProvider::puzzlePieceCount( )
+{
   return ceil( mColumnRowCount * mColumnRowCount );
-  //return 0;
 }
 
 bool ImageProvider::isPuzzleSolved( QVariantList xCoordinatesList, QVariantList yCoordinatesList ) const
 {
-  qDebug() << Q_FUNC_INFO << "Image:  " << mImageWidth << " x " << mImageHeight;
   auto xCoordinatesListCount = xCoordinatesList.count();
 
   if ( xCoordinatesListCount == 0 ) {
