@@ -56,17 +56,12 @@ Page {
             imagePieceHeight = TileSlideGame.imagePieceHeight()
 
             sourceImage = ""
-            sourceImage = "image://puzzleImage"
-            for (var index = 0; index < puzzlePieceModel; ++index) {
-                var itemPiece = repeaterId.itemAt(index)
-                itemPiece.opacity = 1.0
-                itemPiece.scale = 1.0
-                itemPiece.itemImage = ""
-            }
             for (var i = 0; i < puzzlePieceModel; ++i) {
                 var item = repeaterId.itemAt(i)
-                item.itemImage = "image://puzzleImage/" + i
+                item.itemImageSource = ""
             }
+            sourceImage = "image://puzzleImage"
+
             bestScoreId.resetClock(GameController.getCurrentPuzzleBestScore())
             console.log("puzzlePieceModel=" + puzzlePieceModel)
             console.log("imagePieceWidth=" + imagePieceWidth)
@@ -144,6 +139,25 @@ Page {
         id: backgroundImageId
         anchors.centerIn: parent
         opacity: 0.40
+        onSourceChanged: {
+            console.log("backgroundImageId.onSourceChanged + source=" + source
+                        + "  puzzlePieceModel=" + puzzlePieceModel)
+            if (source != "") {
+
+                //            for (var index = 0; index < puzzlePieceModel; ++index) {
+                //                var itemPiece = repeaterId.itemAt(index)
+                //                itemPiece.opacity = 1.0
+                //                itemPiece.scale = 1.0
+                //                itemPiece.itemImageSource = ""
+                //            }
+                for (var i = 0; i < puzzlePieceModel; ++i) {
+                    var item = repeaterId.itemAt(i)
+                    item.itemImageSource = sourceImage + "/" + i
+                    console.log("&&&&&&&&&&&&&&&&&&&& item.itemImageSource = "
+                                + item.itemImageSource)
+                }
+            }
+        }
     }
 
     World {
@@ -194,7 +208,7 @@ Page {
         id: repeaterId
 
         delegate: Rectangle {
-            property alias itemImage: imageId.source
+            property alias itemImageSource: imageId.source
             id: rectangle
             x: windowWidth / 2 * Math.random()
             y: windowHeight / 2 * Math.random()
@@ -275,7 +289,7 @@ Page {
             setHighBestScore(bestScore, currentScore)
             currentScoreId.resetClock(0)
             GameController.nextPuzzle()
-            //animateSuccess()
+            // animateSuccess()
         }
     }
 
