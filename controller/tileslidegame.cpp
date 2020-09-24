@@ -19,7 +19,7 @@ TileSlideGame::TileSlideGame( QObject* parent ) : QObject( parent )
 
 void TileSlideGame::setWindowSize( int windowWidth, int windowHeight )
 {
-  mImageProvider->setWindowSize( windowWidth, windowHeight );
+  mImageProvider->setDimensions( windowWidth, windowHeight );
 }
 
 void TileSlideGame::assignToImageProvider( )
@@ -50,11 +50,13 @@ void TileSlideGame::assignToImageProvider( )
 
 void TileSlideGame::selectPuzzle( int puzzleIndex )
 {
+  qDebug() << Q_FUNC_INFO;
   mCurrentImageIndex = mPuzzleIdList[puzzleIndex] / 10;
   mCurrentRowColumnCount = mPuzzleIdList[puzzleIndex] - mCurrentImageIndex * 10;
   assignToImageProvider();
 
-  //qDebug() << Q_FUNC_INFO << " puzzleIndex=" << puzzleIndex << " mCurrentImageIndex=" << mCurrentImageIndex << " mCurrentRowColumnCount=" << mCurrentRowColumnCount;
+  qDebug() << Q_FUNC_INFO << " puzzleIndex=" << puzzleIndex << " mCurrentImageIndex=" << mCurrentImageIndex <<
+           " mCurrentRowColumnCount=" << mCurrentRowColumnCount;
 }
 
 void TileSlideGame::nextPuzzle()
@@ -68,7 +70,7 @@ int TileSlideGame::currentPuzzleIndex() const
 {
   qDebug() << Q_FUNC_INFO;
   int imageId =  getPuzzleId( mCurrentImageIndex, mCurrentRowColumnCount );
-  int puzzleIndex{0};
+  int puzzleIndex{MIN_IMAGE_INDEX};
 
   for (  std::vector<int>::size_type index = 0 ; index < mPuzzleIdList.size(); ++index ) {
     if ( mPuzzleIdList[index] == imageId ) {

@@ -44,7 +44,7 @@ public:
                                    QVariantList problemWorldPoints, QVariantList solutionWorldPoints ) const;
   Q_INVOKABLE QList<int> findColorGroupIndexes( int index, int columnCount, QVariantList grid );
   Q_INVOKABLE QStringList getUpdatedFillColors( int columnCount,  QList<int> indexColors,  QStringList colors );
-  Q_INVOKABLE void setWindowSize( int windowWidth, int windowHeight );
+  Q_INVOKABLE void setDimensions( int windowWidth, int windowHeight );
 
 signals:
   void gamePuzzleChanged();

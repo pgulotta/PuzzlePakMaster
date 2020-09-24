@@ -28,7 +28,6 @@ void GameController::setSelectedGame( const QString& moniker, const QString& pla
   mGameFactory.selectGame( moniker, player );
   mGameFactory.setSelectedPuzzle( mDataAccessAdapter.getGameLatestPuzzleIndex( moniker, player ) );
   emit gamePuzzleChanged();
-
 }
 
 QString GameController::getLastPlayer() const
@@ -82,7 +81,7 @@ QStringList GameController::getUpdatedFillColors( int columnCount, QList<int> in
   return  mColorFallSolutionAnalyzer.getUpdatedFillColors( columnCount, indexColors, colors );
 }
 
-void GameController::setWindowSize( int windowWidth, int windowHeight )
+void GameController::setDimensions( int windowWidth, int windowHeight )
 {
   mGameFactory.setWindowSize(  windowWidth,  windowHeight );
 }

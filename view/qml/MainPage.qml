@@ -293,6 +293,6 @@ ApplicationWindow {
         controlYFirst = windowHeight * 0.4
         controlXLast = windowWidth * -0.1
         controlYLast = windowHeight * 0.4
-        GameController.setWindowSize(windowWidth, windowHeight)
+        GameController.setDimensions(windowWidth, windowHeight)
     }
 }

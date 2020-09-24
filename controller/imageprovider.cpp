@@ -15,10 +15,10 @@ void ImageProvider::setImagePath( int columnRowCount, const QString imagePath  )
 {
   mColumnRowCount = columnRowCount;
   mImagePath = imagePath;
-  setWindowSize( mWindowWidth, mWindowHeight );
+  setDimensions( mWindowWidth, mWindowHeight );
 }
 
-void ImageProvider::setWindowSize( int windowWidth, int windowHeight )
+void ImageProvider::setDimensions( int windowWidth, int windowHeight )
 {
   qDebug() << " 2 " <<  Q_FUNC_INFO << "  Window:  " << windowWidth << " x " << windowHeight;
   mWindowWidth = windowWidth;
@@ -120,14 +120,12 @@ QImage ImageProvider::requestImage( const QString& id, QSize* size, const QSize&
   Q_UNUSED( size );
   Q_UNUSED( requestedSize );
 
-  qDebug() << Q_FUNC_INFO << " 3  id=" <<  id.toInt();
-
   if ( id.isEmpty() ) {
     mPieceXPosition = 0;
     mPieceYPosition = 0;
     QImage* image = new QImage( mImage->copy( mPieceXPosition, mPieceYPosition, mImageWidth,
                                               mImageHeight  ) );
-    qDebug() << " 3 FULL Image  ************  " << image->sizeInBytes();
+    qDebug() << " 3 FULL Image" << image->sizeInBytes() << "  id=" <<  id;
     return *image;
   } else {
     int x = mPieceXPosition ;
@@ -145,7 +143,7 @@ QImage ImageProvider::requestImage( const QString& id, QSize* size, const QSize&
     QImage* image = new QImage(
       mImage->copy( x * mDevicePixelRatio, y * mDevicePixelRatio, mImagePieceWidth * mDevicePixelRatio,
                     mImagePieceHeight * mDevicePixelRatio ) );
-    qDebug() << " 3 partial image" << image->sizeInBytes();
+    qDebug() << " 3 PARTIAL image" << image->sizeInBytes() << "  id=" <<  id;
     return *image;
   }
 }
