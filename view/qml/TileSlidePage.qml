@@ -54,16 +54,12 @@ Page {
             imagePieceHeight = TileSlideGame.imagePieceHeight()
 
             sourceImage = ""
-            for (var i = 0; i < puzzlePieceModel; ++i) {
-                var item = repeaterId.itemAt(i)
-                item.itemImageSource = ""
-            }
+            //            for (var i = 0; i < puzzlePieceModel; ++i) {
+            //                var item = repeaterId.itemAt(i)
+            //                item.itemImageSource = ""
+            //            }
             sourceImage = "image://puzzleImage"
-
             bestScoreId.resetClock(GameController.getCurrentPuzzleBestScore())
-            console.log("puzzlePieceModel=" + puzzlePieceModel)
-            console.log("imagePieceWidth=" + imagePieceWidth)
-            console.log("sourceImage  = " + backgroundImageId.source)
         }
     }
 
