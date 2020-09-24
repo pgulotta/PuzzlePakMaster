@@ -52,10 +52,7 @@ Page {
             puzzlePieceModel = TileSlideGame.puzzlePieceCount()
             imagePieceWidth = TileSlideGame.imagePieceWidth()
             imagePieceHeight = TileSlideGame.imagePieceHeight()
-
-            sourceImage = ""
             sourceImage = "image://puzzleImage"
-            bestScoreId.resetClock(GameController.getCurrentPuzzleBestScore())
         }
     }
 
@@ -132,6 +129,7 @@ Page {
         onSourceChanged: {
             console.log("backgroundImageId.onSourceChanged + source=" + source
                         + "  puzzlePieceModel=" + puzzlePieceModel)
+
             if (source === "") {
 
                 //            for (var index = 0; index < puzzlePieceModel; ++index) {
