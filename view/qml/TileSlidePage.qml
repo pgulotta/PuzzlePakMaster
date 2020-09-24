@@ -54,10 +54,6 @@ Page {
             imagePieceHeight = TileSlideGame.imagePieceHeight()
 
             sourceImage = ""
-            //            for (var i = 0; i < puzzlePieceModel; ++i) {
-            //                var item = repeaterId.itemAt(i)
-            //                item.itemImageSource = ""
-            //            }
             sourceImage = "image://puzzleImage"
             bestScoreId.resetClock(GameController.getCurrentPuzzleBestScore())
         }
@@ -144,11 +140,11 @@ Page {
                 //                itemPiece.scale = 1.0
                 //                itemPiece.itemImageSource = ""
                 //            }
-                for (var i = 0; i < puzzlePieceModel; ++i) {
-                    var item = repeaterId.itemAt(i)
-                    item.itemImageSource = sourceImage + "/" + i
-                    console.log("item.itemImageSource = " + item.itemImageSource)
-                }
+                //                for (var i = 0; i < puzzlePieceModel; ++i) {
+                //                    var item = repeaterId.itemAt(i)
+                //                    item.itemImageSource = sourceImage + "/" + i
+                //                    console.log("item.itemImageSource = " + item.itemImageSource)
+                //                }
             }
         }
     }
