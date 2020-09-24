@@ -132,7 +132,7 @@ Page {
         onSourceChanged: {
             console.log("backgroundImageId.onSourceChanged + source=" + source
                         + "  puzzlePieceModel=" + puzzlePieceModel)
-            if (source != "") {
+            if (source === "") {
 
                 //            for (var index = 0; index < puzzlePieceModel; ++index) {
                 //                var itemPiece = repeaterId.itemAt(index)
@@ -145,6 +145,8 @@ Page {
                 //                    item.itemImageSource = sourceImage + "/" + i
                 //                    console.log("item.itemImageSource = " + item.itemImageSource)
                 //                }
+            } else {
+
             }
         }
     }
@@ -279,6 +281,7 @@ Page {
             currentScoreId.resetClock(0)
             GameController.nextPuzzle()
             // animateSuccess()
+            bestScoreId.resetClock(GameController.getCurrentPuzzleBestScore())
         }
     }
 
