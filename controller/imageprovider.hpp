@@ -14,7 +14,7 @@ public:
   QImage requestImage( const QString& id, QSize* size, const QSize& requestedSize ) override;
   int puzzlePieceCount(  ) ;
   bool isPuzzleSolved( QVariantList xCoordinatesList, QVariantList yCoordinatesList ) const;
-  const QImage* getImage() const {return mImage.get();}
+  const QImage* getImage() const {return mImage;}
 
   double mDevicePixelRatio;
   int mColumnRowCount;
@@ -33,7 +33,7 @@ public:
   int mWindowHeight{0};
 
 private:
-  std::unique_ptr<QImage> mImage{new QImage};
+  QImage* mImage{new QImage};
 
 };
 

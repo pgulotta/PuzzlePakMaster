@@ -278,8 +278,6 @@ ApplicationWindow {
     }
 
     function calculateDependents() {
-        console.log("calculateDependents: windowWidth=" + windowWidth
-                    + "  windowHeight" + windowHeight)
         if (windowWidth === 0 || windowHeight === 0)
             return
         windowWidth = width

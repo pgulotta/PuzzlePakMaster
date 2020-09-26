@@ -30,10 +30,10 @@ void ImageProvider::setDimensions( int windowWidth, int windowHeight )
     auto widthDimension = std::min( static_cast<double>( windowWidth ), image.width() * mDevicePixelRatio ) ;
     auto heightDimension =   std::min( static_cast<double>( windowHeight ), image.height() * mDevicePixelRatio ) ;
     auto dimension = ( windowWidth > windowHeight ) ? widthDimension : heightDimension ;
-    mImage = std::make_unique<QImage>(  image.scaled( dimension, dimension, Qt::KeepAspectRatio ) ) ;
+    mImage = new QImage(  image.scaled( dimension, dimension, Qt::KeepAspectRatio )  ) ;
   } else {
     qDebug() <<  Q_FUNC_INFO << "Image size NOT adjusted";
-    mImage = std::make_unique<QImage>( image  ) ;
+    mImage = new QImage( image  ) ;
   }
 
   mImageWidth = mImage->width();

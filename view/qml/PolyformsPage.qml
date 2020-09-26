@@ -368,10 +368,6 @@ Page {
                                                  solutionModelId.itemAt(i).y)
             solutonCenterPoints[i] = solutionModelId.itemAt(
                         i).body.getWorldCenter()
-            //      console.log("x,y = " + (solutionModelId.itemAt(
-            //                                i).x - xPositionDeltaProblem) / drawUnit + " , "
-            //                  + (solutionModelId.itemAt(
-            //                       i).y - yPositionDeltaProblem) / drawUnit)
         }
     }
 

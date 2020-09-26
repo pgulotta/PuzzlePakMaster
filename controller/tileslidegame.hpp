@@ -47,11 +47,11 @@ public:
     return mImageProvider->mImagePieceHeight;
   }
   Q_INVOKABLE bool isPuzzleSolved( QVariantList xCoordinatesList, QVariantList yCoordinatesList ) const { return mImageProvider->isPuzzleSolved( xCoordinatesList, yCoordinatesList );}
-
+  Q_INVOKABLE void assignToImageProvider();
 
 
 private:
-  void assignToImageProvider();
+
 
   const QString IMAGE_NAME_ROOT {":/view/images/tile"};
   const QString IMAGE_NAME_SUFFIX {".jpg"};
