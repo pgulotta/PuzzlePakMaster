@@ -24,42 +24,24 @@ public:
   int currentPuzzleIndex() const;
   int puzzlesCount() const {return PUZZLES_COUNT;}
   void nextPuzzle();
-
-  Q_INVOKABLE QRect imageClipRect( int index ) const
-  {
-    qDebug() << Q_FUNC_INFO << "AAAAAAAAAAAAAAa  index =" << index;
-    return QRect( 0, 0, mImageProvider->mImagePieceWidth,
-                  mImageProvider->mImagePieceHeight ) ;
-  }
-
-  Q_INVOKABLE QString puzzleImageUrl( )
-  {
-    return mImageUrl;
-  }
-
-  Q_INVOKABLE int puzzlePieceCount( )
-  {
-    return mImageProvider->puzzlePieceCount( );
-  }
-
-  Q_INVOKABLE int imageWidth() const
-  {
-    return mImageProvider->mImageWidth;
-  }
-  Q_INVOKABLE int imageHeight() const
-  {
-    return mImageProvider->mImageHeight ;
-  }
-  Q_INVOKABLE int imagePieceWidth() const
-  {
-    return mImageProvider->mImagePieceWidth ;
-  }
-  Q_INVOKABLE int imagePieceHeight() const
-  {
-    return mImageProvider->mImagePieceHeight;
-  }
-  Q_INVOKABLE bool isPuzzleSolved( QVariantList xCoordinatesList, QVariantList yCoordinatesList ) const { return mImageProvider->isPuzzleSolved( xCoordinatesList, yCoordinatesList );}
   Q_INVOKABLE void assignToImageProvider();
+
+  Q_INVOKABLE QRect imageClipRect( int index ) {    return  mImageProvider->imageClipRect( index ); }
+
+  Q_INVOKABLE QString puzzleImageUrl( ) {return mImageUrl;}
+
+  Q_INVOKABLE int puzzlePieceCount( ) { return mImageProvider->puzzlePieceCount( );}
+
+  Q_INVOKABLE int imageWidth() const {return mImageProvider->mImageWidth; }
+
+  Q_INVOKABLE int imageHeight() const { return mImageProvider->mImageHeight ;}
+
+  Q_INVOKABLE int imagePieceWidth() const { return mImageProvider->mImagePieceWidth ;}
+
+  Q_INVOKABLE int imagePieceHeight() const { return mImageProvider->mImagePieceHeight; }
+
+  Q_INVOKABLE bool isPuzzleSolved( QVariantList xCoordinatesList, QVariantList yCoordinatesList ) const
+  { return mImageProvider->isPuzzleSolved( xCoordinatesList, yCoordinatesList );}
 
 
 private:

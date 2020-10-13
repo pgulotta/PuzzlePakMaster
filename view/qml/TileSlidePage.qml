@@ -159,20 +159,20 @@ Page {
         id: backgroundImageId
         anchors.centerIn: parent
         opacity: 0.40
-        //  source: "qrc:/view/images/tile0.jpg" // "image://puzzleImage"
-        //        onSourceChanged: {
-        //            console.log("backgroundImageId.onSourceChanged + source=" + source
-        //                        + "  puzzlePieceModel=" + puzzlePieceModel)
+        onSourceChanged: {
+            console.log("backgroundImageId.onSourceChanged + source=" + source
+                        + "  puzzlePieceModel=" + puzzlePieceModel)
 
-        //            if (source === "") {
-        //                for (var index = 0; index < puzzlePieceModel; ++index) {
-        //                    var itemPiece = repeaterId.itemAt(index)
-        //                    itemPiece.opacity = 1.0
-        //                    itemPiece.scale = 1.0
-        //                    itemPiece.itemImageSource = ""
-        //                }
-        //            }
-        //        }
+            //             if (source === "")
+            //            {
+            //                for (var index = 0; index < puzzlePieceModel; ++index) {
+            //                    var itemPiece = repeaterId.itemAt(index)
+            //                    itemPiece.opacity = 1.0
+            //                    itemPiece.scale = 1.0
+            //                    itemPiece.itemImageSource = ""
+            //                }
+            //            }
+        }
     }
     Repeater {
         id: repeaterId
@@ -267,14 +267,17 @@ Page {
             xCoordinatesList[index] = itemAt.x
             yCoordinatesList[index] = itemAt.y
         }
-        //  if (TileSlideGame.isPuzzleSolved(xCoordinatesList, yCoordinatesList)) {
-        if (1 === 1) {
+        if (TileSlideGame.isPuzzleSolved(xCoordinatesList, yCoordinatesList)) {
+
+            //if (1 === 1) {
             stopTimerText()
+            //animateSuccess()
             playMusicId.tryPlaySoundEffect()
             setHighBestScore(bestScore, currentScore)
             currentScoreId.resetClock(0)
+
             GameController.nextPuzzle()
-            // animateSuccess()
+
             bestScoreId.resetClock(GameController.getCurrentPuzzleBestScore())
         }
     }
@@ -293,7 +296,6 @@ Page {
             item.data[0].fixtures[0].y += Math.random() * 10
         }
     }
-
     function startTimerText() {
         if (!currentScoreId.timerRunning)
             currentScoreId.timerRunning = true

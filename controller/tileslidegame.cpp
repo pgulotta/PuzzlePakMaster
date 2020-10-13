@@ -83,5 +83,3 @@ int TileSlideGame::currentPuzzleIndex() const
   //qDebug() << Q_FUNC_INFO << " puzzleIndex=" << puzzleIndex << " mCurrentImageIndex=" << mCurrentImageIndex << " mCurrentRowColumnCount=" << mCurrentRowColumnCount;
   return puzzleIndex;
 }
-
-

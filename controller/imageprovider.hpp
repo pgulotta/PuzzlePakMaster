@@ -11,7 +11,7 @@ public:
   ImageProvider();
   void setDimensions( int windowWidth, int windowHeight );
   void setImagePath( int columnRowCount, const QString& imagePath );
-  QImage requestImage( const QString& id, QSize* size, const QSize& requestedSize ) ;
+  QRect imageClipRect( int index ) ;
   int puzzlePieceCount(  ) ;
   bool isPuzzleSolved( QVariantList xCoordinatesList, QVariantList yCoordinatesList ) const;
   const QImage* getImage() const {return mImage;}

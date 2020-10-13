@@ -42,10 +42,8 @@ void ImageProvider::setDimensions( int windowWidth, int windowHeight )
                                                                         mDevicePixelRatio ) );
   mImagePieceHeight =  mColumnRowCount == 0 ? 0 :  static_cast<int>(  ceil( mImageHeight / mColumnRowCount /
                                                                             mDevicePixelRatio ) );
-  qDebug() << Q_FUNC_INFO << "Image path:  " << mImagePath << "  mImage.sizeInBytes=" << mImage->sizeInBytes() ;
-  //qDebug() << Q_FUNC_INFO << "Window:  " << mWindowWidth << " x " << mWindowHeight;
-  //  qDebug() << Q_FUNC_INFO << "Image:  " << mImageWidth << " x " << mImageHeight;
-  //  qDebug() << Q_FUNC_INFO << "Piece:  " << mImagePieceWidth << " x " << mImagePieceHeight;
+  mPieceXPosition = 0;
+  mPieceYPosition = 0;
 }
 
 int ImageProvider::puzzlePieceCount( )
@@ -115,36 +113,19 @@ bool ImageProvider::isPuzzleSolved( QVariantList xCoordinatesList, QVariantList 
   return true;
 }
 
-QImage ImageProvider::requestImage( const QString& id, QSize* size, const QSize& requestedSize )
+QRect ImageProvider::imageClipRect( int index )
 {
-  Q_UNUSED( size );
-  Q_UNUSED( requestedSize );
+  int x = mPieceXPosition ;
+  int y = mPieceYPosition ;
 
-  if ( id.isEmpty() ) {
+  mPieceXPosition += ( mImagePieceWidth  );
+
+  if ( mPieceXPosition * mDevicePixelRatio >= mImageWidth ) {
     mPieceXPosition = 0;
-    mPieceYPosition = 0;
-    QImage* image = new QImage( mImage->copy( mPieceXPosition, mPieceYPosition, mImageWidth,
-                                              mImageHeight  ) );
-    qDebug() << " 3 FULL Image" << image->sizeInBytes() << "  id=" <<  id;
-    return *image;
-  } else {
-    int x = mPieceXPosition ;
-    int y = mPieceYPosition ;
-
-    mPieceXPosition += ( mImagePieceWidth  );
-
-    if ( mPieceXPosition * mDevicePixelRatio >= mImageWidth ) {
-      mPieceXPosition = 0;
-      mPieceYPosition += ( mImagePieceHeight  );
-    }
-
-    //qDebug() << " 3 " << Q_FUNC_INFO  << " x=" << x  << "  y=" << y << "  " << mImagePieceWidth << " x " << mImagePieceHeight;
-
-    QImage* image = new QImage(
-      mImage->copy( x * mDevicePixelRatio, y * mDevicePixelRatio, mImagePieceWidth * mDevicePixelRatio,
-                    mImagePieceHeight * mDevicePixelRatio ) );
-    qDebug() << " 3 PARTIAL image" << image->sizeInBytes() << "  id=" <<  id;
-    return *image;
+    mPieceYPosition += ( mImagePieceHeight  );
   }
+
+  return QRect( x * mDevicePixelRatio, y * mDevicePixelRatio, mImagePieceWidth * mDevicePixelRatio,
+                mImagePieceHeight * mDevicePixelRatio  );
 }
 
