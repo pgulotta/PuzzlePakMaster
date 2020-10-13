@@ -1,4 +1,5 @@
 #include "imageprovider.hpp"
+#include <QDebug>
 #include <QBuffer>
 #include <QScreen>
 #include <QGuiApplication>
@@ -6,12 +7,11 @@
 
 
 ImageProvider::ImageProvider():
-  QQuickImageProvider( QQuickImageProvider::Image ),
   mDevicePixelRatio ( static_cast<double>( QGuiApplication::primaryScreen()->devicePixelRatio() ) )
 {}
 
 
-void ImageProvider::setImagePath( int columnRowCount, const QString imagePath  )
+void ImageProvider::setImagePath( int columnRowCount, const QString& imagePath  )
 {
   mColumnRowCount = columnRowCount;
   mImagePath = imagePath;

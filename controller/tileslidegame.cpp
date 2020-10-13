@@ -43,6 +43,7 @@ void TileSlideGame::assignToImageProvider( )
     mCurrentRowColumnCount = MIN_ROW_COLUMN;
   }
 
+  mImageUrl = IMAGE_URL_ROOT + QString::number( mCurrentImageIndex ) + IMAGE_NAME_SUFFIX ;
   mImageFileName = IMAGE_NAME_ROOT + QString::number( mCurrentImageIndex ) + IMAGE_NAME_SUFFIX ;
   mImageProvider->setImagePath( mCurrentRowColumnCount, mImageFileName );
   qDebug() << Q_FUNC_INFO << "mCurrentRowColumnCount=" << mCurrentRowColumnCount << "mImageFileName=" << mImageFileName;

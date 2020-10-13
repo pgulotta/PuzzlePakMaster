@@ -18,7 +18,7 @@ Initializer::Initializer( QObject* parent ) :
   plugin.registerTypes( "Box2DStatic" );
   qmlRegisterSingletonType( QUrl( QStringLiteral( "qrc:/view/qml/Constants.qml" ) ),
                             "com.twentysixapps.puzzlepak.constants", 1, 0, "Constants" );
-  mQmlApplicationEngine.addImageProvider( "puzzleImage", mGameController.imageProvider() );
+
   auto rootContext = mQmlApplicationEngine.rootContext();
   qmlRegisterType<GameMetaData>( "GameMetaDataType", 1, 0, "GameMetaData" );
   rootContext->setContextProperty( "GameController", &mGameController );

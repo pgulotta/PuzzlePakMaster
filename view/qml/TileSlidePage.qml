@@ -45,17 +45,6 @@ Page {
         playMusicId.stop()
     }
 
-    Connections {
-        target: GameController
-        function onGamePuzzleChanged() {
-            sourceImage = ""
-            puzzlePieceModel = TileSlideGame.puzzlePieceCount()
-            imagePieceWidth = TileSlideGame.imagePieceWidth()
-            imagePieceHeight = TileSlideGame.imagePieceHeight()
-            sourceImage = "image://puzzleImage"
-        }
-    }
-
     background: Rectangle {
         anchors.fill: parent
         gradient: BackgroundGradient {}
@@ -122,33 +111,6 @@ Page {
         }
     }
 
-    Image {
-        id: backgroundImageId
-        anchors.centerIn: parent
-        opacity: 0.40
-        onSourceChanged: {
-            console.log("backgroundImageId.onSourceChanged + source=" + source
-                        + "  puzzlePieceModel=" + puzzlePieceModel)
-
-            if (source === "") {
-
-                //            for (var index = 0; index < puzzlePieceModel; ++index) {
-                //                var itemPiece = repeaterId.itemAt(index)
-                //                itemPiece.opacity = 1.0
-                //                itemPiece.scale = 1.0
-                //                itemPiece.itemImageSource = ""
-                //            }
-                //                for (var i = 0; i < puzzlePieceModel; ++i) {
-                //                    var item = repeaterId.itemAt(i)
-                //                    item.itemImageSource = sourceImage + "/" + i
-                //                    console.log("item.itemImageSource = " + item.itemImageSource)
-                //                }
-            } else {
-
-            }
-        }
-    }
-
     World {
         id: physicsWorld
     }
@@ -193,37 +155,60 @@ Page {
         world: physicsWorld
     }
 
+    Image {
+        id: backgroundImageId
+        anchors.centerIn: parent
+        opacity: 0.40
+        //  source: "qrc:/view/images/tile0.jpg" // "image://puzzleImage"
+        //        onSourceChanged: {
+        //            console.log("backgroundImageId.onSourceChanged + source=" + source
+        //                        + "  puzzlePieceModel=" + puzzlePieceModel)
+
+        //            if (source === "") {
+        //                for (var index = 0; index < puzzlePieceModel; ++index) {
+        //                    var itemPiece = repeaterId.itemAt(index)
+        //                    itemPiece.opacity = 1.0
+        //                    itemPiece.scale = 1.0
+        //                    itemPiece.itemImageSource = ""
+        //                }
+        //            }
+        //        }
+    }
     Repeater {
         id: repeaterId
 
         delegate: Rectangle {
-            property alias itemImageSource: imageId.source
-            id: rectangle
+            //  property alias itemImageSource: delegateImageId.source
+            id: delegateRectId
             x: windowWidth / 2 * Math.random()
             y: windowHeight / 2 * Math.random()
-            width: imagePieceWidth
-            height: imagePieceHeight
+            // width: imagePieceWidth
+            // height: imagePieceHeight
+            implicitWidth: imagePieceWidth
+            implicitHeight: imagePieceHeight
             smooth: true
             Image {
-                id: imageId
-                source: "image://puzzleImage/" + index
+                id: delegateImageId
+                source: sourceImage
                 fillMode: Image.Pad
                 anchors.fill: parent
-                sourceSize.width: rectangle.width
-                sourceSize.height: rectangle.height
+                //sourceSize.width: backgroundImageId.width
+                //sourceSize.height: backgroundImageId.height
+                sourceClipRect: if (source !== null)
+                                    TileSlideGame.imageClipRect(index)
             }
 
             Body {
                 id: rectangleBodyId
 
-                target: rectangle
+                target: delegateRectId
                 world: physicsWorld
 
                 bodyType: Body.Dynamic
                 Box {
                     id: boxBodyId
-                    width: rectangle.width
-                    height: rectangle.height
+                    width: delegateRectId.width
+                    height: delegateRectId.height
                     restitution: 0.5
                     friction: 0.55
                 }
@@ -255,6 +240,16 @@ Page {
         id: playMusicId
     }
 
+    Connections {
+        target: GameController
+        function onGamePuzzleChanged() {
+            sourceImage = TileSlideGame.puzzleImageUrl()
+            puzzlePieceModel = TileSlideGame.puzzlePieceCount()
+            imagePieceWidth = TileSlideGame.imagePieceWidth()
+            imagePieceHeight = TileSlideGame.imagePieceHeight()
+        }
+    }
+
     function setHighBestScore(currentBestScore, currentScore) {
         if (currentScore === 0)
             return
@@ -272,7 +267,8 @@ Page {
             xCoordinatesList[index] = itemAt.x
             yCoordinatesList[index] = itemAt.y
         }
-        if (TileSlideGame.isPuzzleSolved(xCoordinatesList, yCoordinatesList)) {
+        //  if (TileSlideGame.isPuzzleSolved(xCoordinatesList, yCoordinatesList)) {
+        if (1 === 1) {
             stopTimerText()
             playMusicId.tryPlaySoundEffect()
             setHighBestScore(bestScore, currentScore)

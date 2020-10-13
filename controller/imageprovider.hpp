@@ -1,23 +1,23 @@
 #pragma once
-
-#include <QQuickImageProvider>
+#include <QVariantList>
+#include <QImage>
 
 class QVariant;
 
 
-class ImageProvider : public QQuickImageProvider
+class ImageProvider
 {
 public:
   ImageProvider();
   void setDimensions( int windowWidth, int windowHeight );
-  void setImagePath( int columnRowCount, const QString imagePath );
-  QImage requestImage( const QString& id, QSize* size, const QSize& requestedSize ) override;
+  void setImagePath( int columnRowCount, const QString& imagePath );
+  QImage requestImage( const QString& id, QSize* size, const QSize& requestedSize ) ;
   int puzzlePieceCount(  ) ;
   bool isPuzzleSolved( QVariantList xCoordinatesList, QVariantList yCoordinatesList ) const;
   const QImage* getImage() const {return mImage;}
 
   double mDevicePixelRatio;
-  int mColumnRowCount;
+  int mColumnRowCount{0};
   QString mImagePath;
 
   double mImageWidth{0};

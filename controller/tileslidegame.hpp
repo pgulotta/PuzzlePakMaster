@@ -1,8 +1,8 @@
 #pragma once
 
-
-#include <QObject>
 #include "imageprovider.hpp"
+#include <QObject>
+#include <QDebug>
 #include <QString>
 #include <memory>
 #include <vector>
@@ -18,7 +18,6 @@ signals:
 
 public:
   explicit TileSlideGame( QObject* parent = nullptr );
-  ImageProvider* imageProvider() {return mImageProvider;}
 
   void selectPuzzle( int puzzleIndex );
   void setWindowSize( int windowWidth, int windowHeight );
@@ -26,10 +25,23 @@ public:
   int puzzlesCount() const {return PUZZLES_COUNT;}
   void nextPuzzle();
 
+  Q_INVOKABLE QRect imageClipRect( int index ) const
+  {
+    qDebug() << Q_FUNC_INFO << "AAAAAAAAAAAAAAa  index =" << index;
+    return QRect( 0, 0, mImageProvider->mImagePieceWidth,
+                  mImageProvider->mImagePieceHeight ) ;
+  }
+
+  Q_INVOKABLE QString puzzleImageUrl( )
+  {
+    return mImageUrl;
+  }
+
   Q_INVOKABLE int puzzlePieceCount( )
   {
     return mImageProvider->puzzlePieceCount( );
   }
+
   Q_INVOKABLE int imageWidth() const
   {
     return mImageProvider->mImageWidth;
@@ -53,6 +65,7 @@ public:
 private:
 
 
+  const QString IMAGE_URL_ROOT {"qrc:/view/images/tile"};
   const QString IMAGE_NAME_ROOT {":/view/images/tile"};
   const QString IMAGE_NAME_SUFFIX {".jpg"};
   const int MIN_IMAGE_INDEX{0};
@@ -64,6 +77,7 @@ private:
   const int PUZZLES_COUNT {TOTAL_IMAGE_COUNT * TOTAL_ROW_COLUMN_COUNT};
   int mCurrentImageIndex{MIN_IMAGE_INDEX};
   int mCurrentRowColumnCount{MIN_ROW_COLUMN};
+  QString mImageUrl;
   QString mImageFileName;
   ImageProvider* mImageProvider { new ImageProvider() };  // qml releases this resource
   std::vector<int> mPuzzleIdList;

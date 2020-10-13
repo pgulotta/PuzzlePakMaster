@@ -29,7 +29,6 @@ public:
   QString currentPlayer() const;
   const Colors* currentPuzzleColors() ;
   TileSlideGame& tileSlideGame() {return mTileSlideGame;} ;
-  ImageProvider* imageProvider() { return  mTileSlideGame.imageProvider();}
 
 private:
   const std::shared_ptr<Puzzle>  currentPuzzle() const;
