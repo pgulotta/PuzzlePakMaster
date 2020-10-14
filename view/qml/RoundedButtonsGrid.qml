@@ -129,7 +129,7 @@ Pane {
                                         radius: validateId.width / 2
                                         border.width: rectRadius
                                         border.color: Material.accent
-                                        color: validateId.hovered ? (validateId.pressed ? Material.foreground : Material.background) : Material.primary
+                                        color: validateId.hovered ? (validateId.pressed ? colorForeground : colorBackground) : colorPrimary
                                     }
                                 }
                                 onClicked: {

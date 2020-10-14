@@ -25,11 +25,17 @@ ApplicationWindow {
     property real controlXLast: windowWidth * -0.1
     property real controlYLast: windowHeight * 0.4
 
-    property int smallPadding: dp(2)
-    property int mediumPadding: dp(8)
-    property int mediumLargePadding: dp(16)
-    property int largePadding: dp(20)
-    property int exlargePadding: dp(40)
+    readonly property string colorAccent: "#ffffff"
+    readonly property string colorPrimary: "#3695da"
+    readonly property string colorBackground: "#36dacd"
+    readonly property string colorForeground: "#d17b36"
+
+    readonly property int smallPadding: dp(2)
+    readonly property int mediumPadding: dp(8)
+    readonly property int mediumLargePadding: dp(16)
+    readonly property int largePadding: dp(20)
+    readonly property int exlargePadding: dp(40)
+
     readonly property int rectRadius: dp(2)
     readonly property int largeRectRadius: dp(4)
     readonly property int borderWidth: dp(3)
@@ -127,7 +133,7 @@ ApplicationWindow {
     footer: ToolBar {
         id: footerToolBarId
         height: headerToolBarId.height
-        Material.primary: Material.background
+        Material.primary: colorBackground
         visible: isPortraitMode
                  && stackViewId.currentItem.objectName !== "SwitchboardPage"
                  && stackViewId.currentItem.objectName !== "AboutPage"

@@ -27,7 +27,7 @@ Item {
             wrapMode: Label.WordWrap
             width: parent.width * .9
             horizontalAlignment: Text.AlignHCenter
-            color: Material.foreground
+            color: colorForeground
         }
     }
 

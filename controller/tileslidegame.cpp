@@ -62,9 +62,10 @@ void TileSlideGame::selectPuzzle( int puzzleIndex )
 
 void TileSlideGame::nextPuzzle()
 {
-  qDebug() << Q_FUNC_INFO;
+  qDebug() << Q_FUNC_INFO << "  mCurrentImageIndex=" << mCurrentImageIndex;
   ++mCurrentImageIndex;
   assignToImageProvider();
+  qDebug() << Q_FUNC_INFO << "  mCurrentImageIndex=" << mCurrentImageIndex;
 }
 
 int TileSlideGame::currentPuzzleIndex() const

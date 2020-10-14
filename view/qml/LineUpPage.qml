@@ -100,7 +100,7 @@ Page {
                 }
                 RoundedButtonsRow {
                     id: topRoundedButtonsRowId
-                    buttonBorderColor: Material.foreground
+                    buttonBorderColor: colorForeground
                     buttonColors: getAvailableColors()
                     onColorSelected: puzzleColorsGridId.roundedButtonColor = selection
                 }
