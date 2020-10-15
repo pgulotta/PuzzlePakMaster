@@ -5,7 +5,6 @@
 ColorFallIterator::ColorFallIterator( const ShapesFactory& shapesFactory, const QString& moniker ):
   GameIterator{shapesFactory, moniker}
 {
-  //qDebug() << Q_FUNC_INFO;
 }
 
 void ColorFallIterator::generatePuzzles( QObject* parent )

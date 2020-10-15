@@ -162,7 +162,9 @@ Page {
         onSourceChanged: {
             console.log("backgroundImageId.onSourceChanged + source=" + source
                         + "  puzzlePieceModel=" + puzzlePieceModel)
-
+            puzzlePieceModel = TileSlideGame.puzzlePieceCount()
+            imagePieceWidth = TileSlideGame.imagePieceWidth()
+            imagePieceHeight = TileSlideGame.imagePieceHeight()
             //             if (source === "")
             //            {
             //                for (var index = 0; index < puzzlePieceModel; ++index) {

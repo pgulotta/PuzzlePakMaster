@@ -2,15 +2,16 @@
 #include "shapesfactory.hpp"
 #include "gameiterator.hpp"
 
-class ColorFallIterator: public GameIterator {
- public:
-  ColorFallIterator(const ShapesFactory& shapesFactory, const QString& moniker);
+class ColorFallIterator: public GameIterator
+{
+public:
+  ColorFallIterator( const ShapesFactory& shapesFactory, const QString& moniker );
 
-  virtual ~ColorFallIterator() {
-    // qDebug() << Q_FUNC_INFO;
+  virtual ~ColorFallIterator()
+  {
   }
 
-  void generatePuzzles(QObject* parent) override;
+  void generatePuzzles( QObject* parent ) override;
 
 
 

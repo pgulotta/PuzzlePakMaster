@@ -29,7 +29,6 @@ Initializer::Initializer( QObject* parent ) :
 
 void Initializer::onGamePuzzleChanged()
 {
-  qDebug() << Q_FUNC_INFO << mGameController.currentGameMoniker();
   static Constants constants;
 
   if ( mGameController.currentGameMoniker() == constants.GameTangramsMonochrome ||

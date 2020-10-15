@@ -19,12 +19,10 @@ public:
   GameIterator( const ShapesFactory& shapesFactory, const QString& moniker ):
     mShapesFactory{shapesFactory}, mMoniker{moniker}
   {
-    // qDebug() << Q_FUNC_INFO;
   }
 
   virtual ~GameIterator()
   {
-    //qDebug() << Q_FUNC_INFO;
   }
 
   static QString createUniqueId()

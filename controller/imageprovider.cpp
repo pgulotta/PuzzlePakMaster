@@ -20,7 +20,6 @@ void ImageProvider::setImagePath( int columnRowCount, const QString& imagePath  
 
 void ImageProvider::setDimensions( int windowWidth, int windowHeight )
 {
-  qDebug() << " 2 " <<  Q_FUNC_INFO << "  Window:  " << windowWidth << " x " << windowHeight;
   mWindowWidth = windowWidth;
   mWindowHeight = windowHeight;
   QImage image{mImagePath};
@@ -32,7 +31,6 @@ void ImageProvider::setDimensions( int windowWidth, int windowHeight )
     auto dimension = ( windowWidth > windowHeight ) ? widthDimension : heightDimension ;
     mImage = new QImage(  image.scaled( dimension, dimension, Qt::KeepAspectRatio )  ) ;
   } else {
-    qDebug() <<  Q_FUNC_INFO << "Image size NOT adjusted";
     mImage = new QImage( image  ) ;
   }
 

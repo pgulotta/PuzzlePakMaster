@@ -11,7 +11,6 @@ public:
 
   virtual ~MonochromeTangramsIterator()
   {
-    //qDebug() << Q_FUNC_INFO;
   }
 
   void generatePuzzles( QObject* parent ) override;

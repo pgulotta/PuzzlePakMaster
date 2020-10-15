@@ -2,15 +2,16 @@
 #include "shapesfactory.hpp"
 #include "gameiterator.hpp"
 
-class LineUpIterator: public GameIterator {
- public:
-  LineUpIterator(const ShapesFactory& shapesFactory, const QString& moniker);
+class LineUpIterator: public GameIterator
+{
+public:
+  LineUpIterator( const ShapesFactory& shapesFactory, const QString& moniker );
 
-  virtual ~LineUpIterator() {
-    // qDebug() << Q_FUNC_INFO;
+  virtual ~LineUpIterator()
+  {
   }
 
-  void generatePuzzles(QObject* parent) override;
+  void generatePuzzles( QObject* parent ) override;
 
 
 

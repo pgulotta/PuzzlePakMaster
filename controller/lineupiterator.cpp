@@ -2,189 +2,190 @@
 #include "model/constants.hpp"
 
 
-LineUpIterator::LineUpIterator(const ShapesFactory& shapesFactory, const QString& moniker):
-  GameIterator{shapesFactory, moniker} {
-  //qDebug() << Q_FUNC_INFO;
+LineUpIterator::LineUpIterator( const ShapesFactory& shapesFactory, const QString& moniker ):
+  GameIterator{shapesFactory, moniker}
+{
 }
 
-void LineUpIterator::generatePuzzles(QObject* parent) {
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
-                                                        new Colors{"green", "red", "blue"}, parent)));
+void LineUpIterator::generatePuzzles( QObject* parent )
+{
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+                                                           new Colors{"green", "red", "blue"}, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
-                                                        new Colors{"green", "yellow", "cyan"}, parent)));
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+                                                           new Colors{"green", "yellow", "cyan"}, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
-                                                        new Colors{"red", "blue", "white"}, parent)));
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+                                                           new Colors{"red", "blue", "white"}, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
-                                                        new Colors{"white", "lightGray", "darkGray"}, parent)));
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+                                                           new Colors{"white", "lightGray", "darkGray"}, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
-                                                        new Colors{"black", "darkMagenta", "darkCyan"}, parent)));
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+                                                           new Colors{"black", "darkMagenta", "darkCyan"}, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
-                                                        new Colors{ "green", "red", "red", "red"}, parent)));
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+                                                           new Colors{ "green", "red", "red", "red"}, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "blue",
     "blue",
     "red",
     "red",
-  }, parent)));
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  }, parent ) ) );
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "black",
     "yellow",
     "yellow",
     "black",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "darkCyan"
     "darkgoldenrod",
     "cyan",
     "darkCyan"
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "cyan",
     "red",
     "green",
     "yellow",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "yellow",
     "blue",
     "green",
     "red",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "black",
     "yellow",
     "blue",
     "red",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "white",
     "white",
     "blue",
     "blue",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "black",
     "darkGreen",
     "darkBlue",
     "darkMagenta",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "green",
     "red",
     "green",
     "red",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "blue",
     "blue",
     "white",
     "white",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "white",
     "black",
     "white",
     "black",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "darkRed",
     "darkRed",
     "sandybrown",
     "darkRed",
     "darkRed",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "black",
     "darkMagenta",
     "darkMagenta",
     "darkMagenta",
     "black",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "green",
     "red",
     "white",
     "yellow",
     "black",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "darkRed",
     "darkCyan"
     "darkGray",
     "darkgoldenrod",
     "darkMagenta",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "darkgoldenrod",
     "darkgoldenrod",
     "yellow",
     "darkgoldenrod",
     "darkgoldenrod",
-  }, parent)));
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  }, parent ) ) );
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "white",
     "black",
     "white",
     "black",
     "white",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "black",
     "yellow",
     "red",
     "green",
     "red",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "yellow",
     "cyan",
     "cyan",
     "yellow",
     "cyan",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "green",
     "green",
@@ -192,9 +193,9 @@ void LineUpIterator::generatePuzzles(QObject* parent) {
     "yellow",
     "green",
     "green",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "white",
     "red",
@@ -202,8 +203,8 @@ void LineUpIterator::generatePuzzles(QObject* parent) {
     "white",
     "red",
     "blue",
-  }, parent)));
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  }, parent ) ) );
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "green",
     "red",
@@ -211,9 +212,9 @@ void LineUpIterator::generatePuzzles(QObject* parent) {
     "green",
     "yellow",
     "cyan",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "white",
     "white",
@@ -221,9 +222,9 @@ void LineUpIterator::generatePuzzles(QObject* parent) {
     "white",
     "blue",
     "blue",
-  }, parent)));
+  }, parent ) ) );
 
-  mPuzzles.push_back(std::shared_ptr<Puzzle>(new Puzzle(GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
+  mPuzzles.push_back( std::shared_ptr<Puzzle>( new Puzzle( GameIterator::createUniqueId(), Puzzle::SkillLevel::Easy,
   new Colors{
     "black",
     "darkRed",
@@ -231,7 +232,7 @@ void LineUpIterator::generatePuzzles(QObject* parent) {
     "darkgoldenrod",
     "darkBlue",
     "darkMagenta",
-  }, parent)));
+  }, parent ) ) );
 
 
 }

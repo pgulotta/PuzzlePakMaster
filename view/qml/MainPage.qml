@@ -12,7 +12,7 @@ ApplicationWindow {
                                            || Qt.platform.os === "ios"
 
     property int windowHeight: isMobileDevice ? Screen.desktopAvailableHeight : Screen.desktopAvailableHeight * .8
-    property int windowWidth: isMobileDevice ? Screen.width : Screen.width * .45
+    property int windowWidth: isMobileDevice ? Screen.width : Screen.width * .5
     property bool isPortraitMode: windowHeight > windowWidth
     property real drawUnit: isPortraitMode ? windowWidth * .03 : windowHeight * .08
     property real imageDimension: isPortraitMode ? windowHeight * 0.2 : windowWidth * 0.16
