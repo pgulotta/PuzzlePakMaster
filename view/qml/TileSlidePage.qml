@@ -165,6 +165,7 @@ Page {
             puzzlePieceModel = TileSlideGame.puzzlePieceCount()
             imagePieceWidth = TileSlideGame.imagePieceWidth()
             imagePieceHeight = TileSlideGame.imagePieceHeight()
+            bestScoreId.resetClock(GameController.getCurrentPuzzleBestScore())
             //             if (source === "")
             //            {
             //                for (var index = 0; index < puzzlePieceModel; ++index) {
@@ -252,10 +253,8 @@ Page {
         }
     }
 
-    function setHighBestScore(currentBestScore, currentScore) {
-        if (currentScore === 0)
-            return
-        if (currentBestScore === 0 || currentBestScore > currentScore)
+    function setHighBestScore() {
+        if (bestScore === 0 || currentScore < bestScore)
             GameController.setCurrentPuzzleBestScore(currentScore)
     }
 
@@ -270,17 +269,14 @@ Page {
             yCoordinatesList[index] = itemAt.y
         }
         if (TileSlideGame.isPuzzleSolved(xCoordinatesList, yCoordinatesList)) {
-
-            //if (1 === 1) {
             stopTimerText()
+            setHighBestScore()
             //animateSuccess()
             playMusicId.tryPlaySoundEffect()
-            setHighBestScore(bestScore, currentScore)
+
             currentScoreId.resetClock(0)
 
             GameController.nextPuzzle()
-
-            bestScoreId.resetClock(GameController.getCurrentPuzzleBestScore())
         }
     }
 
