@@ -160,8 +160,7 @@ Page {
         anchors.centerIn: parent
         opacity: 0.40
         onSourceChanged: {
-            console.log("backgroundImageId.onSourceChanged + source=" + source
-                        + "  puzzlePieceModel=" + puzzlePieceModel)
+            //console.log("backgroundImageId.onSourceChanged + source=" + source + "  puzzlePieceModel=" + puzzlePieceModel)
             puzzlePieceModel = TileSlideGame.puzzlePieceCount()
             imagePieceWidth = TileSlideGame.imagePieceWidth()
             imagePieceHeight = TileSlideGame.imagePieceHeight()
@@ -273,9 +272,7 @@ Page {
             setHighBestScore()
             //animateSuccess()
             playMusicId.tryPlaySoundEffect()
-
             currentScoreId.resetClock(0)
-
             GameController.nextPuzzle()
         }
     }

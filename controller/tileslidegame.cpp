@@ -65,6 +65,7 @@ void TileSlideGame::assignToImageProvider( )
 
 void TileSlideGame::selectPuzzle( int puzzleIndex )
 {
+  // look here
   mCurrentImageIndex = mPuzzleIdList[puzzleIndex] / 10;
   mCurrentRowColumnCount = mPuzzleIdList[puzzleIndex] - mCurrentImageIndex * 10;
   assignToImageProvider();
