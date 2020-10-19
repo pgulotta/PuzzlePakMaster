@@ -76,11 +76,11 @@ private:
                                            "qrc:/view/music/bensound-theduel.mp3", TangramHelpText,
                                            parent()} );
 
-    mGameMetaData.append( new GameMetaData{constants.GameTileSlide, tr( "Tile Slide" ),
-                                           "qrc:/view/images/tile-slide.png",
-                                           "qrc:/view/qml/TileSlidePage.qml",
-                                           "qrc:/view/music/bensound-theduel.mp3", TileSlideHelpText,
-                                           parent()} );
+//    mGameMetaData.append( new GameMetaData{constants.GameTileSlide, tr( "Tile Slide" ),
+//                                           "qrc:/view/images/tile-slide.png",
+//                                           "qrc:/view/qml/TileSlidePage.qml",
+//                                           "qrc:/view/music/bensound-theduel.mp3", TileSlideHelpText,
+//                                           parent()} );
     mGameMetaData.append( new GameMetaData{constants.About, tr( "About" ),
                                            "qrc:/view/images/about.png",
                                            "qrc:/view/qml/AboutPage.qml",
